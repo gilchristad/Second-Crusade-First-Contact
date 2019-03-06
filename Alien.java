@@ -1,13 +1,12 @@
 package game;
 
-public class Alien extends Unit{
-
-	public Alien(int atk, int acc, int spd, int dge, int sze, int hp) {
-		super(atk, acc, spd, dge, sze);
-		// TODO Auto-generated constructor stub
-	}
-
+public class Alien extends Unit {
 	private int health;
+
+	public Alien(int atk, double acc, double speed, double dodge, double sze, int hp) {
+		super(atk, acc, speed, dodge, sze);
+		health = hp;
+	}
 
 	@Override
 	public int getHealth(int armourValue) {
@@ -16,12 +15,12 @@ public class Alien extends Unit{
 
 	@Override
 	public void damageTaken(int damage, int armourValue) {
-		health-=damage;
+		health -= damage;
 	}
 
 	@Override
 	public void somethingDied(int armourValue) {
-		//Delete this thing lol
+		// Delete this thing lol
 	}
 
 }
