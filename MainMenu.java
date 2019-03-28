@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -10,9 +9,10 @@ import java.io.*;
 
 public class MainMenu extends JPanel{
 
-    public static void main(String[] args) throws IOException {
+    private static final long serialVersionUID = 1L;
+    boolean newgame = false;
 
-        JFrame frame = new JFrame();
+    public void MainMenuFrame() throws IOException {
 
         ImageIcon image = new ImageIcon("Images/mainmenu.jpg");
         ImageIcon newgamehover = new ImageIcon("Images/newgamehover.jpg");
@@ -26,7 +26,6 @@ public class MainMenu extends JPanel{
         ImageIcon loadgamebackhover = new ImageIcon("Images/loadgamebackhover.jpg");
 
         JLabel imagelabel = new JLabel(image);
-
         JButton ngb = new JButton();
         JButton cgb = new JButton();
         JButton lgb = new JButton();
@@ -35,6 +34,11 @@ public class MainMenu extends JPanel{
         JButton loadbackb = new JButton();
         JButton optionsbackb = new JButton();
 
+        File music = new File("Music/mainmusic.wav");
+        InputStream in = new FileInputStream(music);
+        AudioStream as = new AudioStream(in);         
+        AudioPlayer.player.start(as);
+        
         ngb.setBounds(1514, 361,376, 55);
         cgb.setBounds(1575, 446, 315, 55);
         lgb.setBounds(1504, 535, 386, 55);
@@ -44,74 +48,21 @@ public class MainMenu extends JPanel{
         optionsbackb.setBounds(368,139, 111, 35);
         imagelabel.setBounds(0,0,1920,1080);
 
-        File music = new File("Music/mainmusic.wav");
-        InputStream in = new FileInputStream(music);
-        AudioStream as = new AudioStream(in);         
-        AudioPlayer.player.start(as);
-        
-        ngb.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(newgamehover);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(image);
-            }
-        });
-
-        cgb.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(continuegamehover);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(image);
-            }
-        });
-        
-        lgb.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(loadgamehover);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(image);
-            }
-        });
-
-        ob.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(optionshover);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(image);
-            }
-        });
-
-        exitb.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseEntered(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(exithover);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt){
-                imagelabel.setIcon(image);
-            }
-        });
-
-        frame.getContentPane().setLayout(null);
-        frame.add(ngb);
-        frame.add(cgb);
-        frame.add(lgb);
-        frame.add(ob);
-        frame.add(exitb);
-        frame.add(optionsbackb);
-        frame.add(loadbackb);
-        frame.add(imagelabel);
-        frame.setTitle("Second Crusade - First Contact");
-        frame.setSize(1920, 1080);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setUndecorated(true);
-        frame.setVisible(true);
+        setLayout(null);
+        add(ngb);
+        add(cgb);
+        add(lgb);
+        add(ob);
+        add(exitb);
+        add(optionsbackb);
+        add(loadbackb);
+        add(imagelabel);
+        setVisible(true);
 
         ngb.setOpaque(false);
         ngb.setContentAreaFilled(false);
         ngb.setBorderPainted(false);
+        ngb.setVisible(true);
 
         cgb.setOpaque(false);
         cgb.setContentAreaFilled(false);
@@ -138,9 +89,15 @@ public class MainMenu extends JPanel{
         optionsbackb.setContentAreaFilled(false);
         optionsbackb.setBorderPainted(false);
         optionsbackb.setVisible(false);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        ngb.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                newgame = true;
+                AudioPlayer.player.stop(as);
+            }
+        });
+
         lgb.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
@@ -233,5 +190,58 @@ public class MainMenu extends JPanel{
                 optionsbackb.removeMouseListener(optionsbackb.getMouseListeners()[1]);
             }
         });
+
+        ngb.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(newgamehover);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(image);
+            }
+        });
+
+        cgb.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(continuegamehover);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(image);
+            }
+        });
+        
+        lgb.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(loadgamehover);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(image);
+            }
+        });
+
+        ob.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(optionshover);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(image);
+            }
+        });
+
+        exitb.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(exithover);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                imagelabel.setIcon(image);
+            }
+        });
+
+    }
+    public boolean getNewGame(){
+        return newgame;
+    }
+
+    public void setNewGame(){
+        newgame = false;
     }
 }

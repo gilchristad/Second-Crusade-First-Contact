@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Application",
+            "request": "launch",
+            "mainClass": "Application",
+            "projectName": "Second-Crusade-First-Contact_fb0c952d"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MainMenu",
             "request": "launch",
             "mainClass": "MainMenu"

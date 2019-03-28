@@ -1,5 +1,3 @@
-package game;
-
 public class SwordAndShield extends Crusader {
 	//ability methods should call the general attack method with the damage they calculate as well as any other effects they have
 	//i.e call the blind method or the stun method, they should be implemented in Unit as well as have a method like attacked in Square

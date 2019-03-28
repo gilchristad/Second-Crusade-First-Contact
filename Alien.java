@@ -1,5 +1,3 @@
-package game;
-
 public class Alien extends Unit {
 	private int health;
 

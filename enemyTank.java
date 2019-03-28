@@ -1,5 +1,3 @@
-package game;
-
 public class enemyTank extends Alien{
 
 	public enemyTank(int atk, double acc, double speed, double dodge, double sze, int hp) {
