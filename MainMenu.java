@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import sun.audio.*;
+//import sun.audio.*;
 import java.io.*;
 
 public class MainMenu extends JPanel{
@@ -34,10 +34,10 @@ public class MainMenu extends JPanel{
         JButton loadbackb = new JButton();
         JButton optionsbackb = new JButton();
 
-        File music = new File("Music/mainmusic.wav");
-        InputStream in = new FileInputStream(music);
-        AudioStream as = new AudioStream(in);         
-        AudioPlayer.player.start(as);
+        //File music = new File("Music/mainmusic.wav");
+        //InputStream in = new FileInputStream(music);
+        //AudioStream as = new AudioStream(in);         
+        //AudioPlayer.player.start(as);
         
         ngb.setBounds(1514, 361,376, 55);
         cgb.setBounds(1575, 446, 315, 55);
@@ -94,7 +94,7 @@ public class MainMenu extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newgame = true;
-                AudioPlayer.player.stop(as);
+                //AudioPlayer.player.stop(as);
             }
         });
 

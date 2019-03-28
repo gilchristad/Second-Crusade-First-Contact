@@ -4,8 +4,8 @@ public class Location {
 
     String type;
     public void location(JLabel label){
-        if(label.getIcon() == monastery){
-            type = "Monastery";
-        }
+        //if(label.getIcon() == monastery){
+        ///    type = "Monastery";
+        //}
     }
 }

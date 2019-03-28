@@ -1,14 +1,15 @@
 public class Board {
-	private Square[][] board;
-
-	public static void main(String args[]) {
-		Crusader guy = new Crusader(10, .9, 0.9, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-		Alien enemy = new Alien(5, 0.9, 0.7, 0.8, 0.7, 5);
-		Square goodGuy = new Square(guy);
-		Square badGuy = new Square(enemy);
-		System.out.println(enemy.getHealth(-1));
-		guy.attack(guy.getAttackValue(), badGuy, -1);
-		System.out.println(enemy.getHealth(-1));
+	Square[][] board;
+	public Board(int x, int y){
+		 board= new Square[x][y];
+		 for(int i=0;i<board.length;i++){
+			 for (int q=0;q<board[0].length;q++){
+				 board[i][q]=new Square(null);
+			 }
+		 }
+	}
+	public Square getSquare(int x,int y){
+		return board[x][y];
 	}
 
 }
