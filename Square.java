@@ -1,5 +1,3 @@
-package game;
-
 public class Square {
 	private Unit unitOnHere;
 	// Blocked would be used if an ability puts like spikes on a square so you cant

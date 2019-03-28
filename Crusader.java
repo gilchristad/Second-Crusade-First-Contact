@@ -1,5 +1,3 @@
-package game;
-
 public class Crusader extends Unit {
 	private int[] armourValues;
 

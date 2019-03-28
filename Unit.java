@@ -1,5 +1,3 @@
-package game;
-
 public abstract class Unit {
 	// Base strength used to calculate damage
 	private int attackValue;
