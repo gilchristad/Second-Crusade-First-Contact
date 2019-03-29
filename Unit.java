@@ -1,15 +1,21 @@
+import jdk.nashorn.api.tree.YieldTree;
+
 public abstract class Unit {
 	// Base strength used to calculate damage
-	private int attackValue;
+	public int attackValue;
 	// Base accuracy used to calculate misses
-	private double accuracyValue;
+	public double accuracyValue;
 	// Base speed used to calculate turn order
-	private double speedValue;
+	public double speedValue;
 	// Base dodge power to calculate dodges
-	private double dodgeValue;
+	public double dodgeValue;
 	// Base size used to calculate misses
-	private double sizeValue;
-
+	public double sizeValue;
+	public boolean blinded=false;
+	public boolean stunned=false;
+	public boolean protect=false;
+	public int buff=0;
+	public boolean turn=false;
 	public Unit(int atk, double acc, double speed, double dodge, double size) {
 		attackValue = atk;
 		accuracyValue = acc;
@@ -41,7 +47,9 @@ public abstract class Unit {
 	}
 	public void blind (Square target)
 	{
-		System.out.println("Blinded");
+		if (target.selectSquare() != null) {
+			target.blind();
+		}
 	}
 	public void blockSquare(Square target) {
 		System.out.println("Cant use this tile anymroe sucker");
@@ -78,7 +86,17 @@ public abstract class Unit {
 	public int getAttackValue() {
 		return attackValue;
 	}
-
+	public void startTurn(){
+		turn=true;
+	}
+	public void endTurn(){
+		turn=false;
+		if (blinded)
+		{
+			this.accuracyValue+=0.2;
+		}
+		this.stunned=false;
+	}
 	public abstract int getHealth(int armourValue);
 
 	public abstract void damageTaken(int damage, int armourValue);
