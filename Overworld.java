@@ -14,17 +14,17 @@ public class Overworld extends JPanel{
     private static final long serialVersionUID = 1L;
     boolean mainmenu = false;
     int ONE_SECOND = 1000;
-    ImageIcon crusadersprite1 = new ImageIcon("Images/crusader sprite.png");
-    ImageIcon crusadersprite2 = new ImageIcon("Images/crusader sprite 2.png");
+    ImageIcon crusadersprite1 = new ImageIcon("Images/Icons/crusader sprite.png");
+    ImageIcon crusadersprite2 = new ImageIcon("Images/Icons/crusader sprite 2.png");
     JLabel sprite = new JLabel(crusadersprite1);
     
 
     public void OverworldFrame() throws IOException, InterruptedException {
-        ImageIcon background = new ImageIcon("Images/jerusalempix.jpg");
-        ImageIcon options = new ImageIcon("Images/jerusalemesc.jpg");
-        ImageIcon house = new ImageIcon("Images/house.png");
-        ImageIcon monastery = new ImageIcon("Images/monastery.png");
-        ImageIcon ufo = new ImageIcon("Images/ufo.png");
+        ImageIcon background = new ImageIcon("Images/Backgrounds/jerusalempix.jpg");
+        ImageIcon options = new ImageIcon("Images/Backgrounds/jerusalemesc.jpg");
+        ImageIcon house = new ImageIcon("Images/Icons/house.png");
+        ImageIcon monastery = new ImageIcon("Images/Icons/monastery.png");
+        ImageIcon ufo = new ImageIcon("Images/Icons/ufo.png");
         JLabel imagelabel = new JLabel(background);
         JLabel house1 = new JLabel(house);
         JLabel house2 = new JLabel(house);

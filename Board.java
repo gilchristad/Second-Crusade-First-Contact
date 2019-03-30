@@ -10,6 +10,6 @@ public class Board {
 	}
 	public Square getSquare(int x,int y){
 		return board[x][y];
+	
 	}
-
 }

@@ -14,16 +14,16 @@ public class MainMenu extends JPanel{
 
     public void MainMenuFrame() throws IOException {
 
-        ImageIcon image = new ImageIcon("Images/mainmenu.jpg");
-        ImageIcon newgamehover = new ImageIcon("Images/newgamehover.jpg");
-        ImageIcon continuegamehover = new ImageIcon("Images/continuehover.jpg");
-        ImageIcon loadgamehover = new ImageIcon("Images/loadgamehover.jpg");
-        ImageIcon optionshover = new ImageIcon("Images/optionshover.jpg");
-        ImageIcon exithover = new ImageIcon("Images/exithover.jpg");
-        ImageIcon loadgamescreen = new ImageIcon("Images/loadgamescreen.jpg");
-        ImageIcon optionsscreen = new ImageIcon("Images/optionsscreen.jpg");
-        ImageIcon optionsbackhover = new ImageIcon("Images/optionsbackhover.jpg");
-        ImageIcon loadgamebackhover = new ImageIcon("Images/loadgamebackhover.jpg");
+        ImageIcon image = new ImageIcon("Images/Backgrounds/mainmenu.jpg");
+        ImageIcon newgamehover = new ImageIcon("Images/Backgrounds/newgamehover.jpg");
+        ImageIcon continuegamehover = new ImageIcon("Images/Backgrounds/continuehover.jpg");
+        ImageIcon loadgamehover = new ImageIcon("Images/Backgrounds/loadgamehover.jpg");
+        ImageIcon optionshover = new ImageIcon("Images/Backgrounds/optionshover.jpg");
+        ImageIcon exithover = new ImageIcon("Images/Backgrounds/exithover.jpg");
+        ImageIcon loadgamescreen = new ImageIcon("Images/Backgrounds/loadgamescreen.jpg");
+        ImageIcon optionsscreen = new ImageIcon("Images/Backgrounds/optionsscreen.jpg");
+        ImageIcon optionsbackhover = new ImageIcon("Images/Backgrounds/optionsbackhover.jpg");
+        ImageIcon loadgamebackhover = new ImageIcon("Images/Backgrounds/loadgamebackhover.jpg");
 
         JLabel imagelabel = new JLabel(image);
         JButton ngb = new JButton();

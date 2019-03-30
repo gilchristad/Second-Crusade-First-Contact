@@ -12,7 +12,7 @@ public class Instructions extends JPanel {
 
     public void InstructionsFrame() {
         
-        ImageIcon background = new ImageIcon("Images/instructions.jpg");
+        ImageIcon background = new ImageIcon("Images/Backgrounds/instructions.jpg");
         JLabel imagelabel = new JLabel(background);
         JButton skip = new JButton();
         imagelabel.setBounds(0,0,1920,1080);

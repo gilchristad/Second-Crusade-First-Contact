@@ -12,7 +12,7 @@ public class RestArea extends JPanel{
 
     public void RestAreaFrame() throws IOException {
     
-        ImageIcon background = new ImageIcon("Images/restarea.jpg");
+        ImageIcon background = new ImageIcon("Images/Backgrounds/restarea.jpg");
         JButton restb = new JButton();
         JButton trainb = new JButton();
 
