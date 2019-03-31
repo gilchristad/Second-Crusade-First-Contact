@@ -27,7 +27,8 @@ public class Overworld extends JPanel{
 
     public void OverworldFrame(int width, int height) throws IOException, InterruptedException {
         ImageIcon background = new ImageIcon("Images/Backgrounds/jerusalempix.jpg");
-        
+        background.setImage(getScaledImage(background.getImage(), width, height));
+    	
         ImageIcon hover = new ImageIcon("Images/Backgrounds/jerusalemhover.jpg");
         hover.setImage(getScaledImage(hover.getImage(), width, height));
 
@@ -45,7 +46,6 @@ public class Overworld extends JPanel{
 
         ImageIcon monasterybig = new ImageIcon("Images/Icons/monastery2.png");
         monasterybig.setImage(getScaledImage(monasterybig.getImage(), width, height));
-
 
         JLabel imagelabel = new JLabel();
         JLabel house1 = new JLabel();

@@ -61,6 +61,8 @@ public class Application {
             else if(restarea.getReturn()){
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(overworld);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(overworld);
                 frame.repaint();
                 frame.revalidate();
                 restarea.setReturn();

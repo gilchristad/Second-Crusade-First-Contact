@@ -1,3 +1,4 @@
+    import java.lang.Math;
     public class battle {
     private static Unit[] characters;
 
@@ -31,8 +32,9 @@
         alienBoard.getSquare(1, 0).addUnit(enemy3);
         cruBoard.getSquare(2,1).addUnit(guy4);
         alienBoard.getSquare(2, 1).addUnit(enemy4);
-        cruBoard.getSquare(2,1).addUnit(guy5);
-        alienBoard.getSquare(2, 1).addUnit(enemy5);
+        cruBoard.getSquare(2,2).addUnit(guy5);
+        alienBoard.getSquare(2, 2).addUnit(enemy5);
+        highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);
         //https://www.youtube.com/watch?v=UOxkGD8qRB4
         System.out.println("1\n");  
         for (int i =0;i<4;i++){
@@ -85,6 +87,30 @@
             }
         }
         return characters;
+    }
+    private static Square[] highlightMoveOptions(Square startSquare, Board board){
+        int x=startSquare.getCoordinates()[0];
+        int y=startSquare.getCoordinates()[1];
+        //Make an array of all squares that you can mvoe to with 3 move points
+        Square[] result=new Square[11];
+        int count=0;
+        int [] directions={0,1,2,-1,-2};
+        for (int i =0;i<directions.length;i++){
+            for (int q =0;q<directions.length;q++){
+                //We can move in those directions 
+                if (Math.abs(directions[i])+Math.abs(directions[q])<=2){
+                    if (directions[i]+x>=0 &&directions[i]+x<=3){
+                        if (directions[q]+y>=0 &&directions[q]+y<=3){
+                            if (board.getSquare(directions[i]+x, directions[q]+y).selectSquare()==null){
+                                result[count]=board.getSquare(directions[i]+x, directions[q]+y);
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
 
