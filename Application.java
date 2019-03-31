@@ -4,15 +4,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Application {
+    
     public static void main(String[] args) throws IOException, InterruptedException 
     { 
         MainMenu mainmenu = new MainMenu();
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
+        RestArea restarea = new RestArea();
 
         mainmenu.MainMenuFrame();
         overworld.OverworldFrame();
         instructions.InstructionsFrame();
+        restarea.RestAreaFrame();
+
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -39,6 +43,26 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 instructions.setContinue();
+            }
+            else if(overworld.getBoss()){
+
+            }
+            else if(overworld.getRest()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(restarea);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setRest();
+            }
+            else if(overworld.getBattle()){
+
+            }
+            else if(restarea.getReturn()){
+                frame.getContentPane().removeAll;
+                frame.getContentPane.add(overworld);
+                frame.repaint();
+                frame.revalidate();
+                restarea.setReturn();
             }
         }
     }

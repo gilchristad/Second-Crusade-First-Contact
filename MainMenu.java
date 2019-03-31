@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-//import sun.audio.*;
 import java.io.*;
 
 public class MainMenu extends JPanel{
