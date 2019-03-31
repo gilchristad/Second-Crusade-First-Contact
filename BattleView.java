@@ -14,7 +14,7 @@ public class BattleView extends JPanel{
     private static final long serialVersionUID = 1L;
     boolean newgame = false;
 
-    public void BattleViewFrame() throws IOException {
+    public void BattleViewFrame(int width, int height) throws IOException {
         
         ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.png");
         ImageIcon crusader1 = new ImageIcon("");

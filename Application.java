@@ -12,12 +12,13 @@ public class Application {
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
         RestArea restarea = new RestArea();
+        BattleView battle = new BattleView();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         mainmenu.MainMenuFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-
+        battle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -56,7 +57,11 @@ public class Application {
                 overworld.setRest();
             }
             else if(overworld.getBattle()){
-
+            	frame.getContentPane().removeAll();
+                frame.getContentPane().add(battle);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setBattle();
             }
             else if(restarea.getReturn()){
                 frame.getContentPane().removeAll();

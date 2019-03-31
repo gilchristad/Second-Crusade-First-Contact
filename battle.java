@@ -1,15 +1,10 @@
     import java.lang.Math;
     public class battle {
-    private static Unit[] characters;
 
     public static void main(String[] args) {
-        System.out.println("HELLO");
+        Unit[] characters = new Unit[32];
         int counter = 0;
         characters = new Unit[32];
-        for (int i = 0; i < 32; i++)
-        {
-            characters[i] = null;
-        }
         SwordAndShield guy1 = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
         Crusader guy2 = new Crusader(10, .9, 0.2, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
         Crusader guy3= new Crusader(10, .9, 0.3, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
@@ -36,57 +31,59 @@
         alienBoard.getSquare(2, 2).addUnit(enemy5);
         highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);
         //https://www.youtube.com/watch?v=UOxkGD8qRB4
-        System.out.println("1\n");  
         for (int i =0;i<4;i++){
             for (int j =0;j<4;j++){
                 Unit x = cruBoard.getSquare(i, j).selectSquare();
                 if (x != null)
                 {
+
                     characters[counter] = x;
                     counter++;
                 }
                 Unit y = alienBoard.getSquare(i, j).selectSquare();
                 if (y != null)
-                
+                {
+
                     characters[counter] = y;
                     counter++;
                 }
             }
-        System.out.println("2\n");  
+        }
+        
         characters = sort_speed(characters);
-        System.out.println("3\n");  
-        for (int i = 0; i < 32; i++)
+        
+        for (int j = 0; j < 32; j++)
         {
-            if (characters[i]!=null)
+            if (characters[j]!=null)
             {
-                //System.out.println("speed: " + characters[i].speedValue);
-                characters[i].startTurn();
+                System.out.println(j + ": " + "speed: " + characters[j].speedValue);
+                characters[j].startTurn();
                 //Wait until the turn is over
                 //Do stuff here :)
-                characters[i].endTurn();
+                characters[j].endTurn();
             }   
         }
     }
-    //This doesnt work :)
+    
+    //Works 
     private static Unit[] sort_speed(Unit characters[])
     {
-        for (int i = 0; i < 31; i++)
-        {
-            for (int j = 0; j < 31-i; j++)
-            {
-                if (characters[j]!= null && characters[j+1]!=null)
-                {
-                    if (characters[j].speedValue < characters[j+1].speedValue)
-                    {
-                        // swap(characters[j], characters[j+1]); 
-                        Unit temp = characters[j];
-                        characters[j] = characters[j+1];
-                        characters[j+1] = temp;
-                    }
-                }
-            }
-        }
-        return characters;
+    	for (int i = (31 - 1); i >= 0; i--)
+    	   {
+    	      for (int j = 1; j <= i; j++)
+    	      {
+    	    	  if (characters[j-1] != null && characters[j]!=null)
+    	    	  {
+    	    		  if (characters[j-1].speedValue > characters[j].speedValue)
+    	    		  {
+    	    			  Unit temp = characters[j-1];
+    	    			  characters[j-1] = characters[j];
+    	    			  characters[j] = temp;
+    	    		  }
+    	    	  }
+    	      }
+    	   }
+    	   return characters;
     }
     private static Square[] highlightMoveOptions(Square startSquare, Board board){
         int x=startSquare.getCoordinates()[0];
