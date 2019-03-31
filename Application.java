@@ -57,11 +57,7 @@ public class Application {
                 overworld.setRest();
             }
             else if(overworld.getBattle()){
-            	frame.getContentPane().removeAll();
-                frame.getContentPane().add(battle);
-                frame.repaint();
-                frame.revalidate();
-                overworld.setBattle();
+
             }
             else if(restarea.getReturn()){
                 frame.getContentPane().removeAll();
