@@ -32,8 +32,9 @@
         alienBoard.getSquare(1, 0).addUnit(enemy3);
         cruBoard.getSquare(2,1).addUnit(guy4);
         alienBoard.getSquare(2, 1).addUnit(enemy4);
-        cruBoard.getSquare(2,1).addUnit(guy5);
-        alienBoard.getSquare(2, 1).addUnit(enemy5);
+        cruBoard.getSquare(2,2).addUnit(guy5);
+        alienBoard.getSquare(2, 2).addUnit(enemy5);
+        highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);
         //https://www.youtube.com/watch?v=UOxkGD8qRB4
         System.out.println("1\n");  
         for (int i =0;i<4;i++){
@@ -100,8 +101,10 @@
                 if (Math.abs(directions[i])+Math.abs(directions[q])<=2){
                     if (directions[i]+x>=0 &&directions[i]+x<=3){
                         if (directions[q]+y>=0 &&directions[q]+y<=3){
-                            result[count]=board.getSquare(directions[i]+x, directions[q]+y);
-                            count++;
+                            if (board.getSquare(directions[i]+x, directions[q]+y).selectSquare()==null){
+                                result[count]=board.getSquare(directions[i]+x, directions[q]+y);
+                                count++;
+                            }
                         }
                     }
                 }
