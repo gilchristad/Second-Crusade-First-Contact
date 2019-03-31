@@ -26,26 +26,21 @@ public class Overworld extends JPanel{
     
 
     public void OverworldFrame(int width, int height) throws IOException, InterruptedException {
+    	//System.out.println(width + "x" + height);
         ImageIcon background = new ImageIcon("Images/Backgrounds/jerusalempix.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
     	
         ImageIcon hover = new ImageIcon("Images/Backgrounds/jerusalemhover.jpg");
-        hover.setImage(getScaledImage(hover.getImage(), width, height));
 
         ImageIcon options = new ImageIcon("Images/Backgrounds/jerusalemesc.jpg");
-        options.setImage(getScaledImage(options.getImage(), width, height));
 
         ImageIcon house = new ImageIcon("Images/Icons/house.png");
-        house.setImage(getScaledImage(house.getImage(), width, height));
 
         ImageIcon monastery = new ImageIcon("Images/Icons/monastery.png");
-        monastery.setImage(getScaledImage(monastery.getImage(), width, height));
 
         ImageIcon ufo = new ImageIcon("Images/Icons/ufo.png");
-        ufo.setImage(getScaledImage(ufo.getImage(), width, height));
 
         ImageIcon monasterybig = new ImageIcon("Images/Icons/monastery2.png");
-        monasterybig.setImage(getScaledImage(monasterybig.getImage(), width, height));
 
         JLabel imagelabel = new JLabel();
         JLabel house1 = new JLabel();
@@ -85,25 +80,27 @@ public class Overworld extends JPanel{
         JButton m1 = new JButton();
         JButton m2 = new JButton();
         
-        imagelabel.setBounds(0,0,1920,1080);
-        sprite.setBounds(508,484, 40, 90);
-        house1.setBounds(1172,160,58,59);
-        house2.setBounds(968,425,58,59);
-        house3.setBounds(664,801,58,59);
-        ufo1.setBounds(969,641,59,60);
-        ufo2.setBounds(816,402,60,60);
-        ufo3.setBounds(688,644,60,60);
-        monastery1.setBounds(995,254,82,69);
-        monastery2.setBounds(1165,541,160,128);
+        imagelabel.setBounds(0,0,width,height);
+        
+        sprite.setBounds((int)(0.265*width),(int)(0.448*height),40,90);
+       
+        house1.setBounds((int)(0.610*width),(int)(0.148*height),58,59);
+        house2.setBounds((int)(0.504*width),(int)(0.394*height),58,59);
+        house3.setBounds((int)(0.346*width),(int)(0.742*height),58,59);
+        ufo1.setBounds((int)(0.505*width),(int)(0.594*height),59,60);
+        ufo2.setBounds((int)(0.425*width),(int)(0.372*height),60,60);
+        ufo3.setBounds((int)(0.358*width),(int)(0.596*height),60,60);
+        monastery1.setBounds((int)(0.518*width),(int)(0.235*height),82,69);
+        monastery2.setBounds((int)(0.607*width),(int)(0.501*height),160,128);
 
-        h1.setBounds(1172,160,58,59);
-        h2.setBounds(968,425,58,59);
-        h3.setBounds(664,801,58,59);
-        u1.setBounds(969,641,59,60);
-        u2.setBounds(816,402,60,60);
-        u3.setBounds(688,644,60,60);
-        m1.setBounds(995,254,82,69);
-        m2.setBounds(1165,541,160,128);
+        h1.setBounds((int)(0.610*width),(int)(0.148*height),58,59);
+        h2.setBounds((int)(0.504*width),(int)(0.394*height),58,59);
+        h3.setBounds((int)(0.346*width),(int)(0.742*height),58,59);
+        u1.setBounds((int)(0.505*width),(int)(0.594*height),59,60);
+        u2.setBounds((int)(0.425*width),(int)(0.372*height),60,60);
+        u3.setBounds((int)(0.358*width),(int)(0.596*height),60,60);
+        m1.setBounds((int)(0.518*width),(int)(0.235*height),82,69);
+        m2.setBounds((int)(0.607*width),(int)(0.501*height),160,128);
 
         setLayout(null);
         add(sprite);
