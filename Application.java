@@ -16,7 +16,7 @@ public class Application {
         mainmenu.MainMenuFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-        restarea.RestAreaFrame();
+        restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
 
 
         JFrame frame = new JFrame();
@@ -59,8 +59,6 @@ public class Application {
 
             }
             else if(restarea.getReturn()){
-                frame.getContentPane().removeAll();
-                frame.getContentPane().add(overworld);
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(overworld);
                 frame.repaint();
