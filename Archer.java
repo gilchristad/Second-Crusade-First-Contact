@@ -5,15 +5,11 @@ public class Archer extends Crusader {
 			int llHP, int rlHP, int chHP) {
 		super(atk, acc, speed, dodge, size, viHP, laHP, raHP, llHP, rlHP, chHP);
 	}
-	public void shieldBash(Square target) {
-		//Get attack value and modify it by 0.5 since this attack is suppose to be a stun primarily  
-		this.attack((int) (this.getAttackValue()*0.5), target, -1);
-		//Then call the stun method
-		//Maybe only call if the attack hit
-		//FOR NOW IT ALWAYS STUNS
-		this.stun(target);
+	public void snipe(Square target) {
+		//Get attack value and modify it by 2.0 since this attack is suppose to DPS  
+		this.attack((int) (this.getAttackValue()*2.0), target, -1);
 	}
-	public void slash(Square target) {
+	public void shoot(Square target) {
 		//Get attack value and modify it by 1.2 since this attack is suppose to be damage primarily  
 		this.attack((int) (this.getAttackValue()*1.2), target, -1);
 	}
@@ -21,7 +17,7 @@ public class Archer extends Crusader {
 		//Move unit to target square and then block self
 		this.protect(target);
 	}
-	public void slice(Square[] targets) {
+	public void rain(Square[] targets) {
 		for (int i =0; i<targets.length;i++)
 		{
 			this.attack((int) (this.getAttackValue()*.9), targets[i],-1);

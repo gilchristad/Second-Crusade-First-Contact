@@ -1,24 +1,29 @@
 import java.awt.BorderLayout;
+import java.awt.*;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Application {
+    
     public static void main(String[] args) throws IOException, InterruptedException 
     { 
         MainMenu mainmenu = new MainMenu();
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
+        RestArea restarea = new RestArea();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        mainmenu.MainMenuFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
+        overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
+        instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
+        restarea.RestAreaFrame();
 
-        mainmenu.MainMenuFrame();
-        overworld.OverworldFrame();
-        instructions.InstructionsFrame();
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(mainmenu);
         frame.setTitle("Second Crusade - First Contact");
-        frame.setSize(1920, 1080);
+        frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,6 +44,26 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 instructions.setContinue();
+            }
+            else if(overworld.getBoss()){
+
+            }
+            else if(overworld.getRest()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(restarea);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setRest();
+            }
+            else if(overworld.getBattle()){
+
+            }
+            else if(restarea.getReturn()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(overworld);
+                frame.repaint();
+                frame.revalidate();
+                restarea.setReturn();
             }
         }
     }

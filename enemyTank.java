@@ -5,7 +5,7 @@ public class enemyTank extends Alien{
 	}
 	public void block(Square target)
 	{
-		
+		this.protect(target);
 	}
 	public void knockback(Square [] targets) {
 		//This will be damage plus moving, pick random part of crusader to attack

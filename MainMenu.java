@@ -1,5 +1,8 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.*;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -12,19 +15,38 @@ public class MainMenu extends JPanel{
     private static final long serialVersionUID = 1L;
     boolean newgame = false;
 
-    public void MainMenuFrame() throws IOException {
+    public void MainMenuFrame(int width, int height) throws IOException {
 
         ImageIcon image = new ImageIcon("Images/Backgrounds/mainmenu.jpg");
+        image.setImage(getScaledImage(image.getImage(), width, height));
+        
         ImageIcon newgamehover = new ImageIcon("Images/Backgrounds/newgamehover.jpg");
+        newgamehover.setImage(getScaledImage(newgamehover.getImage(), width, height));
+        
         ImageIcon continuegamehover = new ImageIcon("Images/Backgrounds/continuehover.jpg");
+        continuegamehover.setImage(getScaledImage(continuegamehover.getImage(), width, height));
+        
         ImageIcon loadgamehover = new ImageIcon("Images/Backgrounds/loadgamehover.jpg");
+        loadgamehover.setImage(getScaledImage(loadgamehover.getImage(), width, height));
+        
         ImageIcon optionshover = new ImageIcon("Images/Backgrounds/optionshover.jpg");
+        optionshover.setImage(getScaledImage(optionshover.getImage(), width, height));
+        
         ImageIcon exithover = new ImageIcon("Images/Backgrounds/exithover.jpg");
+        exithover.setImage(getScaledImage(exithover.getImage(), width, height));
+        
         ImageIcon loadgamescreen = new ImageIcon("Images/Backgrounds/loadgamescreen.jpg");
+        loadgamescreen.setImage(getScaledImage(loadgamescreen.getImage(), width, height));
+        
         ImageIcon optionsscreen = new ImageIcon("Images/Backgrounds/optionsscreen.jpg");
+        optionsscreen.setImage(getScaledImage(optionsscreen.getImage(), width, height));
+        
         ImageIcon optionsbackhover = new ImageIcon("Images/Backgrounds/optionsbackhover.jpg");
+        optionsbackhover.setImage(getScaledImage(optionsbackhover.getImage(), width, height));
+        
         ImageIcon loadgamebackhover = new ImageIcon("Images/Backgrounds/loadgamebackhover.jpg");
-
+        loadgamebackhover.setImage(getScaledImage(loadgamebackhover.getImage(), width, height));
+        
         JLabel imagelabel = new JLabel(image);
         JButton ngb = new JButton();
         JButton cgb = new JButton();
@@ -39,14 +61,14 @@ public class MainMenu extends JPanel{
         //AudioStream as = new AudioStream(in);         
         //AudioPlayer.player.start(as);
         
-        ngb.setBounds(1514, 361,376, 55);
-        cgb.setBounds(1575, 446, 315, 55);
-        lgb.setBounds(1504, 535, 386, 55);
-        ob.setBounds(1613, 621, 277, 55);
-        exitb.setBounds(1759,709, 134, 50);
-        loadbackb.setBounds(368,139, 111, 35);
-        optionsbackb.setBounds(368,139, 111, 35);
-        imagelabel.setBounds(0,0,1920,1080);
+        ngb.setBounds((int) (0.789*(width)), (int)(0.334 * height),(int)(0.196 * width), (int)(0.051 * height));
+        cgb.setBounds((int) (0.820*(width)), (int)(0.413 * height),(int)(0.164 * width), (int)(0.051 * height));
+        lgb.setBounds((int) (0.783*(width)), (int)(0.495 * height),(int)(0.201 * width), (int)(0.051 * height));
+        ob.setBounds((int) (0.840*(width)), (int)(0.575 * height),(int)(0.144 * width), (int)(0.051 * height));
+        exitb.setBounds((int) (0.916*(width)), (int)(0.656 * height),(int)(0.07 * width), (int)(0.046 * height));
+        loadbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
+        optionsbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
+        imagelabel.setBounds(0,0,width,height);
 
         setLayout(null);
         add(ngb);
@@ -243,5 +265,15 @@ public class MainMenu extends JPanel{
 
     public void setNewGame(){
         newgame = false;
+    }
+    private Image getScaledImage(Image srcImg, int w, int h){
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 }
