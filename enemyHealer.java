@@ -33,5 +33,13 @@ public class enemyHealer extends Alien{
 		this.stun(target);
 	}
 
+	@Override
+	public void takeTurn() {
+		//stay far back
+		//heal when teammate is getting low
+		//buff otherwise
+		
+	}
+
 
 }
