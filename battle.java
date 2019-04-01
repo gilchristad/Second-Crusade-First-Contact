@@ -127,5 +127,60 @@
         }
         return result;
     }
+    //This is for ranged attacks 
+    private static Square[] highlightAttackOptions(int upperRangeY,int lowerRangeY,int upperRangeX,int lowerRangeX, Board attackedBoard){
+        //Loop through enemyBoard and add a square if its a valid target 
+        //add a new merhod for regular attacks that has maxchangeinY and x
+        //this is for like rnaged stuff
+        Square[] result=new Square[16];
+        int count=0;
+        for (int i=lowerRangeX;i<=upperRangeX;i++)
+        {
+            for (int j=lowerRangeY;j<=upperRangeY;j++){
+                //Someone is on it
+                if (attackedBoard.getSquare(i, j)!=null){
+                    result[count]=attackedBoard.getSquare(i, j);
+                    count++;
+                }
+            }
+        }
+        return result;
+    }
+    //This is for meele attacks 
+    private static Square[] highlightOtherAttack(Square startSquare,int maxChangeY,int maxChangeX, Board attackedBoard){
+        //Loop through enemyBoard and add a square if its a valid target 
+        //add a new merhod for regular attacks that has maxchangeinY and x
+        //this is for like rnaged stuff
+        Square[] result=new Square[16];
+        int count=0;
+        int maxX=startSquare.getCoordinates()[0]+maxChangeX;
+        int maxY=startSquare.getCoordinates()[1]+maxChangeX;
+        if (maxX>3){
+            maxX=3;
+        }
+        if (maxY>3){
+            maxY=3;
+        }
+        int minX=startSquare.getCoordinates()[0]-maxChangeX;
+        int minY=startSquare.getCoordinates()[1]-maxChangeX;
+        if (minX<0){
+            minX=0;
+        }
+        if (minY<0){
+            minY=0;
+        }
+        for (int i = minX;i<=maxX;i++){
+            for (int j = minY;j<=maxY;j++){
+                //If no one is in the way
+                if (attackedBoard.getSquare(i-1, j)==null){
+                    if (attackedBoard.getSquare(i, j)!=null){
+                        result[count]=attackedBoard.getSquare(i, j);
+                        count++;
+                    }
+                }
+            }
+        }
+        return result;
+    }
 }
 
