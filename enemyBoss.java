@@ -32,5 +32,10 @@ public class enemyBoss extends Alien{
 		this.stun(target);
 	}
 
+	@Override
+	public void takeTurn() {
+		//Do something lol
+	}
+
 
 }
