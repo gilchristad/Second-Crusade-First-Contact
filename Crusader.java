@@ -1,18 +1,19 @@
 import javax.swing.ImageIcon;
 
 public class Crusader extends Unit {
-	private int[] armourValues;
+	private int[] armourValues= new int[6];
 
 	public Crusader(int atk, double acc, double speed, double dodge, double size, String name, ImageIcon image, int viHP, int laHP, int raHP,
 			int llHP, int rlHP, int chHP) {
 		super(atk, acc, speed, dodge, size, name, image);
-		int[] armourValues = new int[6];
+		//int[] armourValues = new int[6];
 		armourValues[0] = viHP;
 		armourValues[1] = laHP;
 		armourValues[2] = raHP;
 		armourValues[3] = llHP;
 		armourValues[4] = rlHP;
 		armourValues[5] = chHP;
+		
 	}
 	// 0=visor,1=LA, 2=RA, 3=LL,4=RL,5=Chest,-1=alien
 

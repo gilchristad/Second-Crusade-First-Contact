@@ -14,14 +14,16 @@ public class Application {
         
         for (int i = 0; i < 3; i++)
         {
-        	Unit y;
+        	Crusader y;
         	if (i == 0)
         	{
-        		y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
+                y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
+                //System.out.println(y.getHealth(0));
         	}
         	else if (i== 1)
         	{
                 y = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
+                
         	}
         	else
         	{

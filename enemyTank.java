@@ -64,16 +64,22 @@ public class enemyTank extends Alien{
 		int x=-1;
 		int y=-1;
 		Board testBoard=board;
+		//System.out.println(board.getSquare(1,3).selectSquare());
 		Board testBoard2=board2;
 		//Find where we are on the board 
+		//System.out.println(this);
 		for (int i=0;i<=3;i++){
 			for (int j=0;j<=3;j++){
+				
 				if (board.getSquare(i, j).selectSquare()==this){
+					//System.out.println(board.getSquare(i, j).selectSquare());
 					x=i;
 					y=j;
 				}
 			}
 		}
+		//System.out.println(x);
+		//System.out.println(y);
 		//Want low points
 		int origScore=evaluateBoard(board);
 		Square[] list1=highlightMoveOptions(testBoard.getSquare(x,y), testBoard);
@@ -103,9 +109,12 @@ public class enemyTank extends Alien{
 				}
 			}
 			else if (i==1){
-				for (int j=0;j<=list2.length;j++){
+				for (int j=0;j<list2.length;j++){
+					if(list2[j]!=null){
 					testBoard2=board2;
 					testTank=this;
+					//System.out.println("testing list2");
+					//System.out.println(list2[j]);
 					testTank.wack(list2[j]);
 					int tryScore=evaluateBoard(testBoard2);
 					if (tryScore-origScore<maxScore){
@@ -114,9 +123,10 @@ public class enemyTank extends Alien{
 						bestTarget=j;
 						moreSpecifically=2;
 					}
-
 				}
-				for (int j=0;j<=list1.length;j++){
+				}
+				for (int j=0;j<list2.length;j++){
+					if(list2[j]!=null){
 					testBoard2=board;
 					testTank=this;
 					//MOVE TO A TILE
@@ -140,11 +150,11 @@ public class enemyTank extends Alien{
 						bestTarget=j;
 						moreSpecifically=1;
 					}
-
+				}
 				}
 			}
 			else{
-				for (int j=0;j<=list3.length;j++){
+				for (int j=0;j<list3.length;j++){
 					testBoard=board;
 					testTank=this;
 					testTank.block(list3[j]);
@@ -219,25 +229,6 @@ public class enemyTank extends Alien{
         }
         return result;
     }
-    //This is for ranged attacks 
-    private static Square[] highlightAttackOptions(int upperRangeY,int lowerRangeY,int upperRangeX,int lowerRangeX, Board attackedBoard){
-        //Loop through enemyBoard and add a square if its a valid target 
-        //add a new merhod for regular attacks that has maxchangeinY and x
-        //this is for like rnaged stuff
-        Square[] result=new Square[16];
-        int count=0;
-        for (int i=lowerRangeX;i<=upperRangeX;i++)
-        {
-            for (int j=lowerRangeY;j<=upperRangeY;j++){
-                //Someone is on it
-                if (attackedBoard.getSquare(i, j).selectSquare()!=null){
-                    result[count]=attackedBoard.getSquare(i, j);
-                    count++;
-                }
-            }
-        }
-        return result;
-    }
     //This is for meele attacks 
     private static Square[] highlightOtherAttack(Square startSquare,int maxChangeY,int maxChangeX, Board attackedBoard){
         //Loop through enemyBoard and add a square if its a valid target 
@@ -263,15 +254,23 @@ public class enemyTank extends Alien{
         }
         for (int i = minX;i<=maxX;i++){
             for (int j = minY;j<=maxY;j++){
-                //If no one is in the way
-                if (attackedBoard.getSquare(i-1, j).selectSquare()==null){
-                    if (attackedBoard.getSquare(i, j).selectSquare()!=null){
-                        result[count]=attackedBoard.getSquare(i, j);
-                        count++;
-                    }
-                }
+				//If no one is in the way
+				if (i!=0){
+                	if (attackedBoard.getSquare(i-1, j).selectSquare()==null){
+                    	if (attackedBoard.getSquare(i, j).selectSquare()!=null){
+                        	result[count]=attackedBoard.getSquare(i, j);
+                        	count++;
+                   	 }
+					}
+				}
+				else{
+					if (attackedBoard.getSquare(i, j).selectSquare()!=null){
+						result[count]=attackedBoard.getSquare(i, j);
+						count++;
+					}
+				}
             }
-        }
+		}
         return result;
     }
     //This is for buffs 

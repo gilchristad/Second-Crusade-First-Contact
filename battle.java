@@ -22,6 +22,7 @@
         	alienBoard.getSquare(2, 2).addUnit(enemy2);
         	alienBoard.getSquare(1, 1).addUnit(enemy3);
             alienBoard.getSquare(0, 0).addUnit(enemy3);
+            enemy3.takeTurn(alienBoard,cruBoard);
             highlightAttackOptions(3, 3, 3, 0, alienBoard);
         }
         else
@@ -35,7 +36,6 @@
         	alienBoard.getSquare(1, 1).addUnit(enemy3);
         	//cruBoard.getSquare(0, 0).addUnit(guy3);
             alienBoard.getSquare(0, 0).addUnit(enemy4);
-            enemy3.takeTurn(alienBoard,cruBoard);
         	alienBoard.getSquare(0, 0).addUnit(enemy4);
         }
         highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);

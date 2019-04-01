@@ -46,7 +46,7 @@ public abstract class Unit {
 	//IDK maybe increase a teammates/ your own defense
 	public void protect (Square target)
 	{
-		System.out.println("Block");	
+		//System.out.println("Block");	
 	}
 	public void blind (Square target)
 	{
@@ -64,8 +64,8 @@ public abstract class Unit {
 		// The bigger the character, the easier to hit
 		double needToBeat = (enemyAcc - modifier) * sizeValue;
 		double prob = Math.random();
-		System.out.println(needToBeat);
-		System.out.println(prob);
+		//System.out.println(needToBeat);
+		//System.out.println(prob);
 		if (prob > needToBeat) {
 			return true;
 		}
@@ -78,8 +78,8 @@ public abstract class Unit {
 		// dodge
 		double needToBeat = speedValue * dodgeValue;
 		double prob = Math.random();
-		System.out.println(needToBeat);
-		System.out.println(prob);
+		//System.out.println(needToBeat);
+		//System.out.println(prob);
 		if (prob < needToBeat) {
 			return true;
 		}
