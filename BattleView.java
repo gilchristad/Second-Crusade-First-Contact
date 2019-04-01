@@ -19,7 +19,7 @@ public class BattleView extends JPanel{
     private static final long serialVersionUID = 1L;
     boolean returnb = false;
 
-    public void BattleViewFrame(int width, int height) throws IOException {
+    public void BattleViewFrame(int width, int height, int type) throws IOException {
         
         ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
@@ -37,8 +37,16 @@ public class BattleView extends JPanel{
 
         imagelabel.setBounds(0,0,width,height);
         //test.setBounds(0,0,111,116);
+        battle instance;
         
-        battle instance = new battle();
+        if (type == 1)
+        {
+        	instance = new battle(1);
+        }
+        else
+        {
+        	instance = new battle(2);
+        }
         JLabel[] crusaders = new JLabel[16];
         JLabel[] aliens = new JLabel[16];
         

@@ -15,14 +15,14 @@ public class Application {
         Instructions instructions = new Instructions();
         RestArea restarea = new RestArea();
         BattleView battleview = new BattleView();
-        BossBattle bossbattle = new BossBattle();
+        BattleView bossbattle = new BattleView();
 
         mainmenu.MainMenuFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-        battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-        bossbattle.BossBattleFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
+        battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 1);
+        bossbattle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 2);
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
