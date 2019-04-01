@@ -15,25 +15,71 @@
         alienBoard= new Board(4,4);
         if (type == 1)
         {
-            enemyHealer enemy1 = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
-            enemySpitter enemy2 = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
-            enemyTank enemy3 = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
-        	alienBoard.getSquare(3, 3).addUnit(enemy1);
-        	alienBoard.getSquare(2, 2).addUnit(enemy2);
-        	alienBoard.getSquare(1, 1).addUnit(enemy3);
-            alienBoard.getSquare(0, 0).addUnit(enemy3);
-            highlightAttackOptions(3, 3, 3, 0, alienBoard);
+        	Unit x;
+        	for (int i = 0; i < 4; i++)
+        	{
+        		for (int j = 0; j < 4; j++)
+        		{
+        			int temp = (int)(Math.random()*4+1);
+        			System.out.println(temp);
+        			if (temp == 1)
+        			{
+        				if (j == 0)
+        				{
+
+        						x = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
+        				}
+        				else if (j==1)
+        				{
+ 
+        						x = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
+
+        				}
+        				else 
+        				{
+
+        						x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
+
+        				}
+        				alienBoard.getSquare(i, j).addUnit(x);
+        			}
+        		}
+        	}
         }
         else
         {
-            enemyHealer enemy1 = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
-            enemySpitter enemy2 = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
-            enemyTank enemy3 = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
-            enemyBoss enemy4 = new  enemyBoss(5, 0.9, 0.8, 0.8, 0.7, "boss", 5);
-        	alienBoard.getSquare(3, 3).addUnit(enemy1);
-        	alienBoard.getSquare(2, 2).addUnit(enemy2);
-        	alienBoard.getSquare(1, 1).addUnit(enemy3);
-        	alienBoard.getSquare(0, 0).addUnit(enemy4);
+			Unit x;
+        	for (int i = 0; i < 4; i++)
+        	{
+        		for (int j = 0; j < 4; j++)
+        		{
+        			int temp = (int)(Math.random()*4+1);
+        			System.out.println(temp);
+        			if (temp == 1)
+        			{
+        				if (j == 0)
+        				{
+
+        						x = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
+        				}
+        				else if (j==1)
+        				{
+ 
+        						x = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
+
+        				}
+        				else 
+        				{
+
+        						x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
+
+        				}
+        				alienBoard.getSquare(i, j).addUnit(x);
+        			}
+        		}
+        	}
+            x = new enemyBoss(7, 0.9, 0.9, 0.8, 0.7, "boss", 8);
+        	alienBoard.getSquare(1,3).addUnit(x);
         }
         highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);
         //https://www.youtube.com/watch?v=UOxkGD8qRB4
