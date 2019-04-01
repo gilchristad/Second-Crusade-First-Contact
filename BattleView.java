@@ -31,50 +31,6 @@ public class BattleView extends JPanel{
         
         ImageIcon background;
 
-<<<<<<< HEAD
-=======
-        ImageIcon crusader = new ImageIcon("");
-        crusader.setImage(getScaledImage(crusader.getImage(), width, height));
-
-        ImageIcon archer = new ImageIcon("");
-        archer.setImage(getScaledImage(archer.getImage(), width, height));
-
-        ImageIcon cleric = new ImageIcon("");
-        cleric.setImage(getScaledImage(cleric.getImage(), width, height));
-
-        ImageIcon axeboy = new ImageIcon("");        
-        axeboy.setImage(getScaledImage(axeboy.getImage(), width, height));
-
-        ImageIcon alien1 = new ImageIcon("");        
-        alien1.setImage(getScaledImage(alien1.getImage(), width, height));
-
-        ImageIcon alien2 = new ImageIcon("");        
-        alien2.setImage(getScaledImage(alien2.getImage(), width, height));
-
-        ImageIcon alien3 = new ImageIcon("");        
-        alien3.setImage(getScaledImage(alien3.getImage(), width, height));
-
-        
-
-        JLabel bg = new JLabel();
-        JLabel c1 = new JLabel();
-        JLabel c2 = new JLabel();
-        JLabel c3 = new JLabel();
-        JLabel c4 = new JLabel();
-        JLabel a1 = new JLabel();
-        JLabel a2 = new JLabel();
-        JLabel a3 = new JLabel();
-        JLabel a4 = new JLabel();
-
-        c1.setIcon(crusader);
-        c2.setIcon(archer);
-        c3.setIcon(cleric);
-        c4.setIcon(axeboy);
-        a1.setIcon(alien1);
-        a2.setIcon(alien2);
-        a3.setIcon(alien3);
-        a4.setIcon(alien3);
-
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
         JButton cs02 = new JButton();
@@ -111,178 +67,129 @@ public class BattleView extends JPanel{
         JButton ability2 = new JButton();
         JButton ability3 = new JButton();
         JButton ability4 = new JButton();
+        JButton move = new JButton();
         JButton coward = new JButton();
-
-        bg.setBounds(0,0,width,height);
-
-        setLayout(null);
-        add(bg);
-        add(cs00);
-        add(cs01);
-        add(cs02);
-        add(cs03);
-        add(cs10);
-        add(cs11);
-        add(cs12);
-        add(cs13);
-        add(cs20);
-        add(cs21);
-        add(cs22);
-        add(cs23);
-        add(cs30);
-        add(cs31);
-        add(cs32);
-        add(cs33);
-        add(as00);
-        add(as01);
-        add(as02);
-        add(as03);
-        add(as10);
-        add(as11);
-        add(as12);
-        add(as13);
-        add(as20);
-        add(as21);
-        add(as22);
-        add(as23);
-        add(as30);
-        add(as31);
-        add(as32);
-        add(as33);
-        add(ability1);
-        add(ability2);
-        add(ability3);
-        add(ability4);
-        add(coward);
 
         cs00.setOpaque(false);
         cs00.setContentAreaFilled(false);
         cs00.setBorderPainted(false);
-        cs00.setVisible(true);
 
         cs01.setOpaque(false);
         cs01.setContentAreaFilled(false);
         cs01.setBorderPainted(false);
-        cs01.setVisible(true);
 
         cs02.setOpaque(false);
         cs02.setContentAreaFilled(false);
         cs02.setBorderPainted(false);
-        cs02.setVisible(true);
 
         cs03.setOpaque(false);
         cs03.setContentAreaFilled(false);
         cs03.setBorderPainted(false);
-        cs03.setVisible(true);
 
         cs10.setOpaque(false);
         cs10.setContentAreaFilled(false);
         cs10.setBorderPainted(false);
-        cs10.setVisible(true);
 
         cs11.setOpaque(false);
         cs11.setContentAreaFilled(false);
         cs11.setBorderPainted(false);
-        cs11.setVisible(true);
 
         cs12.setOpaque(false);
         cs12.setContentAreaFilled(false);
         cs12.setBorderPainted(false);
-        cs12.setVisible(true);
 
         cs13.setOpaque(false);
         cs13.setContentAreaFilled(false);
         cs13.setBorderPainted(false);
-        cs13.setVisible(true);
 
         cs20.setOpaque(false);
         cs20.setContentAreaFilled(false);
         cs20.setBorderPainted(false);
-        cs20.setVisible(true);
 
         cs21.setOpaque(false);
         cs21.setContentAreaFilled(false);
         cs21.setBorderPainted(false);
-        cs21.setVisible(true);
 
         cs22.setOpaque(false);
         cs22.setContentAreaFilled(false);
         cs22.setBorderPainted(false);
-        cs22.setVisible(true);
 
         cs23.setOpaque(false);
         cs23.setContentAreaFilled(false);
         cs23.setBorderPainted(false);
-        cs23.setVisible(true);
 
         cs30.setOpaque(false);
         cs30.setContentAreaFilled(false);
         cs30.setBorderPainted(false);
-        cs30.setVisible(true);
 
         cs31.setOpaque(false);
         cs31.setContentAreaFilled(false);
         cs31.setBorderPainted(false);
-        cs31.setVisible(true);
 
         cs32.setOpaque(false);
         cs32.setContentAreaFilled(false);
         cs32.setBorderPainted(false);
-        cs32.setVisible(true);
 
         cs33.setOpaque(false);
         cs33.setContentAreaFilled(false);
         cs33.setBorderPainted(false);
-        cs33.setVisible(true);
 
         as00.setOpaque(false);
         as00.setContentAreaFilled(false);
         as00.setBorderPainted(false);
-        as00.setVisible(true);
 
         as01.setOpaque(false);
         as01.setContentAreaFilled(false);
         as01.setBorderPainted(false);
-        as01.setVisible(true);
 
         as02.setOpaque(false);
         as02.setContentAreaFilled(false);
         as02.setBorderPainted(false);
-        as02.setVisible(true);
 
         as03.setOpaque(false);
         as03.setContentAreaFilled(false);
         as03.setBorderPainted(false);
-        as03.setVisible(true);
 
         as10.setOpaque(false);
         as10.setContentAreaFilled(false);
         as10.setBorderPainted(false);
-        as10.setVisible(true);
 
         as11.setOpaque(false);
         as11.setContentAreaFilled(false);
         as11.setBorderPainted(false);
-        as11.setVisible(true);
 
         as12.setOpaque(false);
         as12.setContentAreaFilled(false);
         as12.setBorderPainted(false);
-        as12.setVisible(true);
 
->>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
+        ability1.setOpaque(false);
+        ability1.setContentAreaFilled(false);
+        ability1.setBorderPainted(false);
+        
+        ability2.setOpaque(false);
+        ability2.setContentAreaFilled(false);
+        ability2.setBorderPainted(false);
 
-        ImageIcon hi = new ImageIcon("Images/Icons/axeboy.png");
+
+        ability3.setOpaque(false);
+        ability3.setContentAreaFilled(false);
+        ability3.setBorderPainted(false);
+
+        ability4.setOpaque(false);
+        ability4.setContentAreaFilled(false);
+        ability4.setBorderPainted(false);
+
+        move.setOpaque(false);
+        move.setContentAreaFilled(false);
+        move.setBorderPainted(false);
+
+        coward.setOpaque(false);
+        coward.setContentAreaFilled(false);
+        coward.setBorderPainted(false);
+
 
         JLabel imagelabel = new JLabel();
-        //JLabel test = new JLabel();
-
-        //test.setIcon(hi);
-        
-        //test.setVisible(true);
-
         imagelabel.setBounds(0,0,width,height);
-        //test.setBounds(0,0,111,116);
         battle instance;
         
         if (type == 1)
@@ -290,21 +197,8 @@ public class BattleView extends JPanel{
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
 
-<<<<<<< HEAD
-        	instance = new battle(1, party);
-        	 try {
-                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
-                 battleclip = AudioSystem.getClip();
-                 battleclip.open(audioInputStream);
-                 while(battleclip.isRunning()){
-                     battleclip.loop(Clip.LOOP_CONTINUOUSLY);
-                 }
-             } catch(Exception ex) {
-                 System.out.println("Error with playing sound.");
-                 ex.printStackTrace();
-             }   
-=======
-            instance = new battle(1);
+
+            instance = new battle(1,party);
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
                 battleclip = AudioSystem.getClip();
@@ -316,40 +210,30 @@ public class BattleView extends JPanel{
                 System.out.println("Error with playing sound.");
                 ex.printStackTrace();
             }   
->>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
         }
         else
         {
         	background = new ImageIcon("Images/Backgrounds/boss.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
-<<<<<<< HEAD
-        	instance = new battle(2, party);
-        	try {
-=======
-            instance = new battle(2);
+            instance = new battle(2,party);
             try {
->>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BOSS1.0.wav").getAbsoluteFile());
                 bossclip = AudioSystem.getClip();
                 bossclip.open(audioInputStream);
                 while(bossclip.isRunning()){
-<<<<<<< HEAD
-                	bossclip.loop(Clip.LOOP_CONTINUOUSLY);
-=======
                     bossclip.loop(Clip.LOOP_CONTINUOUSLY);
->>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
                 }
             } catch(Exception ex) {
                 System.out.println("Error with playing sound.");
                 ex.printStackTrace();
             }   
         }
+
         imagelabel.setIcon(background);
+
         JLabel[] crusaders = new JLabel[16];
         JLabel[] aliens = new JLabel[16];
         
-        setLayout(null);
-
         int c_counter = 0;
         int a_counter = 0;
         for (int i = 0; i < 4; i++)
@@ -391,249 +275,277 @@ public class BattleView extends JPanel{
             }
         }
         
+        setLayout(null);
         add(imagelabel);
+        add(cs00);
+        add(cs01);
+        add(cs02);
+        add(cs03);
+        add(cs10);
+        add(cs11);
+        add(cs12);
+        add(cs13);
+        add(cs20);
+        add(cs21);
+        add(cs22);
+        add(cs23);
+        add(cs30);
+        add(cs31);
+        add(cs32);
+        add(cs33);
+        add(as00);
+        add(as01);
+        add(as02);
+        add(as03);
+        add(as10);
+        add(as11);
+        add(as12);
+        add(as13);
+        add(as20);
+        add(as21);
+        add(as22);
+        add(as23);
+        add(as30);
+        add(as31);
+        add(as32);
+        add(as33);
+        add(ability1);
+        add(ability2);
+        add(ability3);
+        add(ability4);
+        add(move);
+        add(coward);
 
-//        JButton ability1 = new JButton();
-//        JButton ability2 = new JButton();
-//        JButton ability3 = new JButton();
-//        JButton ability4 = new JButton();
-//        JButton coward = new JButton();
-//        ImageIcon crusader1 = new ImageIcon(""); - //(j * 100)%/
-//        ImageIcon crusader2 = new ImageIcon("");aliens[a_counter].setBounds((int)(width*(0.88)) - (int)(j * (0.069 * width)),
-//        ImageIcon crusader3 = new ImageIcon("");
-//        ImageIcon crusader4 = new ImageIcon("");(j * (instance.alienBoard.getSquare(i, j).selectSquare().image.getIconWidth() + 20 + j))
-//        ImageIcon alien1 = new ImageIcon("");
-//        ImageIcon alien2 = new ImageIcon("");
-//        ImageIcon alien3 = new ImageIcon("");
-//        ImageIcon alien4 = new ImageIcon("");
-//
-//
-       coward.setOpaque(false);
-       coward.setContentAreaFilled(false);
-       coward.setBorderPainted(false);
-       coward.setVisible(true);
 
-//        cs00.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs01.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs02.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs03.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs10.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs11.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs12.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs13.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs20.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs21.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs22.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs23.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs30.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs31.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs32.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        cs33.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        
-//        as00.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as01.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as02.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as03.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as10.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as11.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as12.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as13.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as20.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as21.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as22.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as23.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as30.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as31.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as32.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        as33.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//        ability1.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//
-//        ability2.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//
-//        ability3.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//
-//        ability4.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent arg0){
-//
-//            }
-//        });
-//
+       cs00.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs01.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs02.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs03.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs10.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs11.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs12.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs13.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs20.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs21.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs22.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs23.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs30.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs31.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs32.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       cs33.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       
+       as00.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as01.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as02.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as03.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as10.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as11.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as12.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as13.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as20.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as21.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as22.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as23.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as30.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as31.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as32.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       as33.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+       ability1.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+
+       ability2.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+
+       ability3.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+
+       ability4.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+
+       move.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                returnb = true;
+            }
+        });
+
+
        coward.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
