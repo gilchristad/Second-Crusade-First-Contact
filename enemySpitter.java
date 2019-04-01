@@ -8,7 +8,6 @@ public class enemySpitter extends Alien{
 		this.protect(target);
 	}
 	public void spray(Square [] targets) {
-		//This will be damage plus moving, pick random part of crusader to attack
 		for (int i =0;i<targets.length;i++)
 		{
 			this.attack((int)(this.getAttackValue()*.8), targets[i],(int)Math.random()*6+1);
@@ -20,8 +19,16 @@ public class enemySpitter extends Alien{
 		//Pick a number from 1-6 to attack for the last value
 		
 		//this.attack((int)(this.getAttackValue()*0.5), target, 4);
-		
+		//blind multiple squares?
 		this.blind(target);
+	}
+
+	@Override
+	public void takeTurn() {
+		//Want to be in the middle, close enough to hit but not get hit by everything 
+		//blind is good when enemies are clumped 
+		//spray is good when enemies are lined up
+		//add a general attack that does a shitton
 	}
 
 
