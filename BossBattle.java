@@ -9,13 +9,13 @@ import java.io.*;
 
 
 // WHEN SQUARE IS SELECTED, MUST DESELECT ALL OTHER SQUARES; DESELECT METHOD?? Do we even select squares? not really just have a "selected" value with square location or something
-public class BattleView extends JPanel{
+public class BossBattle extends JPanel{
 
-    private static final long serialVersionUID = 1L;
     boolean returnb = false;
+    private static final long serialVersionUID = 1L;
 
-    public void BattleViewFrame(int width, int height) throws IOException {
-
+    public void BossBattleFrame(int width, int height) throws IOException {
+        
         JLabel bg = new JLabel();
         JLabel c1 = new JLabel();
         JLabel c2 = new JLabel();
@@ -26,21 +26,21 @@ public class BattleView extends JPanel{
         JLabel a3 = new JLabel();
         JLabel a4 = new JLabel();
 
-        ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
-        ImageIcon crusader1 = new ImageIcon("");
-        ImageIcon crusader2 = new ImageIcon("");
-        ImageIcon crusader3 = new ImageIcon("");
-        ImageIcon crusader4 = new ImageIcon("");
-        ImageIcon alien1 = new ImageIcon("");
-        ImageIcon alien2 = new ImageIcon("");
-        ImageIcon alien3 = new ImageIcon("");
-        ImageIcon alien4 = new ImageIcon("");
+        ImageIcon background = new ImageIcon("Images/Backgrounds/boss.jpg");
+        ImageIcon crusader = new ImageIcon("Images/Icons/crusaderbattle.png");
+        ImageIcon archer = new ImageIcon("Images/Icons/archer.png");
+        ImageIcon cleric = new ImageIcon("Images/Icons/cleric.png");
+        ImageIcon axeboy = new ImageIcon("Images/Icons/axeboy.png");
+        ImageIcon alien1 = new ImageIcon("Images/Icons/alien1.png");
+        ImageIcon alien2 = new ImageIcon("Images/Icons/alien2.png");
+        ImageIcon alien3 = new ImageIcon("Images/Icons/aliengross.png");
+        ImageIcon boss = new ImageIcon("Images/Icons/alienboss.png");
 
         bg.setIcon(background);
-        c1.setIcon(crusader1);
-        c2.setIcon(crusader2);
-        c3.setIcon(crusader3);
-        c4.setIcon(crusader4);
+        c1.setIcon(crusader);
+        c2.setIcon(archer);
+        c3.setIcon(cleric);
+        c4.setIcon(axeboy);
         a1.setIcon(alien1);
         a2.setIcon(alien2);
         a3.setIcon(alien3);
@@ -84,10 +84,18 @@ public class BattleView extends JPanel{
         JButton ability4 = new JButton();
         JButton coward = new JButton();
 
-        bg.setBounds(0,0,1920,1080);
+        bg.setBounds(0,0,width,height);
 
         setLayout(null);
         add(bg);
+        add(c1);
+        add(c2);
+        add(c3);
+        add(c4);
+        add(a1);
+        add(a2);
+        add(a3);
+        add(a4);
         add(cs00);
         add(cs01);
         add(cs02);
@@ -312,6 +320,8 @@ public class BattleView extends JPanel{
         coward.setVisible(true);
 
         coward.setBounds((int)(0.208*width),(int)(0.885*height), 296,84);
+
+
 
         cs00.addActionListener(new ActionListener(){
             @Override
@@ -543,6 +553,7 @@ public class BattleView extends JPanel{
         });
 
     }
+
     public boolean getReturn(){
         return returnb;
     }

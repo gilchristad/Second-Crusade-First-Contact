@@ -2,12 +2,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.*;
-
+import sun.audio.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
+import java.io.File;
 
 public class MainMenu extends JPanel{
 
@@ -55,10 +56,10 @@ public class MainMenu extends JPanel{
         JButton loadbackb = new JButton();
         JButton optionsbackb = new JButton();
 
-        //File music = new File("Music/mainmusic.wav");
-        //InputStream in = new FileInputStream(music);
-        //AudioStream as = new AudioStream(in);         
-        //AudioPlayer.player.start(as);
+        File music = new File("Music/TITLE1.0.wav");
+        InputStream in = new FileInputStream(music);
+        AudioStream as = new AudioStream(in);         
+        AudioPlayer.player.start(as);
         
         ngb.setBounds((int) (0.789*(width)), (int)(0.334 * height),(int)(0.196 * width), (int)(0.051 * height));
         cgb.setBounds((int) (0.820*(width)), (int)(0.413 * height),(int)(0.164 * width), (int)(0.051 * height));

@@ -8,16 +8,21 @@ public class Application {
     
     public static void main(String[] args) throws IOException, InterruptedException 
     { 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
         MainMenu mainmenu = new MainMenu();
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
         RestArea restarea = new RestArea();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        BattleView battleview = new BattleView();
+        BossBattle bossbattle = new BossBattle();
+
         mainmenu.MainMenuFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-
+        battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
+        bossbattle.BossBattleFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -45,8 +50,19 @@ public class Application {
                 frame.revalidate();
                 instructions.setContinue();
             }
+            else if(overworld.getMainMenu()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(mainmenu);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setMainMenu();
+            }
             else if(overworld.getBoss()){
-
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(bossbattle);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setBoss();
             }
             else if(overworld.getRest()){
                 frame.getContentPane().removeAll();
@@ -56,7 +72,11 @@ public class Application {
                 overworld.setRest();
             }
             else if(overworld.getBattle()){
-
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(battleview);
+                frame.repaint();
+                frame.revalidate();
+                overworld.setBattle();
             }
             else if(restarea.getReturn()){
                 frame.getContentPane().removeAll();
@@ -65,9 +85,20 @@ public class Application {
                 frame.revalidate();
                 restarea.setReturn();
             }
+            else if(battleview.getReturn()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(overworld);
+                frame.repaint();
+                frame.revalidate();
+                battleview.setReturn();
+            }
+            else if(bossbattle.getReturn()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(overworld);
+                frame.repaint();
+                frame.revalidate();
+                bossbattle.setReturn();
+            }
         }
-    }
-    public void switchPanels(JPanel panel){
-
     }
 }

@@ -26,7 +26,6 @@ public class Overworld extends JPanel{
     
 
     public void OverworldFrame(int width, int height) throws IOException, InterruptedException {
-    	//System.out.println(width + "x" + height);
         ImageIcon background = new ImageIcon("Images/Backgrounds/jerusalempix.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
     	
@@ -79,11 +78,12 @@ public class Overworld extends JPanel{
         JButton u3 = new JButton();
         JButton m1 = new JButton();
         JButton m2 = new JButton();
+        JButton menu = new JButton();
         
         imagelabel.setBounds(0,0,width,height);
         
         sprite.setBounds((int)(0.265*width),(int)(0.448*height),40,90);
-       
+
         house1.setBounds((int)(0.610*width),(int)(0.148*height),58,59);
         house2.setBounds((int)(0.504*width),(int)(0.394*height),58,59);
         house3.setBounds((int)(0.346*width),(int)(0.742*height),58,59);
@@ -101,6 +101,7 @@ public class Overworld extends JPanel{
         u3.setBounds((int)(0.358*width),(int)(0.596*height),60,60);
         m1.setBounds((int)(0.518*width),(int)(0.235*height),82,69);
         m2.setBounds((int)(0.607*width),(int)(0.501*height),160,128);
+        menu.setBounds((int)(0.008*width),(int)(0.015*height),132,34); 
 
         setLayout(null);
         add(sprite);
@@ -121,8 +122,12 @@ public class Overworld extends JPanel{
         add(m1);
         add(m2);
         add(imagelabel);
+        add(menu);
 
-        
+        menu.setOpaque(false);
+        menu.setContentAreaFilled(false);
+        menu.setBorderPainted(false);
+
         h1.setOpaque(false);
         h1.setContentAreaFilled(false);
         h1.setBorderPainted(false);
@@ -159,7 +164,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newrest = true;
-                System.out.println("h1 clicked");
             }
         });
 
@@ -167,7 +171,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newrest = true;
-                System.out.println("h2 clicked");
             }
         });
 
@@ -175,7 +178,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newrest = true;
-                System.out.println("h3 clicked");
             }
         });
 
@@ -183,7 +185,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newbattle = true;
-                System.out.println("u1 clicked");
             }
         });
 
@@ -191,7 +192,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newbattle = true;
-                System.out.println("u2 clicked");
             }
         });
 
@@ -199,7 +199,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newbattle = true;
-                System.out.println("u3 clicked");
             }
         });
 
@@ -207,7 +206,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
-                System.out.println("m1 clicked");
             }
         });
 
@@ -215,7 +213,13 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
-                System.out.println("m2 clicked");
+            }
+        });
+
+        menu.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                mainmenu = true;
             }
         });
 
@@ -230,6 +234,10 @@ public class Overworld extends JPanel{
 
     public boolean getMainMenu(){
         return mainmenu;
+    }
+
+    public void setMainMenu(){
+        mainmenu = false;
     }
 
     public void spriteCycle(){
