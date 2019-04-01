@@ -27,7 +27,7 @@ public class BattleView extends JPanel{
     Clip bossclip;
     boolean returnb = false;
 
-    public void BattleViewFrame(int width, int height, int type) throws IOException {
+    public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
 
@@ -170,6 +170,7 @@ public class BattleView extends JPanel{
         ability2.setContentAreaFilled(false);
         ability2.setBorderPainted(false);
 
+
         ability3.setOpaque(false);
         ability3.setContentAreaFilled(false);
         ability3.setBorderPainted(false);
@@ -195,7 +196,9 @@ public class BattleView extends JPanel{
         {
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
-            instance = new battle(1);
+
+
+            instance = new battle(1,party);
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
                 battleclip = AudioSystem.getClip();
@@ -212,7 +215,7 @@ public class BattleView extends JPanel{
         {
         	background = new ImageIcon("Images/Backgrounds/boss.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
-            instance = new battle(2);
+            instance = new battle(2,party);
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BOSS1.0.wav").getAbsoluteFile());
                 bossclip = AudioSystem.getClip();

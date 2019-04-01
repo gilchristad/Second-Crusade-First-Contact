@@ -34,7 +34,7 @@ public class enemyHealer extends Alien{
 	}
 
 	@Override
-	public void takeTurn() {
+	public void takeTurn(Board board, Board board2) {
 		//stay far back
 		//heal when teammate is getting low
 		//buff otherwise

@@ -22,7 +22,7 @@ public abstract class Alien extends Unit {
 	public void somethingDied(int armourValue) {
 		// Delete this thing lol
 	}
-	public abstract void takeTurn();	
+	public abstract void takeTurn(Board board, Board board2);	
 		//Pick a move and a target basically
 		//To make it a good AI
 		//want to target weak things in range 
