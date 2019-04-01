@@ -24,259 +24,12 @@ public class BattleView extends JPanel{
     private static final long serialVersionUID = 1L;
 
     Clip battleclip;
+    Clip bossclip;
     boolean returnb = false;
 
-    public void BattleViewFrame(int width, int height, int type) throws IOException {
+    public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
-
-        ImageIcon crusader = new ImageIcon("");
-        crusader.setImage(getScaledImage(crusader.getImage(), width, height));
-
-        ImageIcon archer = new ImageIcon("");
-        archer.setImage(getScaledImage(archer.getImage(), width, height));
-
-        ImageIcon cleric = new ImageIcon("");
-        cleric.setImage(getScaledImage(cleric.getImage(), width, height));
-
-        ImageIcon axeboy = new ImageIcon("");        
-        axeboy.setImage(getScaledImage(axeboy.getImage(), width, height));
-
-        ImageIcon alien1 = new ImageIcon("");        
-        alien1.setImage(getScaledImage(alien1.getImage(), width, height));
-
-        ImageIcon alien2 = new ImageIcon("");        
-        alien2.setImage(getScaledImage(alien2.getImage(), width, height));
-
-        ImageIcon alien3 = new ImageIcon("");        
-        alien3.setImage(getScaledImage(alien3.getImage(), width, height));
-
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
-            battleclip = AudioSystem.getClip();
-            battleclip.open(audioInputStream);
-            while(battleclip.isRunning()){
-                battleclip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-        } catch(Exception ex) {
-            System.out.println("Error with playing sound.");
-            ex.printStackTrace();
-        }   
-
-        JLabel bg = new JLabel();
-        JLabel c1 = new JLabel();
-        JLabel c2 = new JLabel();
-        JLabel c3 = new JLabel();
-        JLabel c4 = new JLabel();
-        JLabel a1 = new JLabel();
-        JLabel a2 = new JLabel();
-        JLabel a3 = new JLabel();
-        JLabel a4 = new JLabel();
-
-        bg.setIcon(background);
-        c1.setIcon(crusader);
-        c2.setIcon(archer);
-        c3.setIcon(cleric);
-        c4.setIcon(axeboy);
-        a1.setIcon(alien1);
-        a2.setIcon(alien2);
-        a3.setIcon(alien3);
-        a4.setIcon(alien3);
-
-        JButton cs00 = new JButton();
-        JButton cs01 = new JButton();
-        JButton cs02 = new JButton();
-        JButton cs03 = new JButton();
-        JButton cs10 = new JButton();
-        JButton cs11 = new JButton();
-        JButton cs12 = new JButton();
-        JButton cs13 = new JButton();
-        JButton cs20 = new JButton();
-        JButton cs21 = new JButton();
-        JButton cs22 = new JButton();
-        JButton cs23 = new JButton();
-        JButton cs30 = new JButton();
-        JButton cs31 = new JButton();
-        JButton cs32 = new JButton();
-        JButton cs33 = new JButton();
-        JButton as00 = new JButton();
-        JButton as01 = new JButton();
-        JButton as02 = new JButton();
-        JButton as03 = new JButton();
-        JButton as10 = new JButton();
-        JButton as11 = new JButton();
-        JButton as12 = new JButton();
-        JButton as13 = new JButton();
-        JButton as20 = new JButton();
-        JButton as21 = new JButton();
-        JButton as22 = new JButton();
-        JButton as23 = new JButton();
-        JButton as30 = new JButton();
-        JButton as31 = new JButton();
-        JButton as32 = new JButton();
-        JButton as33 = new JButton();
-        JButton ability1 = new JButton();
-        JButton ability2 = new JButton();
-        JButton ability3 = new JButton();
-        JButton ability4 = new JButton();
-        JButton coward = new JButton();
-
-        bg.setBounds(0,0,width,height);
-
-        setLayout(null);
-        add(bg);
-        add(cs00);
-        add(cs01);
-        add(cs02);
-        add(cs03);
-        add(cs10);
-        add(cs11);
-        add(cs12);
-        add(cs13);
-        add(cs20);
-        add(cs21);
-        add(cs22);
-        add(cs23);
-        add(cs30);
-        add(cs31);
-        add(cs32);
-        add(cs33);
-        add(as00);
-        add(as01);
-        add(as02);
-        add(as03);
-        add(as10);
-        add(as11);
-        add(as12);
-        add(as13);
-        add(as20);
-        add(as21);
-        add(as22);
-        add(as23);
-        add(as30);
-        add(as31);
-        add(as32);
-        add(as33);
-        add(ability1);
-        add(ability2);
-        add(ability3);
-        add(ability4);
-        add(coward);
-
-        cs00.setOpaque(false);
-        cs00.setContentAreaFilled(false);
-        cs00.setBorderPainted(false);
-        cs00.setVisible(true);
-
-        cs01.setOpaque(false);
-        cs01.setContentAreaFilled(false);
-        cs01.setBorderPainted(false);
-        cs01.setVisible(true);
-
-        cs02.setOpaque(false);
-        cs02.setContentAreaFilled(false);
-        cs02.setBorderPainted(false);
-        cs02.setVisible(true);
-
-        cs03.setOpaque(false);
-        cs03.setContentAreaFilled(false);
-        cs03.setBorderPainted(false);
-        cs03.setVisible(true);
-
-        cs10.setOpaque(false);
-        cs10.setContentAreaFilled(false);
-        cs10.setBorderPainted(false);
-        cs10.setVisible(true);
-
-        cs11.setOpaque(false);
-        cs11.setContentAreaFilled(false);
-        cs11.setBorderPainted(false);
-        cs11.setVisible(true);
-
-        cs12.setOpaque(false);
-        cs12.setContentAreaFilled(false);
-        cs12.setBorderPainted(false);
-        cs12.setVisible(true);
-
-        cs13.setOpaque(false);
-        cs13.setContentAreaFilled(false);
-        cs13.setBorderPainted(false);
-        cs13.setVisible(true);
-
-        cs20.setOpaque(false);
-        cs20.setContentAreaFilled(false);
-        cs20.setBorderPainted(false);
-        cs20.setVisible(true);
-
-        cs21.setOpaque(false);
-        cs21.setContentAreaFilled(false);
-        cs21.setBorderPainted(false);
-        cs21.setVisible(true);
-
-        cs22.setOpaque(false);
-        cs22.setContentAreaFilled(false);
-        cs22.setBorderPainted(false);
-        cs22.setVisible(true);
-
-        cs23.setOpaque(false);
-        cs23.setContentAreaFilled(false);
-        cs23.setBorderPainted(false);
-        cs23.setVisible(true);
-
-        cs30.setOpaque(false);
-        cs30.setContentAreaFilled(false);
-        cs30.setBorderPainted(false);
-        cs30.setVisible(true);
-
-        cs31.setOpaque(false);
-        cs31.setContentAreaFilled(false);
-        cs31.setBorderPainted(false);
-        cs31.setVisible(true);
-
-        cs32.setOpaque(false);
-        cs32.setContentAreaFilled(false);
-        cs32.setBorderPainted(false);
-        cs32.setVisible(true);
-
-        cs33.setOpaque(false);
-        cs33.setContentAreaFilled(false);
-        cs33.setBorderPainted(false);
-        cs33.setVisible(true);
-
-        as00.setOpaque(false);
-        as00.setContentAreaFilled(false);
-        as00.setBorderPainted(false);
-        as00.setVisible(true);
-
-        as01.setOpaque(false);
-        as01.setContentAreaFilled(false);
-        as01.setBorderPainted(false);
-        as01.setVisible(true);
-
-        as02.setOpaque(false);
-        as02.setContentAreaFilled(false);
-        as02.setBorderPainted(false);
-        as02.setVisible(true);
-
-        as03.setOpaque(false);
-        as03.setContentAreaFilled(false);
-        as03.setBorderPainted(false);
-        as03.setVisible(true);
-
-        as10.setOpaque(false);
-        as10.setContentAreaFilled(false);
-        as10.setBorderPainted(false);
-        as10.setVisible(true);
-
-        as11.setOpaque(false);
-        as11.setContentAreaFilled(false);
-        as11.setBorderPainted(false);
-        as11.setVisible(true);
-
-        as12.setOpaque(false);
-        as12.setContentAreaFilled(false);
-        as12.setBorderPainted(false);
-        as12.setVisible(true);
 
 
         ImageIcon hi = new ImageIcon("Images/Icons/axeboy.png");
@@ -297,13 +50,35 @@ public class BattleView extends JPanel{
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
 
-        	instance = new battle(1);
+        	instance = new battle(1, party);
+        	 try {
+                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
+                 battleclip = AudioSystem.getClip();
+                 battleclip.open(audioInputStream);
+                 while(battleclip.isRunning()){
+                     battleclip.loop(Clip.LOOP_CONTINUOUSLY);
+                 }
+             } catch(Exception ex) {
+                 System.out.println("Error with playing sound.");
+                 ex.printStackTrace();
+             }   
         }
         else
         {
         	background = new ImageIcon("Images/Backgrounds/boss.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
-        	instance = new battle(2);
+        	instance = new battle(2, party);
+        	try {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BOSS1.0.wav").getAbsoluteFile());
+                bossclip = AudioSystem.getClip();
+                bossclip.open(audioInputStream);
+                while(bossclip.isRunning()){
+                	bossclip.loop(Clip.LOOP_CONTINUOUSLY);
+                }
+            } catch(Exception ex) {
+                System.out.println("Error with playing sound.");
+                ex.printStackTrace();
+            }   
         }
         imagelabel.setIcon(background);
         JLabel[] crusaders = new JLabel[16];

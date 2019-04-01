@@ -4,27 +4,23 @@
     Unit[] characters;
     Board cruBoard;
     Board alienBoard;
-    public battle(int type) {
+    public battle(int type, Party party) {
         int counter = 0;
         characters = new Unit[32];
         
         cruBoard= new Board(4,4);
+        cruBoard.getSquare(1, 3).addUnit(party.getParty(0));
+        cruBoard.getSquare(1, 2).addUnit(party.getParty(2));
+        cruBoard.getSquare(1, 1).addUnit(party.getParty(1));
         alienBoard= new Board(4,4);
         if (type == 1)
         {
-        	SwordAndShield guy1 = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordAndShield", 10, 10, 10, 10, 10, 10);
-            Cleric guy2 = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
-            Archer guy3= new Archer(10, .9, 0.3, 0.8, 0.8, "archer",10, 10, 10, 10, 10, 10);
             enemyHealer enemy1 = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
             enemySpitter enemy2 = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
             enemyTank enemy3 = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
-        	cruBoard.getSquare(3, 3).addUnit(guy1);
         	alienBoard.getSquare(3, 3).addUnit(enemy1);
-        	cruBoard.getSquare(2, 2).addUnit(guy2);
         	alienBoard.getSquare(2, 2).addUnit(enemy2);
-        	cruBoard.getSquare(1, 1).addUnit(guy3);
         	alienBoard.getSquare(1, 1).addUnit(enemy3);
-        	cruBoard.getSquare(0, 0).addUnit(guy3);
             alienBoard.getSquare(0, 0).addUnit(enemy3);
             highlightAttackOptions(3, 3, 3, 0, alienBoard);
         }

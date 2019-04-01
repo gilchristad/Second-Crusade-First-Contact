@@ -10,6 +10,26 @@ public class Application {
     { 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
+        Party party = new Party(3);
+        
+        for (int i = 0; i < 3; i++)
+        {
+        	Unit y;
+        	if (i == 0)
+        	{
+        		y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
+        	}
+        	else if (i== 1)
+        	{
+                y = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
+        	}
+        	else
+        	{
+                y= new Archer(10, .9, 0.3, 0.8, 0.8, "archer",10, 10, 10, 10, 10, 10);
+        	}
+			party.setParty(i, y);
+        }
+        
         MainMenu mainmenu = new MainMenu();
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
@@ -21,8 +41,8 @@ public class Application {
         overworld.OverworldFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
-        battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 1);
-        bossbattle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 2);
+        battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 1, party);
+        bossbattle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 2, party);
 
         
 //        mainmenu.MainMenuFrame(1280, 720);
