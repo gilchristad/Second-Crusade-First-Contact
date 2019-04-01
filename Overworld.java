@@ -1,4 +1,7 @@
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,6 +18,7 @@ import java.io.*;
 public class Overworld extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    Clip overworldclip;
     boolean mainmenu = false;
     boolean newbattle = false;
     boolean newrest = false;
@@ -80,6 +84,19 @@ public class Overworld extends JPanel{
         JButton m2 = new JButton();
         JButton menu = new JButton();
         
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/AMBIENT4.0.wav").getAbsoluteFile());
+            overworldclip = AudioSystem.getClip();
+            overworldclip.open(audioInputStream);
+            while(overworldclip.isRunning()){
+                overworldclip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }  
+
+
         imagelabel.setBounds(0,0,width,height);
         
         sprite.setBounds((int)(0.265*width),(int)(0.448*height),40,90);

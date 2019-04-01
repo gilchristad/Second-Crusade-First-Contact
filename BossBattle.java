@@ -1,10 +1,17 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
+import java.awt.*;
 
 
 
@@ -13,6 +20,7 @@ public class BossBattle extends JPanel{
 
     boolean returnb = false;
     private static final long serialVersionUID = 1L;
+    Clip bossclip;
 
     public void BossBattleFrame(int width, int height) throws IOException {
         
@@ -27,14 +35,31 @@ public class BossBattle extends JPanel{
         JLabel a4 = new JLabel();
 
         ImageIcon background = new ImageIcon("Images/Backgrounds/boss.jpg");
+        background.setImage(getScaledImage(background.getImage(), width, height));
+
         ImageIcon crusader = new ImageIcon("Images/Icons/crusaderbattle.png");
+        crusader.setImage(getScaledImage(crusader.getImage(), width, height));
+
         ImageIcon archer = new ImageIcon("Images/Icons/archer.png");
+        archer.setImage(getScaledImage(archer.getImage(), width, height));
+
         ImageIcon cleric = new ImageIcon("Images/Icons/cleric.png");
+        cleric.setImage(getScaledImage(cleric.getImage(), width, height));
+
         ImageIcon axeboy = new ImageIcon("Images/Icons/axeboy.png");
+        axeboy.setImage(getScaledImage(axeboy.getImage(), width, height));
+
         ImageIcon alien1 = new ImageIcon("Images/Icons/alien1.png");
+        alien1.setImage(getScaledImage(alien1.getImage(), width, height));
+
         ImageIcon alien2 = new ImageIcon("Images/Icons/alien2.png");
+        alien2.setImage(getScaledImage(alien2.getImage(), width, height));
+
         ImageIcon alien3 = new ImageIcon("Images/Icons/aliengross.png");
+        alien3.setImage(getScaledImage(alien3.getImage(), width, height));
+
         ImageIcon boss = new ImageIcon("Images/Icons/alienboss.png");
+        boss.setImage(getScaledImage(boss.getImage(), width, height));
 
         bg.setIcon(background);
         c1.setIcon(crusader);
@@ -83,6 +108,18 @@ public class BossBattle extends JPanel{
         JButton ability3 = new JButton();
         JButton ability4 = new JButton();
         JButton coward = new JButton();
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BOSS1.0.wav").getAbsoluteFile());
+            bossclip = AudioSystem.getClip();
+            bossclip.open(audioInputStream);
+            while(bossclip.isRunning()){
+                bossclip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }   
 
         bg.setBounds(0,0,width,height);
 
@@ -560,5 +597,15 @@ public class BossBattle extends JPanel{
 
     public void setReturn(){
         returnb = false;
+    }
+    private Image getScaledImage(Image srcImg, int w, int h){
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 }

@@ -1,10 +1,17 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
+import java.awt.*;
 
 
 
@@ -12,6 +19,8 @@ import java.io.*;
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
+
+    Clip battleclip;
     boolean returnb = false;
 
     public void BattleViewFrame(int width, int height) throws IOException {
@@ -27,20 +36,46 @@ public class BattleView extends JPanel{
         JLabel a4 = new JLabel();
 
         ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
-        ImageIcon crusader1 = new ImageIcon("");
-        ImageIcon crusader2 = new ImageIcon("");
-        ImageIcon crusader3 = new ImageIcon("");
-        ImageIcon crusader4 = new ImageIcon("");
-        ImageIcon alien1 = new ImageIcon("");
-        ImageIcon alien2 = new ImageIcon("");
-        ImageIcon alien3 = new ImageIcon("");
-        ImageIcon alien4 = new ImageIcon("");
+        background.setImage(getScaledImage(background.getImage(), width, height));
+
+        ImageIcon crusader = new ImageIcon("");
+        crusader.setImage(getScaledImage(crusader.getImage(), width, height));
+
+        ImageIcon archer = new ImageIcon("");
+        archer.setImage(getScaledImage(archer.getImage(), width, height));
+
+        ImageIcon cleric = new ImageIcon("");
+        cleric.setImage(getScaledImage(cleric.getImage(), width, height));
+
+        ImageIcon axeboy = new ImageIcon("");        
+        axeboy.setImage(getScaledImage(axeboy.getImage(), width, height));
+
+        ImageIcon alien1 = new ImageIcon("");        
+        alien1.setImage(getScaledImage(alien1.getImage(), width, height));
+
+        ImageIcon alien2 = new ImageIcon("");        
+        alien2.setImage(getScaledImage(alien2.getImage(), width, height));
+
+        ImageIcon alien3 = new ImageIcon("");        
+        alien3.setImage(getScaledImage(alien3.getImage(), width, height));
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
+            battleclip = AudioSystem.getClip();
+            battleclip.open(audioInputStream);
+            while(battleclip.isRunning()){
+                battleclip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }   
 
         bg.setIcon(background);
-        c1.setIcon(crusader1);
-        c2.setIcon(crusader2);
-        c3.setIcon(crusader3);
-        c4.setIcon(crusader4);
+        c1.setIcon(crusader);
+        c2.setIcon(archer);
+        c3.setIcon(cleric);
+        c4.setIcon(axeboy);
         a1.setIcon(alien1);
         a2.setIcon(alien2);
         a3.setIcon(alien3);
@@ -84,7 +119,7 @@ public class BattleView extends JPanel{
         JButton ability4 = new JButton();
         JButton coward = new JButton();
 
-        bg.setBounds(0,0,1920,1080);
+        bg.setBounds(0,0,width,height);
 
         setLayout(null);
         add(bg);
@@ -549,5 +584,16 @@ public class BattleView extends JPanel{
 
     public void setReturn(){
         returnb = false;
+    }
+
+    private Image getScaledImage(Image srcImg, int w, int h){
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 }
