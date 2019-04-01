@@ -31,6 +31,11 @@ public class enemyBoss extends Alien{
 		
 		this.stun(target);
 	}
+	@Override
+	public void takeTurn() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }
