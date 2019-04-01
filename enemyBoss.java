@@ -37,5 +37,10 @@ public class enemyBoss extends Alien{
 		
 	}
 
+	@Override
+	public void takeTurn() {
+		//Do something lol
+	}
+
 
 }
