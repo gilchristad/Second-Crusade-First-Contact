@@ -27,10 +27,12 @@ public class BattleView extends JPanel{
     Clip bossclip;
     boolean returnb = false;
 
-    public void BattleViewFrame(int width, int height, int type) throws IOException {
+    public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
 
+<<<<<<< HEAD
+=======
         ImageIcon crusader = new ImageIcon("");
         crusader.setImage(getScaledImage(crusader.getImage(), width, height));
 
@@ -268,6 +270,7 @@ public class BattleView extends JPanel{
         as12.setBorderPainted(false);
         as12.setVisible(true);
 
+>>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
 
         ImageIcon hi = new ImageIcon("Images/Icons/axeboy.png");
 
@@ -287,6 +290,20 @@ public class BattleView extends JPanel{
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
 
+<<<<<<< HEAD
+        	instance = new battle(1, party);
+        	 try {
+                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
+                 battleclip = AudioSystem.getClip();
+                 battleclip.open(audioInputStream);
+                 while(battleclip.isRunning()){
+                     battleclip.loop(Clip.LOOP_CONTINUOUSLY);
+                 }
+             } catch(Exception ex) {
+                 System.out.println("Error with playing sound.");
+                 ex.printStackTrace();
+             }   
+=======
             instance = new battle(1);
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
@@ -299,18 +316,28 @@ public class BattleView extends JPanel{
                 System.out.println("Error with playing sound.");
                 ex.printStackTrace();
             }   
+>>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
         }
         else
         {
         	background = new ImageIcon("Images/Backgrounds/boss.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
+<<<<<<< HEAD
+        	instance = new battle(2, party);
+        	try {
+=======
             instance = new battle(2);
             try {
+>>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BOSS1.0.wav").getAbsoluteFile());
                 bossclip = AudioSystem.getClip();
                 bossclip.open(audioInputStream);
                 while(bossclip.isRunning()){
+<<<<<<< HEAD
+                	bossclip.loop(Clip.LOOP_CONTINUOUSLY);
+=======
                     bossclip.loop(Clip.LOOP_CONTINUOUSLY);
+>>>>>>> 19a7a8b9b93ba48070483ff3b0e813f971e37ed2
                 }
             } catch(Exception ex) {
                 System.out.println("Error with playing sound.");
