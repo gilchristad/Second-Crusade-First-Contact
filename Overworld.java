@@ -230,7 +230,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
-                System.out.println("m1");
             }
         });
 
@@ -238,7 +237,6 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
-                System.out.println("m2");
             }
         });
 
