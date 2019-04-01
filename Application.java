@@ -14,14 +14,16 @@ public class Application {
         
         for (int i = 0; i < 3; i++)
         {
-        	Unit y;
+        	Crusader y;
         	if (i == 0)
         	{
-        		y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
+                y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
+                //System.out.println(y.getHealth(0));
         	}
         	else if (i== 1)
         	{
                 y = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
+                
         	}
         	else
         	{
@@ -42,13 +44,6 @@ public class Application {
         instructions.InstructionsFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
         restarea.RestAreaFrame((int)screenSize.getWidth(), (int)screenSize.getHeight());
 
-        
-//        mainmenu.MainMenuFrame(1280, 720);
-//        overworld.OverworldFrame(1280, 720);
-//        instructions.InstructionsFrame(1280, 720);
-//        restarea.RestAreaFrame(1280, 720);
-//        battleview.BattleViewFrame(1280, 720, 1);
-//        bossbattle.BattleViewFrame(1280, 720, 2);
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(mainmenu);
@@ -95,7 +90,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setBoss();
-                //bossbattle.bossclip.start();
+                bossbattle.bossclip.start();
                 overworld.overworldclip.stop();
             }
             else if(overworld.getRest()){

@@ -12,6 +12,7 @@ public class Crusader extends Unit {
 		armourValues[3] = llHP;
 		armourValues[4] = rlHP;
 		armourValues[5] = chHP;
+		
 	}
 	// 0=visor,1=LA, 2=RA, 3=LL,4=RL,5=Chest,-1=alien
 

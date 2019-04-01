@@ -16,12 +16,16 @@ import javax.swing.JPanel;
 import java.io.*;
 import java.awt.*;
 
-
-
-// WHEN SQUARE IS SELECTED, MUST DESELECT ALL OTHER SQUARES; DESELECT METHOD?? Do we even select squares? not really just have a "selected" value with square location or something
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    
+    boolean unitSelected = false;
+    boolean moveSelected = false;
+    boolean ability1Selected = false;
+    boolean ability2Selected = false;
+    boolean ability3Selected = false;
+    boolean ability4Selected = false;
 
     Clip battleclip;
     Clip bossclip;
@@ -30,6 +34,7 @@ public class BattleView extends JPanel{
     public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
+        JLabel imagelabel = new JLabel();
 
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
@@ -69,6 +74,47 @@ public class BattleView extends JPanel{
         JButton ability4 = new JButton();
         JButton move = new JButton();
         JButton coward = new JButton();
+        
+        setLayout(null);
+
+        cs00.setBounds((int)(0.051*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        cs01.setBounds((int)(0.123*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        cs02.setBounds((int)(0.194*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        cs03.setBounds((int)(0.267*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        cs10.setBounds((int)(0.051*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        cs11.setBounds((int)(0.123*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        cs12.setBounds((int)(0.194*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        cs13.setBounds((int)(0.267*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        cs20.setBounds((int)(0.051*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        cs21.setBounds((int)(0.123*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        cs22.setBounds((int)(0.194*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        cs23.setBounds((int)(0.267*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        cs30.setBounds((int)(0.051*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        cs31.setBounds((int)(0.123*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        cs32.setBounds((int)(0.194*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        cs33.setBounds((int)(0.267*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        as00.setBounds((int)(0.667*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        as01.setBounds((int)(0.739*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        as02.setBounds((int)(0.810*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        as03.setBounds((int)(0.882*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        as10.setBounds((int)(0.667*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        as11.setBounds((int)(0.739*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        as12.setBounds((int)(0.810*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        as13.setBounds((int)(0.882*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        as20.setBounds((int)(0.667*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        as21.setBounds((int)(0.739*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        as22.setBounds((int)(0.810*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        as23.setBounds((int)(0.882*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        as30.setBounds((int)(0.667*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        as31.setBounds((int)(0.739*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        as32.setBounds((int)(0.810*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        as33.setBounds((int)(0.882*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        ability1.setBounds((int)(0.018*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));        
+        ability2.setBounds((int)(0.113*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+        ability3.setBounds((int)(0.208*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+        ability4.setBounds((int)(0.298*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+        move.setBounds((int)(0.018*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
+        coward.setBounds((int)(0.208*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
 
         cs00.setOpaque(false);
         cs00.setContentAreaFilled(false);
@@ -187,8 +233,6 @@ public class BattleView extends JPanel{
         coward.setContentAreaFilled(false);
         coward.setBorderPainted(false);
 
-
-        JLabel imagelabel = new JLabel();
         imagelabel.setBounds(0,0,width,height);
         battle instance;
         
@@ -275,7 +319,6 @@ public class BattleView extends JPanel{
             }
         }
         
-        setLayout(null);
         add(imagelabel);
         add(cs00);
         add(cs01);
@@ -315,102 +358,342 @@ public class BattleView extends JPanel{
         add(ability4);
         add(move);
         add(coward);
-
-
-       cs00.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
+        
+        cs00.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                if(unitSelected == false){
+                    //If square contains a unit
+                    if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
+                        unitSelected = true;
+                        //populate abilities
+                    }
+                    //Square doesn't contain a unit, nothing happens?
+                    else{
+                        //?
+                    }
+                }
+                else{
+                    if(moveSelected){
+                        //move unit to this square
+                    }
+                }
+            }
+        });
        cs01.addActionListener(new ActionListener(){
-           @Override
+            @Override
            public void actionPerformed(ActionEvent arg0){
-
+                if(unitSelected == false){
+                    //If square contains a unit
+                    if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
+                        unitSelected = true;
+                        //populate abilities
+                    }
+                    //Square doesn't contain a unit, nothing happens?
+                    else{
+                        //?
+                    }
+                }
+                else{
+                    if(moveSelected){
+                        //move unit to this square
+                    }
+                }
+            
            }
        });
        cs02.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs03.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs10.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs11.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs12.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs13.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs20.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs21.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs22.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs23.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs30.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs31.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs32.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs33.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        
