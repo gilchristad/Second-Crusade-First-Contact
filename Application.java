@@ -44,13 +44,6 @@ public class Application {
         battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 1, party);
         bossbattle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 2, party);
 
-        
-//        mainmenu.MainMenuFrame(1280, 720);
-//        overworld.OverworldFrame(1280, 720);
-//        instructions.InstructionsFrame(1280, 720);
-//        restarea.RestAreaFrame(1280, 720);
-//        battleview.BattleViewFrame(1280, 720, 1);
-//        bossbattle.BattleViewFrame(1280, 720, 2);
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(mainmenu);
@@ -96,7 +89,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setBoss();
-                //bossbattle.bossclip.start();
+                bossbattle.bossclip.start();
                 overworld.overworldclip.stop();
             }
             else if(overworld.getRest()){
@@ -143,7 +136,7 @@ public class Application {
                 frame.revalidate();
                 bossbattle.setReturn();
                 overworld.overworldclip.start();
-                //bossbattle.bossclip.stop();
+                bossbattle.bossclip.stop();
             }
         }
         
