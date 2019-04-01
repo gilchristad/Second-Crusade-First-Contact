@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
@@ -14,6 +17,7 @@ import java.io.*;
 public class RestArea extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    Clip restclip;
     boolean returnb = false;
     int TWO_SECONDS = 2000;
 
@@ -27,8 +31,20 @@ public class RestArea extends JPanel{
         JLabel bg = new JLabel();
         bg.setIcon(background);
         bg.setBounds(0,0,width, height);
-        restb.setBounds((int)(0.094*width),(int)(0.087*height), 243,100);
-        trainb.setBounds((int)(0.78*width), (int)(0.087*height), 243, 100);
+        restb.setBounds((int)(0.094*width),(int)(0.087*height), (int)(0.126*width),(int)(0.092*height));
+        trainb.setBounds((int)(0.78*width), (int)(0.087*height),(int)(0.126*width), (int)(0.092*height));
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/REST2.0.wav").getAbsoluteFile());
+            restclip = AudioSystem.getClip();
+            restclip.open(audioInputStream);
+            while(restclip.isRunning()){
+                restclip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }   
 
         setLayout(null);
         add(bg);

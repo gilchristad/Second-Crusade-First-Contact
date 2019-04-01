@@ -2,51 +2,54 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.*;
-//import sun.audio.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import java.io.IOException; 
 import java.io.*;
-import java.io.File;
 
-public class MainMenu extends JPanel{
+public class MainMenu extends JPanel {
 
     private static final long serialVersionUID = 1L;
+    Clip menuclip;
     boolean newgame = false;
 
-    public void MainMenuFrame(int width, int height) throws IOException {
+    public void MainMenuFrame(int width, int height) throws IOException{
 
         ImageIcon image = new ImageIcon("Images/Backgrounds/mainmenu.jpg");
         image.setImage(getScaledImage(image.getImage(), width, height));
-        
+
         ImageIcon newgamehover = new ImageIcon("Images/Backgrounds/newgamehover.jpg");
         newgamehover.setImage(getScaledImage(newgamehover.getImage(), width, height));
-        
+
         ImageIcon continuegamehover = new ImageIcon("Images/Backgrounds/continuehover.jpg");
         continuegamehover.setImage(getScaledImage(continuegamehover.getImage(), width, height));
-        
+
         ImageIcon loadgamehover = new ImageIcon("Images/Backgrounds/loadgamehover.jpg");
         loadgamehover.setImage(getScaledImage(loadgamehover.getImage(), width, height));
-        
+
         ImageIcon optionshover = new ImageIcon("Images/Backgrounds/optionshover.jpg");
         optionshover.setImage(getScaledImage(optionshover.getImage(), width, height));
-        
+
         ImageIcon exithover = new ImageIcon("Images/Backgrounds/exithover.jpg");
         exithover.setImage(getScaledImage(exithover.getImage(), width, height));
-        
+
         ImageIcon loadgamescreen = new ImageIcon("Images/Backgrounds/loadgamescreen.jpg");
         loadgamescreen.setImage(getScaledImage(loadgamescreen.getImage(), width, height));
-        
+
         ImageIcon optionsscreen = new ImageIcon("Images/Backgrounds/optionsscreen.jpg");
         optionsscreen.setImage(getScaledImage(optionsscreen.getImage(), width, height));
-        
+
         ImageIcon optionsbackhover = new ImageIcon("Images/Backgrounds/optionsbackhover.jpg");
         optionsbackhover.setImage(getScaledImage(optionsbackhover.getImage(), width, height));
-        
+
         ImageIcon loadgamebackhover = new ImageIcon("Images/Backgrounds/loadgamebackhover.jpg");
         loadgamebackhover.setImage(getScaledImage(loadgamebackhover.getImage(), width, height));
-        
+
         JLabel imagelabel = new JLabel(image);
         JButton ngb = new JButton();
         JButton cgb = new JButton();
@@ -56,12 +59,6 @@ public class MainMenu extends JPanel{
         JButton loadbackb = new JButton();
         JButton optionsbackb = new JButton();
 
-        //Doesnt work
-//        File music = new File("Music/TITLE1.0.wav");
-//        InputStream in = new FileInputStream(music);
-//        AudioStream as = new AudioStream(in);         
-//        AudioPlayer.player.start(as);
-        
         ngb.setBounds((int) (0.789*(width)), (int)(0.334 * height),(int)(0.196 * width), (int)(0.051 * height));
         cgb.setBounds((int) (0.820*(width)), (int)(0.413 * height),(int)(0.164 * width), (int)(0.051 * height));
         lgb.setBounds((int) (0.783*(width)), (int)(0.495 * height),(int)(0.201 * width), (int)(0.051 * height));
@@ -70,6 +67,18 @@ public class MainMenu extends JPanel{
         loadbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
         optionsbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
         imagelabel.setBounds(0,0,width,height);
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/TITLE.wav").getAbsoluteFile());
+            menuclip = AudioSystem.getClip();
+            menuclip.open(audioInputStream);
+            while(menuclip.isRunning()){
+                menuclip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }   
 
         setLayout(null);
         add(ngb);
@@ -117,7 +126,6 @@ public class MainMenu extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newgame = true;
-                //AudioPlayer.player.stop(as);
             }
         });
 
