@@ -68,7 +68,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 mainmenu.setNewGame();
-                mainmenu.menuclip.stop();
+                //mainmenu.menuclip.stop();
 
             }
             else if(instructions.getContinue()){
