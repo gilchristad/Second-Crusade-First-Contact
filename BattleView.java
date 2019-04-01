@@ -28,8 +28,7 @@ public class BattleView extends JPanel{
 
     public void BattleViewFrame(int width, int height, int type) throws IOException {
         
-        ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
-        background.setImage(getScaledImage(background.getImage(), width, height));
+        ImageIcon background;
 
         ImageIcon crusader = new ImageIcon("");
         crusader.setImage(getScaledImage(crusader.getImage(), width, height));
@@ -285,7 +284,6 @@ public class BattleView extends JPanel{
         JLabel imagelabel = new JLabel();
         //JLabel test = new JLabel();
 
-        imagelabel.setIcon(background);
         //test.setIcon(hi);
         
         //test.setVisible(true);
@@ -296,12 +294,18 @@ public class BattleView extends JPanel{
         
         if (type == 1)
         {
+        	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
+            background.setImage(getScaledImage(background.getImage(), width, height));
+
         	instance = new battle(1);
         }
         else
         {
+        	background = new ImageIcon("Images/Backgrounds/boss.jpg");
+            background.setImage(getScaledImage(background.getImage(), width, height));
         	instance = new battle(2);
         }
+        imagelabel.setIcon(background);
         JLabel[] crusaders = new JLabel[16];
         JLabel[] aliens = new JLabel[16];
         
