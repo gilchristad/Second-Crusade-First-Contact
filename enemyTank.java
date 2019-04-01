@@ -98,7 +98,7 @@ public class enemyTank extends Alien{
 					testBoard=board;
 					testTank=this;
 					//MOVE TO A TILE
-					testTank.move();
+					testTank.move(list1[j],testBoard.getSquare(x,y));
 					int tryScore=evaluateBoard(testBoard);
 					if (tryScore-origScore<maxScore){
 						maxScore=tryScore-origScore;
@@ -173,7 +173,7 @@ public class enemyTank extends Alien{
 		}
 		if (bestMove==0){
 			//ADD TARGET SQUARE
-			this.move();
+			this.move(list1[bestTarget],board.getSquare(x,y));
 		}
 		else if (bestMove==1){
 			if (moreSpecifically==1){

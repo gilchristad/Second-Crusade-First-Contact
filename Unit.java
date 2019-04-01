@@ -27,8 +27,8 @@ public abstract class Unit {
 		image = icon;
 	}
 
-	public void move() {
-		// IDK Dijkstra or a* or something
+	public void move(Square target, Square origSquare) {
+		target.move(this,origSquare);
 	}
 
 	public void attack(int damage, Square target, int armourValue) {

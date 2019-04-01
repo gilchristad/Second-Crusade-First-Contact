@@ -46,7 +46,10 @@ public class Square {
 		unitOnHere.somethingDied(armourValue);
 		unitOnHere = null;
 	}
-
+	public void move(Unit unitToMove,Square orig){
+		orig.unitOnHere=null;
+		this.unitOnHere=unitToMove;
+	}
 	public void addUnit(Unit unitToAdd) {
 		unitOnHere = unitToAdd;
 	}
