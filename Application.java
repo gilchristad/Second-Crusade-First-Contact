@@ -51,14 +51,12 @@ public class Application {
 //        restarea.RestAreaFrame(1280, 720);
 //        battleview.BattleViewFrame(1280, 720, 1);
 //        bossbattle.BattleViewFrame(1280, 720, 2);
-        
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(mainmenu);
         frame.setTitle("Second Crusade - First Contact");
         frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight());
-        //frame.setSize(1280, 720);
-        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -148,10 +146,6 @@ public class Application {
                 bossbattle.bossclip.stop();
             }
         }
-        
-    }
-
-    public void bossmusic(){
         
     }
 }
