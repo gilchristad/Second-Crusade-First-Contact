@@ -1,8 +1,10 @@
+import javax.swing.ImageIcon;
+
 public abstract class Alien extends Unit {
 	private int health;
 
-	public Alien(int atk, double acc, double speed, double dodge, double sze, int hp) {
-		super(atk, acc, speed, dodge, sze);
+	public Alien(int atk, double acc, double speed, double dodge, double sze, String name, ImageIcon image,int hp) {
+		super(atk, acc, speed, dodge, sze, name, image);
 		health = hp;
 	}
 

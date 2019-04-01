@@ -1,9 +1,14 @@
+import javax.swing.ImageIcon;
+
 public class SwordAndShield extends Crusader {
 	//ability methods should call the general attack method with the damage they calculate as well as any other effects they have
 	//i.e call the blind method or the stun method, they should be implemented in Unit as well as have a method like attacked in Square
-	public SwordAndShield(int atk, double acc, double speed, double dodge, double size, int viHP, int laHP, int raHP,
+	static ImageIcon image = new ImageIcon("Images/Icons/axeboy.png");
+
+	public SwordAndShield(int atk, double acc, double speed, double dodge, double size, String name, int viHP, int laHP, int raHP,
 			int llHP, int rlHP, int chHP) {
-		super(atk, acc, speed, dodge, size, viHP, laHP, raHP, llHP, rlHP, chHP);
+		
+		super(atk, acc, speed, dodge, size, name, image, viHP, laHP, raHP, llHP, rlHP, chHP);
 	}
 	public void shieldBash(Square target) {
 		//Get attack value and modify it by 0.5 since this attack is suppose to be a stun primarily  
