@@ -188,6 +188,11 @@ public class enemyTank extends Alien{
 		else if (bestMove==2){
 			this.protect(list3[bestTarget]);
 		}
+		System.out.print("Best move");
+		System.out.print(bestMove);
+		System.out.println();
+		System.out.print("Best target");
+		System.out.print(bestTarget);
 
 	}
 	private static Square[] highlightMoveOptions(Square startSquare, Board board){
