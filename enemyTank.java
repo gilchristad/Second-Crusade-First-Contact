@@ -2,7 +2,7 @@ import javax.swing.ImageIcon;
 
 public class enemyTank extends Alien{
 
-	static ImageIcon image = new ImageIcon("Images/Icons/aliengross.png");
+	static ImageIcon image = new ImageIcon("Images/Icons/alien2.png");
 	public enemyTank(int atk, double acc, double speed, double dodge, double sze, String name, int hp) {
 		super(atk, acc, speed, dodge, sze, name, image, hp);
 	}
@@ -29,6 +29,7 @@ public class enemyTank extends Alien{
 		for (int i=0;i<=3;i++){
 			for (int j=0;j<=3;j++){
 				Square currentTile=board.getSquare(i, j);
+				//Scoring based on position of units 
 				if (currentTile.selectSquare()!=null){
 					Unit currentUnit=currentTile.selectSquare();
 					if (currentUnit.name=="swordandshield" || currentUnit.name=="tank"){
@@ -40,6 +41,19 @@ public class enemyTank extends Alien{
 					if (currentUnit.name=="spitter"){
 						result -= i-1;
 					}
+					if (currentUnit.name=="swordandshield" || currentUnit.name=="archer" ||currentUnit.name=="cleric")
+					{
+						int health=0;
+						for (int t=0;t<=5;t++){
+							health +=currentUnit.getHealth(t);
+						}
+						health/=6;
+						result -=health;
+					}
+					//Were on the alien board 
+					else {
+						result -=currentUnit.getHealth(-1);
+					}
 				}
 			}
 		}
@@ -47,7 +61,6 @@ public class enemyTank extends Alien{
 	}
 	@Override
 	public void takeTurn(Board board, Board board2) {
-		int points=0;
 		int x=-1;
 		int y=-1;
 		Board testBoard=board;
@@ -62,34 +75,124 @@ public class enemyTank extends Alien{
 			}
 		}
 		//Want low points
+		int origScore=evaluateBoard(board);
 		Square[] list1=highlightMoveOptions(testBoard.getSquare(x,y), testBoard);
 		//He can only hit right in front of him
 		Square[] list2=highlightOtherAttack(testBoard.getSquare(x,y),1,1,testBoard2);
 		Square[] list3=highlightBuffOptions(testBoard);
+		enemyTank testTank=this;
 		//Loop through potential moves 
-		int maxScore=-1;
+		int maxScore=1000000;
+		int bestMove=-1;
+		int bestTarget=-1;
+		int moreSpecifically=-1;
 		for (int i=0;i<=2;i++){
 			if (i==0){
 				for (int j=0;j<=list1.length;j++){
 					testBoard=board;
-					this.move();
+					testTank=this;
+					//MOVE TO A TILE
+					testTank.move();
+					int tryScore=evaluateBoard(testBoard);
+					if (tryScore-origScore<maxScore){
+						maxScore=tryScore-origScore;
+						bestMove=i;
+						bestTarget=j;
+					}
 
 				}
 			}
 			else if (i==1){
+				for (int j=0;j<=list2.length;j++){
+					testBoard2=board2;
+					testTank=this;
+					testTank.wack(list2[j]);
+					int tryScore=evaluateBoard(testBoard2);
+					if (tryScore-origScore<maxScore){
+						maxScore=tryScore-origScore;
+						bestMove=i;
+						bestTarget=j;
+						moreSpecifically=2;
+					}
 
+				}
+				for (int j=0;j<=list1.length;j++){
+					testBoard2=board;
+					testTank=this;
+					//MOVE TO A TILE
+					Square[] targets=new Square [3];
+					targets[0]=list2[j];
+					if (list2[j].getCoordinates()[1]>0 &&list2[j].getCoordinates()[1]<3){
+						targets[1]=testBoard2.getSquare(x, list2[j].getCoordinates()[1]+1);
+						targets[2]=testBoard2.getSquare(x, list2[j].getCoordinates()[1]-1);
+					}
+					else if (list2[j].getCoordinates()[1]==0){
+						targets[1]=testBoard2.getSquare(x, list2[j].getCoordinates()[1]+1);
+					}
+					else {
+						targets[1]=testBoard2.getSquare(x, list2[j].getCoordinates()[1]-1);
+					}
+					testTank.knockback(targets);
+					int tryScore=evaluateBoard(testBoard2);
+					if (tryScore-origScore>maxScore){
+						maxScore=tryScore-origScore;
+						bestMove=i;
+						bestTarget=j;
+						moreSpecifically=1;
+					}
+
+				}
 			}
 			else{
+				for (int j=0;j<=list3.length;j++){
+					testBoard=board;
+					testTank=this;
+					testTank.block(list3[j]);
+					int tryScore=evaluateBoard(testBoard);
+					//Compensate since blocking isnt measured in evaluate
+					tryScore-=2;
+					if (tryScore-origScore<maxScore){
+						maxScore=tryScore-origScore;
+						bestMove=i;
+						bestTarget=j;
+					}
 
+				}
 			}
 
 		}
-		points+=x;
-		//this.move();
-		//bonus points for being in the front 
-		//If a teammate is out of position  block is a good choice 
-		//If a crusader is out of position wack is good
-		//If you can get good value out of knockback it is good
+		if (bestMove==0){
+			//ADD TARGET SQUARE
+			this.move();
+		}
+		else if (bestMove==1){
+			if (moreSpecifically==1){
+				Square[] targets=new Square [3];
+				targets[0]=list2[bestTarget];
+				if (list2[bestTarget].getCoordinates()[1]>0 &&list2[bestTarget].getCoordinates()[1]<3){
+					targets[1]=board.getSquare(x, list2[bestTarget].getCoordinates()[1]+1);
+					targets[2]=testBoard.getSquare(x, list2[bestTarget].getCoordinates()[1]-1);
+				}
+				else if (list2[bestTarget].getCoordinates()[1]==0){
+					targets[1]=testBoard.getSquare(x, list2[bestTarget].getCoordinates()[1]+1);
+				}
+				else {
+					targets[1]=testBoard.getSquare(x, list2[bestTarget].getCoordinates()[1]-1);
+				}
+				this.knockback(targets);
+			}
+			else {
+				this.wack(list2[bestTarget]);
+			}
+		}
+		else if (bestMove==2){
+			this.protect(list3[bestTarget]);
+		}
+		System.out.print("Best move");
+		System.out.print(bestMove);
+		System.out.println();
+		System.out.print("Best target");
+		System.out.print(bestTarget);
 
 	}
 	private static Square[] highlightMoveOptions(Square startSquare, Board board){
