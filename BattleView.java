@@ -19,6 +19,13 @@ import java.awt.*;
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    
+    boolean unitSelected = false;
+    boolean moveSelected = false;
+    boolean ability1Selected = false;
+    boolean ability2Selected = false;
+    boolean ability3Selected = false;
+    boolean ability4Selected = false;
 
     Clip battleclip;
     Clip bossclip;
@@ -351,102 +358,342 @@ public class BattleView extends JPanel{
         add(ability4);
         add(move);
         add(coward);
-
-
-       cs00.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
+        
+        cs00.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                if(unitSelected == false){
+                    //If square contains a unit
+                    if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
+                        unitSelected = true;
+                        //populate abilities
+                    }
+                    //Square doesn't contain a unit, nothing happens?
+                    else{
+                        //?
+                    }
+                }
+                else{
+                    if(moveSelected){
+                        //move unit to this square
+                    }
+                }
+            }
+        });
        cs01.addActionListener(new ActionListener(){
-           @Override
+            @Override
            public void actionPerformed(ActionEvent arg0){
-
+                if(unitSelected == false){
+                    //If square contains a unit
+                    if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
+                        unitSelected = true;
+                        //populate abilities
+                    }
+                    //Square doesn't contain a unit, nothing happens?
+                    else{
+                        //?
+                    }
+                }
+                else{
+                    if(moveSelected){
+                        //move unit to this square
+                    }
+                }
+            
            }
        });
        cs02.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs03.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs10.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs11.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs12.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs13.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs20.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs21.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs22.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs23.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs30.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs31.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs32.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        cs33.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            if(unitSelected == false){
+                //If square contains a unit
+                if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
+                    unitSelected = true;
+                    //populate abilities
+                }
+                //Square doesn't contain a unit, nothing happens?
+                else{
+                    //?
+                }
+            }
+            else{
+                if(moveSelected){
+                    //move unit to this square
+                }
+            }
            }
        });
        
