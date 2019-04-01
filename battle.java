@@ -1,34 +1,28 @@
     import java.lang.Math;
     public class battle {
 
-    public static void main(String[] args) {
-        Unit[] characters = new Unit[32];
+    Unit[] characters;
+    Board cruBoard;
+    Board alienBoard;
+    public battle() {
         int counter = 0;
         characters = new Unit[32];
-        SwordAndShield guy1 = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-        Crusader guy2 = new Crusader(10, .9, 0.2, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-        Crusader guy3= new Crusader(10, .9, 0.3, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-        Crusader guy4 = new Crusader(10, .9, 0.4, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-        Crusader guy5 = new Crusader(10, .9, 0.5, 0.8, 0.8, 10, 10, 10, 10, 10, 10);
-        Alien enemy1 = new Alien(5, 0.9, 0.6, 0.8, 0.7, 5);
-        Alien enemy2 = new Alien(5, 0.9, 0.7, 0.8, 0.7, 5);
-        Alien enemy3 = new Alien(5, 0.9, 0.8, 0.8, 0.7, 5);
-        Alien enemy4 = new Alien(5, 0.9, 0.9, 0.8, 0.7, 5);
-        Alien enemy5 = new Alien(5, 0.9, 0.99, 0.8, 0.7, 5);
-        Board cruBoard= new Board(4,4);
-        Board alienBoard= new Board(4,4);
-        cruBoard.getSquare(1, 1).addUnit(guy1);
-        alienBoard.getSquare(1, 1).addUnit(enemy1);
+        SwordAndShield guy1 = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordAndShield", 10, 10, 10, 10, 10, 10);
+        Cleric guy2 = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
+        Archer guy3= new Archer(10, .9, 0.3, 0.8, 0.8, "archer",10, 10, 10, 10, 10, 10);
+        enemyHealer enemy1 = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
+        enemySpitter enemy2 = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
+        enemyTank enemy3 = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
+        cruBoard= new Board(4,4);
+        alienBoard= new Board(4,4);
+        cruBoard.getSquare(0, 3).addUnit(guy1);
+        alienBoard.getSquare(0, 3).addUnit(enemy1);
         cruBoard.getSquare(1, 2).addUnit(guy2);
         alienBoard.getSquare(1, 2).addUnit(enemy2);
-        cruBoard.getSquare(1, 3).addUnit(guy3);
-        alienBoard.getSquare(1, 3).addUnit(enemy3);
-        cruBoard.getSquare(1, 0).addUnit(guy3);
-        alienBoard.getSquare(1, 0).addUnit(enemy3);
-        cruBoard.getSquare(2,1).addUnit(guy4);
-        alienBoard.getSquare(2, 1).addUnit(enemy4);
-        cruBoard.getSquare(2,2).addUnit(guy5);
-        alienBoard.getSquare(2, 2).addUnit(enemy5);
+        cruBoard.getSquare(2, 1).addUnit(guy3);
+        alienBoard.getSquare(2, 1).addUnit(enemy3);
+        cruBoard.getSquare(3, 0).addUnit(guy3);
+        alienBoard.getSquare(3, 0).addUnit(enemy3);
         highlightMoveOptions(cruBoard.getSquare(1, 1), cruBoard);
         //https://www.youtube.com/watch?v=UOxkGD8qRB4
         for (int i =0;i<4;i++){
@@ -36,7 +30,6 @@
                 Unit x = cruBoard.getSquare(i, j).selectSquare();
                 if (x != null)
                 {
-
                     characters[counter] = x;
                     counter++;
                 }
@@ -49,20 +42,23 @@
                 }
             }
         }
-        
-        characters = sort_speed(characters);
-        
-        for (int j = 0; j < 32; j++)
-        {
-            if (characters[j]!=null)
-            {
-                System.out.println(j + ": " + "speed: " + characters[j].speedValue);
-                characters[j].startTurn();
-                //Wait until the turn is over
-                //Do stuff here :)
-                characters[j].endTurn();
-            }   
-        }
+    }
+    
+    public void turn()
+    {
+    	 characters = sort_speed(characters);
+         
+         for (int j = 0; j < 32; j++)
+         {
+             if (characters[j]!=null)
+             {
+                 System.out.println(j + ": " + "speed: " + characters[j].speedValue);
+                 characters[j].startTurn();
+                 //Wait until the turn is over
+                 //Do stuff here :)
+                 characters[j].endTurn();
+             }   
+         }
     }
     
     //Works 

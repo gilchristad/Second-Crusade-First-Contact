@@ -1,7 +1,10 @@
+import javax.swing.ImageIcon;
+
 public class enemyHealer extends Alien{
 
-	public enemyHealer(int atk, double acc, double speed, double dodge, double sze, int hp) {
-		super(atk, acc, speed, dodge, sze, hp);
+	static ImageIcon image = new ImageIcon("Images/Icons/alien2.png");
+	public enemyHealer(int atk, double acc, double speed, double dodge, double sze, String name, int hp) {
+		super(atk, acc, speed, dodge, sze, name, image, hp);
 	}
 	public void block(Square target)
 	{

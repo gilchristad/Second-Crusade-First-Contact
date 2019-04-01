@@ -1,5 +1,5 @@
 public class Square {
-	private Unit unitOnHere;
+	private Unit unitOnHere = null;
 	// Blocked would be used if an ability puts like spikes on a square so you cant
 	// move to it
 	private boolean blocked;
