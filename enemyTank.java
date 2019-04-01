@@ -28,6 +28,7 @@ public class enemyTank extends Alien{
 	@Override
 	public void takeTurn() {
 		int points=0;
+		
 		//bonus points for being in the front 
 		//If a teammate is out of position  block is a good choice 
 		//If a crusader is out of position wack is good
