@@ -17,12 +17,13 @@ import java.io.*;
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
-    boolean newgame = false;
+    boolean returnb = false;
 
     public void BattleViewFrame(int width, int height) throws IOException {
         
         ImageIcon background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
+
 
         ImageIcon hi = new ImageIcon("Images/Icons/axeboy.png");
 
@@ -86,6 +87,11 @@ public class BattleView extends JPanel{
         
         add(imagelabel);
 
+//        JButton ability1 = new JButton();
+//        JButton ability2 = new JButton();
+//        JButton ability3 = new JButton();
+//        JButton ability4 = new JButton();
+//        JButton coward = new JButton();
 //        ImageIcon crusader1 = new ImageIcon(""); - //(j * 100)%/
 //        ImageIcon crusader2 = new ImageIcon("");aliens[a_counter].setBounds((int)(width*(0.88)) - (int)(j * (0.069 * width)),
 //        ImageIcon crusader3 = new ImageIcon("");
@@ -551,9 +557,50 @@ public class BattleView extends JPanel{
 //
 //            }
 //        });
-
+//        ability1.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent arg0){
+//
+//            }
+//        });
+//
+//        ability2.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent arg0){
+//
+//            }
+//        });
+//
+//        ability3.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent arg0){
+//
+//            }
+//        });
+//
+//        ability4.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent arg0){
+//
+//            }
+//        });
+//
+//        coward.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent arg0){
+//                returnb = true;
+//            }
+//        });
 
     }
+    public boolean getReturn(){
+        return returnb;
+    }
+
+    public void setReturn(){
+        returnb = false;
+    }
+
     private Image getScaledImage(Image srcImg, int w, int h){
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
@@ -563,5 +610,5 @@ public class BattleView extends JPanel{
         g2.dispose();
 
         return resizedImg;
-    }
+   }
 }
