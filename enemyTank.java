@@ -1,7 +1,10 @@
+import javax.swing.ImageIcon;
+
 public class enemyTank extends Alien{
 
-	public enemyTank(int atk, double acc, double speed, double dodge, double sze, int hp) {
-		super(atk, acc, speed, dodge, sze, hp);
+	static ImageIcon image = new ImageIcon("Images/Icons/aliengross.png");
+	public enemyTank(int atk, double acc, double speed, double dodge, double sze, String name, int hp) {
+		super(atk, acc, speed, dodge, sze, name, image, hp);
 	}
 	public void block(Square target)
 	{
@@ -20,6 +23,16 @@ public class enemyTank extends Alien{
 		//Pick a number from 1-6 to attack for the last value
 		this.attack((int)(this.getAttackValue()*0.5), target, 4);
 		this.stun(target);
+	}
+
+	@Override
+	public void takeTurn() {
+		int points=0;
+		//bonus points for being in the front 
+		//If a teammate is out of position  block is a good choice 
+		//If a crusader is out of position wack is good
+		//If you can get good value out of knockback it is good
+
 	}
 
 

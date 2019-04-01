@@ -1,9 +1,8 @@
 import javax.swing.ImageIcon;
 
-public class enemyHealer extends Alien{
-
-	static ImageIcon image = new ImageIcon("Images/Icons/alien2.png");
-	public enemyHealer(int atk, double acc, double speed, double dodge, double sze, String name, int hp) {
+public class enemyBoss extends Alien{
+	static ImageIcon image = new ImageIcon("Images/Icons/alienboss.png");
+	public enemyBoss(int atk, double acc, double speed, double dodge, double sze, String name, int hp) {
 		super(atk, acc, speed, dodge, sze, name, image, hp);
 	}
 	public void block(Square target)
@@ -35,10 +34,7 @@ public class enemyHealer extends Alien{
 
 	@Override
 	public void takeTurn() {
-		//stay far back
-		//heal when teammate is getting low
-		//buff otherwise
-		
+		//Do something lol
 	}
 
 

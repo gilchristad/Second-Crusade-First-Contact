@@ -1,3 +1,5 @@
+import javax.swing.ImageIcon;
+
 import jdk.nashorn.api.tree.YieldTree;
 
 public abstract class Unit {
@@ -16,12 +18,16 @@ public abstract class Unit {
 	public boolean protect=false;
 	public int buff=0;
 	public boolean turn=false;
-	public Unit(int atk, double acc, double speed, double dodge, double size) {
+	public String name;
+	public ImageIcon image;
+	public Unit(int atk, double acc, double speed, double dodge, double size, String unitClass, ImageIcon icon) {
 		attackValue = atk;
 		accuracyValue = acc;
 		speedValue = speed;
 		dodgeValue = dodge;
 		sizeValue = size;
+		name = unitClass;
+		image = icon;
 	}
 
 	public void move() {

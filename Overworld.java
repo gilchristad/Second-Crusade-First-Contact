@@ -34,16 +34,23 @@ public class Overworld extends JPanel{
         background.setImage(getScaledImage(background.getImage(), width, height));
     	
         ImageIcon hover = new ImageIcon("Images/Backgrounds/jerusalemhover.jpg");
-
+        hover.setImage(getScaledImage(hover.getImage(),  width, height));
+        
         ImageIcon options = new ImageIcon("Images/Backgrounds/jerusalemesc.jpg");
+        options.setImage(getScaledImage(options.getImage(), width, height));
 
         ImageIcon house = new ImageIcon("Images/Icons/house.png");
+        //System.out.println(house.getIconWidth() + ", " + house.getIconHeight()+ ", " + ((float)width/(float)1920) * (float)house.getIconWidth()+ ", " +((float)height/(float)1080) * (float)house.getIconHeight());
+        house.setImage(getScaledImage(house.getImage(), (int)(((float)width/(float)1920) * (float)house.getIconWidth()), (int)(((float)height/(float)1080) * (float)house.getIconHeight())));
 
         ImageIcon monastery = new ImageIcon("Images/Icons/monastery.png");
+        monastery.setImage(getScaledImage(monastery.getImage(), (int)(((float)width/(float)1920) * (float)monastery.getIconWidth()), (int)(((float)height/(float)1080) * (float)monastery.getIconHeight())));
 
         ImageIcon ufo = new ImageIcon("Images/Icons/ufo.png");
+        ufo.setImage(getScaledImage(ufo.getImage(), (int)(((float)width/(float)1920) * (float)ufo.getIconWidth()), (int)(((float)height/(float)1080) * (float)ufo.getIconHeight())));
 
         ImageIcon monasterybig = new ImageIcon("Images/Icons/monastery2.png");
+        monasterybig.setImage(getScaledImage(monasterybig.getImage(), (int)(((float)width/(float)1920) * (float)monasterybig.getIconWidth()), (int)(((float)height/(float)1080) * (float)monasterybig.getIconHeight())));
 
         JLabel imagelabel = new JLabel();
         JLabel house1 = new JLabel();
@@ -101,23 +108,23 @@ public class Overworld extends JPanel{
         
         sprite.setBounds((int)(0.265*width),(int)(0.448*height),40,90);
 
-        house1.setBounds((int)(0.610*width),(int)(0.148*height),58,59);
-        house2.setBounds((int)(0.504*width),(int)(0.394*height),58,59);
-        house3.setBounds((int)(0.346*width),(int)(0.742*height),58,59);
-        ufo1.setBounds((int)(0.505*width),(int)(0.594*height),59,60);
-        ufo2.setBounds((int)(0.425*width),(int)(0.372*height),60,60);
-        ufo3.setBounds((int)(0.358*width),(int)(0.596*height),60,60);
-        monastery1.setBounds((int)(0.518*width),(int)(0.235*height),82,69);
-        monastery2.setBounds((int)(0.607*width),(int)(0.501*height),160,128);
+        house1.setBounds((int)(0.610*width),(int)(0.148*height),house.getIconWidth(),house.getIconHeight());
+        house2.setBounds((int)(0.504*width),(int)(0.394*height),house.getIconWidth(),house.getIconHeight());
+        house3.setBounds((int)(0.346*width),(int)(0.742*height),house.getIconWidth(),house.getIconHeight());
+        ufo1.setBounds((int)(0.505*width),(int)(0.594*height),ufo.getIconWidth(),ufo.getIconHeight());
+        ufo2.setBounds((int)(0.425*width),(int)(0.372*height),ufo.getIconWidth(),ufo.getIconHeight());
+        ufo3.setBounds((int)(0.358*width),(int)(0.596*height),ufo.getIconWidth(),ufo.getIconHeight());
+        monastery1.setBounds((int)(0.518*width),(int)(0.235*height),monastery.getIconWidth(),monastery.getIconHeight());
+        monastery2.setBounds((int)(0.607*width),(int)(0.501*height),monasterybig.getIconWidth(),monasterybig.getIconHeight());
 
-        h1.setBounds((int)(0.610*width),(int)(0.148*height),58,59);
-        h2.setBounds((int)(0.504*width),(int)(0.394*height),58,59);
-        h3.setBounds((int)(0.346*width),(int)(0.742*height),58,59);
-        u1.setBounds((int)(0.505*width),(int)(0.594*height),59,60);
-        u2.setBounds((int)(0.425*width),(int)(0.372*height),60,60);
-        u3.setBounds((int)(0.358*width),(int)(0.596*height),60,60);
-        m1.setBounds((int)(0.518*width),(int)(0.235*height),82,69);
-        m2.setBounds((int)(0.607*width),(int)(0.501*height),160,128);
+        h1.setBounds((int)(0.610*width),(int)(0.148*height),house.getIconWidth(),house.getIconHeight());
+        h2.setBounds((int)(0.504*width),(int)(0.394*height),house.getIconWidth(),house.getIconHeight());
+        h3.setBounds((int)(0.346*width),(int)(0.742*height),house.getIconWidth(),house.getIconHeight());
+        u1.setBounds((int)(0.505*width),(int)(0.594*height),ufo.getIconWidth(),ufo.getIconHeight());
+        u2.setBounds((int)(0.425*width),(int)(0.372*height),ufo.getIconWidth(),ufo.getIconHeight());
+        u3.setBounds((int)(0.358*width),(int)(0.596*height),ufo.getIconWidth(),ufo.getIconHeight());
+        m1.setBounds((int)(0.518*width),(int)(0.235*height),monastery.getIconWidth(),monastery.getIconHeight());
+        m2.setBounds((int)(0.607*width),(int)(0.501*height),monasterybig.getIconWidth(),monasterybig.getIconHeight());
         menu.setBounds((int)(0.008*width),(int)(0.015*height),132,34); 
 
         setLayout(null);
@@ -223,6 +230,7 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
+                System.out.println("m1");
             }
         });
 
@@ -230,6 +238,7 @@ public class Overworld extends JPanel{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 newboss = true;
+                System.out.println("m2");
             }
         });
 
