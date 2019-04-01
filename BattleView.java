@@ -73,7 +73,7 @@ public class BattleView extends JPanel{
         JLabel a3 = new JLabel();
         JLabel a4 = new JLabel();
 
-        bg.setIcon(background);
+        //bg.setIcon(background);
         c1.setIcon(crusader);
         c2.setIcon(archer);
         c3.setIcon(cleric);

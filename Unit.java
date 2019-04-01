@@ -1,7 +1,4 @@
 import javax.swing.ImageIcon;
-
-import jdk.nashorn.api.tree.YieldTree;
-
 public abstract class Unit {
 	// Base strength used to calculate damage
 	public int attackValue;

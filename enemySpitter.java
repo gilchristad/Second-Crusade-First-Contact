@@ -27,7 +27,7 @@ public class enemySpitter extends Alien{
 	}
 
 	@Override
-	public void takeTurn() {
+	public void takeTurn(Board board, Board board2) {
 		//Want to be in the middle, close enough to hit but not get hit by everything 
 		//blind is good when enemies are clumped 
 		//spray is good when enemies are lined up

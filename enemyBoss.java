@@ -33,7 +33,7 @@ public class enemyBoss extends Alien{
 	}
 
 	@Override
-	public void takeTurn() {
+	public void takeTurn(Board board, Board board2) {
 		//Do something lol
 	}
 

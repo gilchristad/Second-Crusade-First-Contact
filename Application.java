@@ -78,7 +78,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setBoss();
-                bossbattle.bossclip.start();
+                //bossbattle.bossclip.start();
                 overworld.overworldclip.stop();
             }
             else if(overworld.getRest()){
@@ -125,7 +125,7 @@ public class Application {
                 frame.revalidate();
                 bossbattle.setReturn();
                 overworld.overworldclip.start();
-                bossbattle.bossclip.stop();
+                //bossbattle.bossclip.stop();
             }
         }
         
