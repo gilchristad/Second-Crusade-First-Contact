@@ -1,11 +1,9 @@
-
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.sound.sampled.AudioInputStream;
@@ -19,13 +17,16 @@ import java.util.Random;
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
-    
+    int c_counter = 0;
     boolean unitSelected = false;
+    boolean unitTargeted = false;
     boolean moveSelected = false;
     boolean ability1Selected = false;
     boolean ability2Selected = false;
     boolean ability3Selected = false;
     boolean ability4Selected = false;
+    ImageIcon selectsquare = new ImageIcon("Images/Icons/selectedsquare.jpg");
+    String unitName;
 
     Clip battleclip;
     Clip bossclip;
@@ -36,6 +37,58 @@ public class BattleView extends JPanel{
         
         ImageIcon background;
         JLabel imagelabel = new JLabel();
+        JLabel[][] crusaderSquareLabels = new JLabel[4][4];
+        JLabel[][] alienSquareLabels = new JLabel[4][4];
+
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                crusaderSquareLabels[i][j] = new JLabel();
+                crusaderSquareLabels[i][j].setIcon(selectsquare);
+                crusaderSquareLabels[i][j].setVisible(false);
+                add(crusaderSquareLabels[i][j]);
+            }
+        }
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                alienSquareLabels[i][j] = new JLabel();
+                alienSquareLabels[i][j].setIcon(selectsquare);
+                alienSquareLabels[i][j].setVisible(false);
+                add(alienSquareLabels[i][j]);
+            }
+        }
+
+        crusaderSquareLabels[0][0].setBounds((int)(0.051*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[0][1].setBounds((int)(0.123*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[0][2].setBounds((int)(0.194*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[0][3].setBounds((int)(0.267*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[1][0].setBounds((int)(0.051*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[1][1].setBounds((int)(0.123*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[1][2].setBounds((int)(0.194*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[1][3].setBounds((int)(0.267*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[2][0].setBounds((int)(0.051*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[2][1].setBounds((int)(0.123*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[2][2].setBounds((int)(0.194*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[2][3].setBounds((int)(0.267*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[3][0].setBounds((int)(0.051*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[3][1].setBounds((int)(0.123*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[3][2].setBounds((int)(0.194*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        crusaderSquareLabels[3][3].setBounds((int)(0.267*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[0][0].setBounds((int)(0.667*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[0][1].setBounds((int)(0.739*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[0][2].setBounds((int)(0.810*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[0][3].setBounds((int)(0.882*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[1][0].setBounds((int)(0.667*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[1][1].setBounds((int)(0.739*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[1][2].setBounds((int)(0.810*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[1][3].setBounds((int)(0.882*width),(int)(0.190*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[2][0].setBounds((int)(0.667*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[2][1].setBounds((int)(0.739*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[2][2].setBounds((int)(0.810*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[2][3].setBounds((int)(0.882*width),(int)(0.318*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[3][0].setBounds((int)(0.667*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[3][1].setBounds((int)(0.739*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[3][2].setBounds((int)(0.810*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
+        alienSquareLabels[3][3].setBounds((int)(0.882*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
 
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
@@ -75,7 +128,7 @@ public class BattleView extends JPanel{
         JButton ability4 = new JButton();
         JButton move = new JButton();
         JButton coward = new JButton();
-        
+
         setLayout(null);
 
         cs00.setBounds((int)(0.051*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
@@ -117,119 +170,118 @@ public class BattleView extends JPanel{
         move.setBounds((int)(0.018*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
         coward.setBounds((int)(0.208*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
 
+
         cs00.setOpaque(false);
         cs00.setContentAreaFilled(false);
         cs00.setBorderPainted(false);
-
         cs01.setOpaque(false);
         cs01.setContentAreaFilled(false);
         cs01.setBorderPainted(false);
-
         cs02.setOpaque(false);
         cs02.setContentAreaFilled(false);
         cs02.setBorderPainted(false);
-
         cs03.setOpaque(false);
         cs03.setContentAreaFilled(false);
         cs03.setBorderPainted(false);
-
         cs10.setOpaque(false);
         cs10.setContentAreaFilled(false);
         cs10.setBorderPainted(false);
-
         cs11.setOpaque(false);
         cs11.setContentAreaFilled(false);
         cs11.setBorderPainted(false);
-
         cs12.setOpaque(false);
         cs12.setContentAreaFilled(false);
         cs12.setBorderPainted(false);
-
         cs13.setOpaque(false);
         cs13.setContentAreaFilled(false);
         cs13.setBorderPainted(false);
-
         cs20.setOpaque(false);
         cs20.setContentAreaFilled(false);
         cs20.setBorderPainted(false);
-
         cs21.setOpaque(false);
         cs21.setContentAreaFilled(false);
         cs21.setBorderPainted(false);
-
         cs22.setOpaque(false);
         cs22.setContentAreaFilled(false);
         cs22.setBorderPainted(false);
-
         cs23.setOpaque(false);
         cs23.setContentAreaFilled(false);
         cs23.setBorderPainted(false);
-
         cs30.setOpaque(false);
         cs30.setContentAreaFilled(false);
         cs30.setBorderPainted(false);
-
         cs31.setOpaque(false);
         cs31.setContentAreaFilled(false);
         cs31.setBorderPainted(false);
-
         cs32.setOpaque(false);
         cs32.setContentAreaFilled(false);
         cs32.setBorderPainted(false);
-
         cs33.setOpaque(false);
         cs33.setContentAreaFilled(false);
         cs33.setBorderPainted(false);
-
         as00.setOpaque(false);
         as00.setContentAreaFilled(false);
         as00.setBorderPainted(false);
-
         as01.setOpaque(false);
         as01.setContentAreaFilled(false);
         as01.setBorderPainted(false);
-
         as02.setOpaque(false);
         as02.setContentAreaFilled(false);
         as02.setBorderPainted(false);
-
         as03.setOpaque(false);
         as03.setContentAreaFilled(false);
         as03.setBorderPainted(false);
-
         as10.setOpaque(false);
         as10.setContentAreaFilled(false);
         as10.setBorderPainted(false);
-
         as11.setOpaque(false);
         as11.setContentAreaFilled(false);
         as11.setBorderPainted(false);
-
         as12.setOpaque(false);
         as12.setContentAreaFilled(false);
         as12.setBorderPainted(false);
-
+        as13.setOpaque(false);
+        as13.setContentAreaFilled(false);
+        as13.setBorderPainted(false);
+        as20.setOpaque(false);
+        as20.setContentAreaFilled(false);
+        as20.setBorderPainted(false);
+        as21.setOpaque(false);
+        as21.setContentAreaFilled(false);
+        as21.setBorderPainted(false);
+        as22.setOpaque(false);
+        as22.setContentAreaFilled(false);
+        as22.setBorderPainted(false);
+        as23.setOpaque(false);
+        as23.setContentAreaFilled(false);
+        as23.setBorderPainted(false);
+        as30.setOpaque(false);
+        as30.setContentAreaFilled(false);
+        as30.setBorderPainted(false);
+        as31.setOpaque(false);
+        as31.setContentAreaFilled(false);
+        as31.setBorderPainted(false);
+        as32.setOpaque(false);
+        as32.setContentAreaFilled(false);
+        as32.setBorderPainted(false);
+        as33.setOpaque(false);
+        as33.setContentAreaFilled(false);
+        as33.setBorderPainted(false);
         ability1.setOpaque(false);
         ability1.setContentAreaFilled(false);
         ability1.setBorderPainted(false);
-        
         ability2.setOpaque(false);
         ability2.setContentAreaFilled(false);
         ability2.setBorderPainted(false);
-
-
         ability3.setOpaque(false);
         ability3.setContentAreaFilled(false);
         ability3.setBorderPainted(false);
-
         ability4.setOpaque(false);
         ability4.setContentAreaFilled(false);
         ability4.setBorderPainted(false);
-
         move.setOpaque(false);
         move.setContentAreaFilled(false);
         move.setBorderPainted(false);
-
         coward.setOpaque(false);
         coward.setContentAreaFilled(false);
         coward.setBorderPainted(false);
@@ -241,8 +293,6 @@ public class BattleView extends JPanel{
         {
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
-
-
             instance = new battle(1,party);
             System.out.println("BNew battle");
             try {
@@ -274,12 +324,10 @@ public class BattleView extends JPanel{
                 ex.printStackTrace();
             }   
         }
-
         imagelabel.setIcon(background);
 
         crusaders = new JLabel[16];
         aliens = new JLabel[16];
-        System.out.println();
         int c_counter = 0;
         int a_counter = 0;
         for (int i = 0; i < 4; i++)
@@ -364,15 +412,24 @@ public class BattleView extends JPanel{
         cs00.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                        crusaderSquareLabels[i][j].setIcon(selectsquare);
+                        crusaderSquareLabels[i][j].setVisible(false);
+                    }
+                }
+                crusaderSquareLabels[0][0].setVisible(true);
+                // for (int i = 0; i < c_counter; i++)
+                // {
+                //     crusaders[i].setVisible(true);
+            	// }
+            
                 if(unitSelected == false){
-                    //If square contains a unit
                     if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
                         unitSelected = true;
-                        //populate abilities
+                        unitName = instance.cruBoard.getSquare(0,0).selectSquare().name;
                     }
-                    //Square doesn't contain a unit, nothing happens?
                     else{
-                        //?
                     }
                 }
                 else{
@@ -382,16 +439,25 @@ public class BattleView extends JPanel{
                 }
             }
         });
-       cs01.addActionListener(new ActionListener(){
+        cs01.addActionListener(new ActionListener(){
             @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[0][1].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
                 if(unitSelected == false){
-                    //If square contains a unit
                     if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
                         unitSelected = true;
-                        //populate abilities
+                        unitName = instance.cruBoard.getSquare(0,1).selectSquare().name;
                     }
-                    //Square doesn't contain a unit, nothing happens?
                     else{
                         //?
                     }
@@ -404,18 +470,26 @@ public class BattleView extends JPanel{
             
            }
        });
-       cs02.addActionListener(new ActionListener(){
+        cs02.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[0][2].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(0,2).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -425,18 +499,26 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs03.addActionListener(new ActionListener(){
+        cs03.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[0][3].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(0,3).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -446,18 +528,26 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs10.addActionListener(new ActionListener(){
+        cs10.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[1][0].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(1,0).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -467,18 +557,26 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs11.addActionListener(new ActionListener(){
+        cs11.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[1][1].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(1,1).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -488,18 +586,26 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs12.addActionListener(new ActionListener(){
+        cs12.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[1][2].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(1,2).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -509,18 +615,27 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs13.addActionListener(new ActionListener(){
+        cs13.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[1][3].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
-                    unitSelected = true;
-                    //populate abilities
+                    unitSelected = true;                    
+                    unitName = instance.cruBoard.getSquare(1,3).selectSquare().name;
+
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -530,18 +645,27 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs20.addActionListener(new ActionListener(){
+        cs20.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[2][0].setVisible(true);
+            // for (int i = 0; i < c_counter; i++)
+            //     {
+            //         crusaders[i].setVisible(true);
+            // 	}
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(2,0).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
+                    
                 }
             }
             else{
@@ -551,18 +675,23 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs21.addActionListener(new ActionListener(){
+        cs21.addActionListener(new ActionListener(){
+        
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[2][1].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(2,1).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -572,18 +701,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs22.addActionListener(new ActionListener(){
+        cs22.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[2][2].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(2,2).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -593,18 +726,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs23.addActionListener(new ActionListener(){
+        cs23.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[2][3].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(2,3).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -614,18 +751,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs30.addActionListener(new ActionListener(){
+        cs30.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[3][0].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(3,0).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -635,18 +776,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs31.addActionListener(new ActionListener(){
+        cs31.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[3][1].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(3,1).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -656,18 +801,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs32.addActionListener(new ActionListener(){
+        cs32.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[3][2].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(3,2).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -677,18 +826,22 @@ public class BattleView extends JPanel{
             }
            }
        });
-       cs33.addActionListener(new ActionListener(){
+        cs33.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    crusaderSquareLabels[i][j].setIcon(selectsquare);
+                    crusaderSquareLabels[i][j].setVisible(false);
+                }
+            }
+            crusaderSquareLabels[3][3].setVisible(true);
             if(unitSelected == false){
-                //If square contains a unit
                 if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
                     unitSelected = true;
-                    //populate abilities
+                    unitName = instance.cruBoard.getSquare(3,3).selectSquare().name;
                 }
-                //Square doesn't contain a unit, nothing happens?
                 else{
-                    //?
                 }
             }
             else{
@@ -699,139 +852,262 @@ public class BattleView extends JPanel{
            }
        });
        
-       as00.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as01.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as02.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as03.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as10.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as11.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as12.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as13.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as20.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as21.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as22.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as23.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as30.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as31.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as32.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       as33.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-       ability1.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-
-       ability2.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-
-       ability3.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-
-       ability4.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent arg0){
-
-           }
-       });
-
-       move.addActionListener(new ActionListener(){
+        as00.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
-                returnb = true;
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[0][0].setVisible(true);
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(0,0).selectSquare() != null){
+                    unitTargeted = true;
+                }
+            }
+           }
+           
+       });
+        as01.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[0][1].setVisible(true);
+
+           }
+       });
+        as02.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[0][2].setVisible(true);
+
+           }
+       });
+        as03.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[0][3].setVisible(true);
+
+           }
+       });
+        as10.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[1][0].setVisible(true);
+           }
+       });
+        as11.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[1][1].setVisible(true);
+
+           }
+       });
+        as12.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[1][2].setVisible(true);
+
+           }
+       });
+        as13.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[1][3].setVisible(true);
+
+           }
+       });
+        as20.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[2][0].setVisible(true);
+
+           }
+       });
+        as21.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[2][1].setVisible(true);
+
+           }
+       });
+        as22.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[2][2].setVisible(true);
+
+           }
+       });
+        as23.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[2][3].setVisible(true);
+
+           }
+       });
+        as30.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[3][0].setVisible(true);
+
+           }
+       });
+        as31.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[3][1].setVisible(true);
+
+           }
+       });
+        as32.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[3][2].setVisible(true);
+
+           }
+       });
+        as33.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    alienSquareLabels[i][j].setIcon(selectsquare);
+                    alienSquareLabels[i][j].setVisible(false);
+                }
+            }
+            alienSquareLabels[3][3].setVisible(true);
+
+           }
+       });
+       
+        ability1.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+               System.out.println(unitName);
+                if(unitSelected){
+                    if(unitName == "cleric"){
+                        System.out.println("Heal");
+                    }
+                    else if(unitName == "archer"){
+                        System.out.println("fuck");
+                    }
+                    else if(unitName == "swordandshield"){
+                        System.out.println("aaa");
+                    }
+                }
+           }
+       });
+        ability2.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+        ability3.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+        ability4.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent arg0){
+
+           }
+       });
+
+        move.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+
             }
         });
-
-
-       coward.addActionListener(new ActionListener(){
+        coward.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
                returnb = true;
@@ -857,4 +1133,4 @@ public class BattleView extends JPanel{
 
         return resizedImg;
     }
-   }
+}
