@@ -28,7 +28,11 @@ public class Crusader extends Unit {
 
 	@Override
 	public void damageTaken(int damage, int armourValue) {
+		for (int i=0;i<6;i++){
+			System.out.println(armourValues[i]);}
 		armourValues[armourValue] -= damage;
+		for (int i=0;i<6;i++){
+		System.out.println(armourValues[i]);}
 	}
 
 	@Override

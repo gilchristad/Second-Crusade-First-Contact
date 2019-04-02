@@ -33,7 +33,7 @@
         			{
         				temp = (int)(Math.random()*4+1);
         			}
-        			System.out.println(temp);
+        			//System.out.println(temp);
         			if (temp == 1 && count < 7)
         			{
         				if (j == 0)
@@ -76,7 +76,7 @@
         			{
         				temp = (int)(Math.random()*4+1);
         			}
-        			System.out.println(temp);
+        			//System.out.println(temp);
         			if (temp == 1 && count < 8)
         			{
         				if (j == 0)
@@ -130,7 +130,7 @@
          {
              if (characters[j]!=null)
              {
-                 System.out.println(j + ": " + "speed: " + characters[j].speedValue);
+                 //System.out.println(j + ": " + "speed: " + characters[j].speedValue);
                  characters[j].startTurn();
                  if(!characters[j].stunned){
                         characters[j].takeTurn(alienBoard,cruBoard);

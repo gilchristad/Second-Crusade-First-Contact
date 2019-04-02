@@ -35,6 +35,7 @@ public abstract class Unit {
 
 	public int attack(int damage, Square target, int armourValue) {
 		if (target.selectSquare() != null) {
+			System.out.println("UNIT WAS ATTACKED");
 			result = target.attacked(damage, armourValue, accuracyValue);
 			return result;
 		}

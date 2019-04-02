@@ -13,6 +13,7 @@ public class Square {
 			// Give test dodge only the unit
 			if (!unitOnHere.testDodge()) {
 				unitOnHere.damageTaken(damage, armourValue);
+				System.out.println("DAMAGE TAKEN CALLED HERE");
 				if (unitOnHere.getHealth(armourValue) <= 0) {
 					unitOnHere.somethingDied(armourValue, this);
 					if (armourValue==5 || armourValue==-1){
