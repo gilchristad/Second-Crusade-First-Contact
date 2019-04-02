@@ -22,6 +22,7 @@ public class BattleView extends JPanel{
     int c_counter = 0;
     boolean unitSelected = false;
     boolean unitTargeted = false;
+    int victoryCount=0;
     int unitCoordinateX;
     int unitCoordinateY;
     boolean moveSelected = false;
@@ -29,6 +30,8 @@ public class BattleView extends JPanel{
     boolean ability2Selected = false;
     boolean ability3Selected = false;
     boolean ability4Selected = false;
+    boolean defeat=false;
+    boolean totalVictory=false;
     int result;
     ImageIcon selectsquare = new ImageIcon("Images/Icons/selectedsquare.jpg");
     String unitName;
@@ -1640,8 +1643,25 @@ public class BattleView extends JPanel{
                 ability2Selected = false;
                 ability3Selected = false;
                 ability4Selected = false;
-            
-                    
+                boolean victory=true;
+                int nullCount=0;
+                for (int r=0;r<4;r++){
+                    for (int t=0;t<4;t++){
+                        if (instance.alienBoard.getSquare(r, t)!=null){
+                            victory=false;
+                        }
+                        if (instance.cruBoard.getSquare(r, t)==null){
+                            nullCount++;
+                        }
+                    }
+                }
+                if (nullCount==16){
+                    defeat=true;
+                }
+                 if(victory){
+                    victoryCount++;
+                    returnb = true;
+                 }   
             }
         });
         cancel.addActionListener(new ActionListener(){
@@ -1676,7 +1696,12 @@ public class BattleView extends JPanel{
     public void setReturn(){
         returnb = false;
     }
-
+    public boolean getDefeat(){
+        return defeat;
+    }
+    public boolean winCount(){
+        return victoryCount==4;
+    }
     private Image getScaledImage(Image srcImg, int w, int h){
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
