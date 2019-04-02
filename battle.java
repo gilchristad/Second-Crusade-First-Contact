@@ -84,18 +84,14 @@
 
         						x = new enemyTank(5, 0.9, 0.8, 0.8, 0.7, "tank", 5);
         				}
-        				else if (j==1)
+        				else if (j==1||j==2)
         				{
+                            x = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
                             
-                            x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
-        						
-
         				}
         				else 
         				{
-
-                            x = new enemySpitter(5, 0.9, 0.7, 0.8, 0.7, "spitter", 5);
-
+                            x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
         				}
         				count++;
         				alienBoard.getSquare(i, j).addUnit(x);
