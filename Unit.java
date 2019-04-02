@@ -12,9 +12,9 @@ public abstract class Unit {
 	public double sizeValue;
 	public boolean blinded=false;
 	public boolean stunned=false;
-	public boolean protect=false;
 	public int buff=0;
 	public boolean turn=false;
+	public boolean wasProtected=false;
 	public String name;
 	public ImageIcon image;
 	public Unit(int atk, double acc, double speed, double dodge, double size, String unitClass, ImageIcon icon) {
@@ -47,7 +47,7 @@ public abstract class Unit {
 	//IDK maybe increase a teammates/ your own defense
 	public void protect (Square target)
 	{
-		//System.out.println("Block");	
+		target.protect();
 	}
 	public void blind (Square target)
 	{
@@ -59,7 +59,7 @@ public abstract class Unit {
 		System.out.println("Cant use this tile anymroe sucker");
 	}
 	public void buff(Square target,int statToBuff,int howMuchToBuff) {
-		System.out.println("DWANYE THE ROCK JOHNSON IS IN THE HOUSE");
+		target.buff(statToBuff,howMuchToBuff);
 	}
 	public boolean testMiss(double enemyAcc, int modifier) {
 		// The bigger the character, the easier to hit
@@ -99,8 +99,13 @@ public abstract class Unit {
 		{
 			this.accuracyValue+=0.2;
 		}
+		if (wasProtected)
+		{
+			this.dodgeValue-=0.2;
+		}
 		this.stunned=false;
 	}
+	public abstract void takeTurn(Board board, Board board2);
 	public abstract int getHealth(int armourValue);
 	
 	public abstract void damageTaken(int damage, int armourValue);

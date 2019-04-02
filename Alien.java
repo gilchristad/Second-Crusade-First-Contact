@@ -32,11 +32,6 @@ public abstract class Alien extends Unit {
 		System.out.println("this thing died");
 	}
 	public abstract void takeTurn(Board board, Board board2);	
-		//Pick a move and a target basically
-		//To make it a good AI
-		//want to target weak things in range 
-		//have a scoring system
-		//bonus points for tanks in front, supports in back
 
 	
 }

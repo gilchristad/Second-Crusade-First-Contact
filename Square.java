@@ -35,6 +35,26 @@ public class Square {
 	public void blind() {
 		unitOnHere.accuracyValue-=0.2;
 	}
+	public void protect() {
+		unitOnHere.dodgeValue+=0.2;
+	}
+	public void buff(int which, int howMuch) {
+		if(which==0){
+			unitOnHere.attackValue+=howMuch;
+		}
+		else if(which==1){
+			unitOnHere.accuracyValue+=howMuch;
+		}
+		else if(which==2){
+			unitOnHere.speedValue+=howMuch;
+		}
+		else if(which==3){
+			unitOnHere.dodgeValue+=howMuch;
+		}
+		else if(which==4){
+			unitOnHere.sizeValue+=howMuch;
+		}
+	}
 	public Unit selectSquare() {
 		return unitOnHere;
 	}

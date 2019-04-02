@@ -135,8 +135,9 @@
              {
                  System.out.println(j + ": " + "speed: " + characters[j].speedValue);
                  characters[j].startTurn();
-                 //Wait until the turn is over
-                 //Do stuff here :)
+                 if(!characters[j].stunned){
+                        characters[j].takeTurn(alienBoard,cruBoard);
+                 }
                  characters[j].endTurn();
              }   
          }

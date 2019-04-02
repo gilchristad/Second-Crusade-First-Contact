@@ -118,4 +118,9 @@ public class Crusader extends Unit {
 		this.attack((int) (this.getAttackValue()*.9), target,-1);
 		
 	}
+
+	@Override
+	public void takeTurn(Board board, Board board2) {
+		//just wait until the player has picked a move basically
+	}
 }
