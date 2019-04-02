@@ -32,7 +32,7 @@ public class Crusader extends Unit {
 	}
 
 	@Override
-	public void somethingDied(int armourValue) {
+	public Square somethingDied(int armourValue, Square x) {
 		//If armour already destroyed 
 		if (armourValues[armourValue]==-1){
 			if (armourValue==0){
@@ -54,6 +54,7 @@ public class Crusader extends Unit {
 		else {
 			armourValues[armourValue]=-1;
 		}
+		return x;
 
 	}
 

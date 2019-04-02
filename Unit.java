@@ -113,7 +113,7 @@ public abstract class Unit {
 	
 	public abstract void damageTaken(int damage, int armourValue);
 
-	public abstract void somethingDied(int armourValue);
+	public abstract Square somethingDied(int armourValue,Square x);
 
 	public abstract void restoreHealth(int i, int j);
 }

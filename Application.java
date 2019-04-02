@@ -146,6 +146,19 @@ public class Application {
                 //bossbattle.bossclip.stop();
                 days++;
             }
+            else if (battleview.getDefeat()){
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(gameover);
+                frame.repaint();
+                frame.revalidate();
+            }
+            else if (battleview.winCount()){
+                frame.getContentPane().removeAll();
+                //CHANGE TO VICTORY SCREEN
+                frame.getContentPane().add(gameover);
+                frame.repaint();
+                frame.revalidate();
+            }
         }
         
     }
