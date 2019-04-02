@@ -1,31 +1,36 @@
 public class Square {
 	private Unit unitOnHere = null;
+	public int result = 0;
 	private int coordinates[];
 	public Square(Unit un) {
 		unitOnHere = un;
 		coordinates= new int[2];
 	}
 
-	public void attacked(int damage, int armourValue, double accuracy) {
+	public int attacked(int damage, int armourValue, double accuracy) {
 		if (!unitOnHere.testMiss(accuracy, 0)) {
 			// Give testMiss the unit and any modifiers a specific attack has
 			// Give test dodge only the unit
 			if (!unitOnHere.testDodge()) {
 				unitOnHere.damageTaken(damage, armourValue);
 				if (unitOnHere.getHealth(armourValue) <= 0) {
-					unitOnHere.somethingDied(armourValue);
+					unitOnHere.somethingDied(armourValue, this);
 					if (armourValue==5 || armourValue==-1){
 						removeUnit();
 					}
 					System.out.println("armor hit??");
+					result = 0;
 				}
 			} else {
 				System.out.println("A dodge happened");
+				result = 1;
 			}
 		} else {
 			// The enemy missed, have it target a different square
 			System.out.println("A miss happened");
+			result = 2;
 		}
+		return result;
 	}
 	public void stunned() {
 		unitOnHere.stunned=true;

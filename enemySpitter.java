@@ -35,7 +35,7 @@ public class enemySpitter extends Alien{
 				}
 			}
 			//Move to the front since tank
-			if (y!=2){
+			if (y!=1){
 				System.out.println("moving");
 				Square[] list1=highlightMoveOptions(board.getSquare(x,y), board);
 				for (int z=0;z<list1.length;z++){
@@ -75,6 +75,7 @@ public class enemySpitter extends Alien{
 					targets[1]=board2.getSquare(x, list2[target].getCoordinates()[1]-1);
 				}
 				System.out.println("spraying");
+				System.out.println(targets);
 				this.spray(targets);
 	
 			}
