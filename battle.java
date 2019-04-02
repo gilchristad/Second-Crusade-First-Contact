@@ -10,8 +10,10 @@
         
         cruBoard= new Board(4,4);
         cruBoard.getSquare(1, 3).addUnit(party.getParty(0));
-        cruBoard.getSquare(1, 2).addUnit(party.getParty(2));
-        cruBoard.getSquare(1, 1).addUnit(party.getParty(1));
+        cruBoard.getSquare(1, 1).addUnit(party.getParty(2));
+        cruBoard.getSquare(1, 0).addUnit(party.getParty(1));
+        cruBoard.getSquare(1, 2).addUnit(party.getParty(3));
+        
         alienBoard= new Board(4,4);
         int count = 0;
         if (type == 1)
@@ -23,7 +25,7 @@
         		for (int j = 0; j < 4; j++)
         		{
   
-        			if (9-(i*j) <= 3 &&  count < 3)
+        			if (9-(i*j) <= 7 &&  count < 7)
         			{
         				temp = (int)(Math.random()*1+1);
         			}
@@ -66,7 +68,7 @@
         		for (int j = 0; j < 4; j++)
         		{
   
-        			if (9-(i*j) <= 3 &&  count < 3)
+        			if (9-(i*j) <= 7 &&  count < 7)
         			{
         				temp = (int)(Math.random()*1+1);
         			}
@@ -75,7 +77,7 @@
         				temp = (int)(Math.random()*4+1);
         			}
         			System.out.println(temp);
-        			if (temp == 1 && count < 7)
+        			if (temp == 1 && count < 8)
         			{
         				if (j == 0)
         				{

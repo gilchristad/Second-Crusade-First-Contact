@@ -14,6 +14,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
+import java.util.Random;
 
 public class BattleView extends JPanel{
 
@@ -29,7 +30,8 @@ public class BattleView extends JPanel{
     Clip battleclip;
     Clip bossclip;
     boolean returnb = false;
-
+    JLabel[] crusaders;
+    JLabel[] aliens;
     public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
@@ -242,6 +244,7 @@ public class BattleView extends JPanel{
 
 
             instance = new battle(1,party);
+            System.out.println("BNew battle");
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
                 battleclip = AudioSystem.getClip();
@@ -274,9 +277,9 @@ public class BattleView extends JPanel{
 
         imagelabel.setIcon(background);
 
-        JLabel[] crusaders = new JLabel[16];
-        JLabel[] aliens = new JLabel[16];
-        
+        crusaders = new JLabel[16];
+        aliens = new JLabel[16];
+        System.out.println();
         int c_counter = 0;
         int a_counter = 0;
         for (int i = 0; i < 4; i++)
