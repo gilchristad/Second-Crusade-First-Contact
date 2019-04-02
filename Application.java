@@ -15,6 +15,7 @@ public class Application {
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();
         GameOver gameover = new GameOver();
+        Victory vic = new Victory();
         RestArea restarea = new RestArea();
         BattleView battleview = new BattleView();
         BattleView bossbattle = new BattleView();
@@ -155,7 +156,7 @@ public class Application {
             else if (battleview.winCount()){
                 frame.getContentPane().removeAll();
                 //CHANGE TO VICTORY SCREEN
-                frame.getContentPane().add(gameover);
+                frame.getContentPane().add(vic);
                 frame.repaint();
                 frame.revalidate();
             }

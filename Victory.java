@@ -10,13 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Victory extends JPanel{
+public class Victory     extends JPanel{
     public boolean continuebool = false;
 	private static final long serialVersionUID = 1L;
 	public void GameOverFrame(int width, int height)
 	{
 		
-		ImageIcon background = new ImageIcon("Images/Backgrounds/gameover.jpg");
+		ImageIcon background = new ImageIcon("Images/Backgrounds/victory.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
         JLabel imagelabel = new JLabel(background);
         JButton skip = new JButton();
