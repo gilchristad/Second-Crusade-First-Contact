@@ -28,6 +28,7 @@ public abstract class Unit {
 	}
 
 	public void move(Square target, Square origSquare) {
+
 		target.move(this,origSquare);
 	}
 

@@ -12,6 +12,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
+import java.util.Random;
 
 public class BattleView extends JPanel{
 
@@ -30,7 +31,8 @@ public class BattleView extends JPanel{
     Clip battleclip;
     Clip bossclip;
     boolean returnb = false;
-
+    JLabel[] crusaders;
+    JLabel[] aliens;
     public void BattleViewFrame(int width, int height, int type, Party party) throws IOException {
         
         ImageIcon background;
@@ -292,6 +294,7 @@ public class BattleView extends JPanel{
         	background = new ImageIcon("Images/Backgrounds/dungeon1.jpg");
             background.setImage(getScaledImage(background.getImage(), width, height));
             instance = new battle(1,party);
+            System.out.println("BNew battle");
             try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/BATTLE1.0.wav").getAbsoluteFile());
                 battleclip = AudioSystem.getClip();
@@ -322,9 +325,10 @@ public class BattleView extends JPanel{
             }   
         }
         imagelabel.setIcon(background);
-        JLabel[] crusaders = new JLabel[16];
-        JLabel[] aliens = new JLabel[16];
 
+        crusaders = new JLabel[16];
+        aliens = new JLabel[16];
+        int c_counter = 0;
         int a_counter = 0;
         for (int i = 0; i < 4; i++)
         {
@@ -415,10 +419,10 @@ public class BattleView extends JPanel{
                     }
                 }
                 crusaderSquareLabels[0][0].setVisible(true);
-                for (int i = 0; i < c_counter; i++)
-                {
-                    crusaders[i].setVisible(true);
-            	}
+                // for (int i = 0; i < c_counter; i++)
+                // {
+                //     crusaders[i].setVisible(true);
+            	// }
             
                 if(unitSelected == false){
                     if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
@@ -444,12 +448,11 @@ public class BattleView extends JPanel{
                     crusaderSquareLabels[i][j].setVisible(false);
                 }
             }
-            
             crusaderSquareLabels[0][1].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
                 if(unitSelected == false){
                     if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
                         unitSelected = true;
@@ -477,10 +480,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[0][2].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
                     unitSelected = true;
@@ -506,10 +509,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[0][3].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
                     unitSelected = true;
@@ -535,10 +538,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][0].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
                     unitSelected = true;
@@ -564,10 +567,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][1].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
                     unitSelected = true;
@@ -593,10 +596,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][2].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
                     unitSelected = true;
@@ -622,10 +625,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][3].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-            {
-                crusaders[i].setVisible(true);
-            }
+            // for (int i = 0; i < c_counter; i++)
+            // {
+            //     crusaders[i].setVisible(true);
+            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
                     unitSelected = true;                    
@@ -652,10 +655,10 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[2][0].setVisible(true);
-            for (int i = 0; i < c_counter; i++)
-                {
-                    crusaders[i].setVisible(true);
-            	}
+            // for (int i = 0; i < c_counter; i++)
+            //     {
+            //         crusaders[i].setVisible(true);
+            // 	}
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
                     unitSelected = true;
@@ -1065,7 +1068,6 @@ public class BattleView extends JPanel{
         ability1.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-               System.out.println("clicked");
                System.out.println(unitName);
                 if(unitSelected){
                     if(unitName == "cleric"){
