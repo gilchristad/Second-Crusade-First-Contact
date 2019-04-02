@@ -1,12 +1,8 @@
 public class Square {
 	private Unit unitOnHere = null;
-	// Blocked would be used if an ability puts like spikes on a square so you cant
-	// move to it
-	private boolean blocked;
 	private int coordinates[];
 	public Square(Unit un) {
 		unitOnHere = un;
-		blocked = false;
 		coordinates= new int[2];
 	}
 
@@ -17,11 +13,13 @@ public class Square {
 			if (!unitOnHere.testDodge()) {
 				unitOnHere.damageTaken(damage, armourValue);
 				if (unitOnHere.getHealth(armourValue) <= 0) {
-					removeUnit(armourValue);
+					unitOnHere.somethingDied(armourValue);
+					if (armourValue==5 || armourValue==-1){
+						removeUnit();
+					}
 					System.out.println("armor hit??");
 				}
 			} else {
-				// move the unit to where it can be moved
 				System.out.println("A dodge happened");
 			}
 		} else {
@@ -63,8 +61,8 @@ public class Square {
 		// Highlight the square that is hovered
 	}
 
-	public void removeUnit(int armourValue) {
-		unitOnHere.somethingDied(armourValue);
+	public void removeUnit() {
+		//unitOnHere.somethingDied(armourValue);
 		unitOnHere = null;
 	}
 	public void move(Unit unitToMove,Square orig){

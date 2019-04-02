@@ -33,8 +33,27 @@ public class Crusader extends Unit {
 
 	@Override
 	public void somethingDied(int armourValue) {
-		// Delete the armour that was destroyed, if that type of armour was already
-		// destroyed, delete the limb
+		//If armour already destroyed 
+		if (armourValues[armourValue]==-1){
+			if (armourValue==0){
+				this.accuracyValue-=0.4;
+			}
+			else if (armourValue==1){
+				this.attackValue-=2;
+			}
+			else if (armourValue==2){
+				this.attackValue-=2;
+			}
+			else if (armourValue==3){
+				this.dodgeValue-=0.3;
+			}
+			else if (armourValue==4){
+				this.dodgeValue-=0.3;
+			}
+		}
+		else {
+			armourValues[armourValue]=-1;
+		}
 
 	}
 
@@ -59,12 +78,8 @@ public class Crusader extends Unit {
 		
 	}
 	//Swordsman
-	public void hiltdBash(Square target) {
-		//Get attack value and modify it by 0.5 since this attack is suppose to be a stun primarily  
+	public void hiltdBash(Square target) { 
 		this.attack((int) (this.getAttackValue()*0.5), target, -1);
-		//Then call the stun method
-		//Maybe only call if the attack hit
-		//FOR NOW IT ALWAYS STUNS
 		this.stun(target);
 	}
 	public void swordsmanslash(Square target) {
