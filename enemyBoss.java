@@ -9,7 +9,8 @@ public class enemyBoss extends Alien{
 	{
 		for (int i =0;i<targets.length;i++)
 		{
-			this.attack(this.attackValue,targets[i],5);
+			if (targets[i]!=null){
+			this.attack(this.attackValue,targets[i],5);}
 		}
 	}
 	public void kill(Square target) {

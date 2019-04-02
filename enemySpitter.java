@@ -13,7 +13,9 @@ public class enemySpitter extends Alien{
 	public void spray(Square [] targets) {
 		for (int i =0;i<targets.length;i++)
 		{
+			if (targets[i]!=null){
 			this.attack((int)(this.getAttackValue()*.8), targets[i],(int)Math.random()*6+1);
+			}
 		}
 		
 	}
@@ -77,7 +79,6 @@ public class enemySpitter extends Alien{
 				System.out.println("spraying");
 				System.out.println(targets);
 				this.spray(targets);
-	
 			}
 			else if (moveToUse==3){
 				do{
