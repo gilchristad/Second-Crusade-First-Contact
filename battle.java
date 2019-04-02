@@ -13,16 +13,26 @@
         cruBoard.getSquare(1, 2).addUnit(party.getParty(2));
         cruBoard.getSquare(1, 1).addUnit(party.getParty(1));
         alienBoard= new Board(4,4);
+        int count = 0;
         if (type == 1)
         {
         	Unit x;
+        	int temp = 0;
         	for (int i = 0; i < 4; i++)
         	{
         		for (int j = 0; j < 4; j++)
         		{
-        			int temp = (int)(Math.random()*4+1);
+  
+        			if (9-(i*j) <= 3 &&  count < 3)
+        			{
+        				temp = (int)(Math.random()*1+1);
+        			}
+        			else
+        			{
+        				temp = (int)(Math.random()*4+1);
+        			}
         			System.out.println(temp);
-        			if (temp == 1)
+        			if (temp == 1 && count < 7)
         			{
         				if (j == 0)
         				{
@@ -41,6 +51,7 @@
         						x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
 
         				}
+        				count++;
         				alienBoard.getSquare(i, j).addUnit(x);
         			}
         		}
@@ -48,14 +59,23 @@
         }
         else
         {
-			Unit x;
+        	Unit x;
+        	int temp = 0;
         	for (int i = 0; i < 4; i++)
         	{
         		for (int j = 0; j < 4; j++)
         		{
-        			int temp = (int)(Math.random()*4+1);
+  
+        			if (9-(i*j) <= 3 &&  count < 3)
+        			{
+        				temp = (int)(Math.random()*1+1);
+        			}
+        			else
+        			{
+        				temp = (int)(Math.random()*4+1);
+        			}
         			System.out.println(temp);
-        			if (temp == 1)
+        			if (temp == 1 && count < 7)
         			{
         				if (j == 0)
         				{
@@ -74,6 +94,7 @@
         						x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
 
         				}
+        				count++;
         				alienBoard.getSquare(i, j).addUnit(x);
         			}
         		}

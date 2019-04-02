@@ -14,7 +14,6 @@ import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.io.*;
-import java.awt.*;
 
 public class BattleView extends JPanel{
 
