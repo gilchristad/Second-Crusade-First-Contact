@@ -10,7 +10,7 @@ public class SwordAndShield extends Crusader {
 		
 		super(atk, acc, speed, dodge, size, name, image, viHP, laHP, raHP, llHP, rlHP, chHP);
 	}
-	public void shieldBash(Square target) {
+	public void hiltdBash(Square target) {
 		//Get attack value and modify it by 0.5 since this attack is suppose to be a stun primarily  
 		this.attack((int) (this.getAttackValue()*0.5), target, -1);
 		//Then call the stun method

@@ -10,24 +10,27 @@ public class Application {
     { 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
-        Party party = new Party(3);
+        Party party = new Party(4);
         
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
         	Crusader y;
         	if (i == 0)
         	{
                 y = new SwordAndShield(10, .9, 0.1, 0.8, 0.8, "swordandshield", 10, 10, 10, 10, 10, 10);
-                //System.out.println(y.getHealth(0));
         	}
         	else if (i== 1)
         	{
                 y = new Cleric(10, .9, 0.2, 0.8, 0.8, "cleric", 10, 10, 10, 10, 10, 10);
                 
         	}
-        	else
+        	else if (i == 2)
         	{
                 y= new Archer(10, .9, 0.3, 0.8, 0.8, "archer",10, 10, 10, 10, 10, 10);
+        	}
+        	else
+        	{
+        		y= new Swordsman(10, .9, 0.5, 0.8, 0.8, "swordsman",10, 10, 10, 10, 10, 10);
         	}
 			party.setParty(i, y);
         }
@@ -85,6 +88,7 @@ public class Application {
             }
             else if(overworld.getBoss()){
                 frame.getContentPane().removeAll();
+                bossbattle = new BattleView();
                 bossbattle.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 2, party);
                 frame.getContentPane().add(bossbattle);
                 frame.repaint();
@@ -104,6 +108,8 @@ public class Application {
             }
             else if(overworld.getBattle()){
                 frame.getContentPane().removeAll();
+                System.out.println("here");
+                battleview = new BattleView();
                 battleview.BattleViewFrame((int)screenSize.getWidth(), (int)screenSize.getHeight(), 1, party);
                 frame.getContentPane().add(battleview);
                 frame.repaint();
@@ -139,6 +145,7 @@ public class Application {
                 bossbattle.setReturn();
                 //overworld.overworldclip.start();
                 bossbattle.bossclip.stop();
+
             }
         }
         
