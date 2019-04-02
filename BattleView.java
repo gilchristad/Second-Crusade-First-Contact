@@ -1269,12 +1269,7 @@ public class BattleView extends JPanel{
                System.out.println(unitName);
                 if(unitSelected){
                     if(unitName == "cleric"){
-<<<<<<< HEAD
-                        //party.getParty(3)//.heal(unitCoordinateX,unitCoordinateY);
-                    	System.out.println("fuck");
-=======
                         party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
->>>>>>> ba117b31358aac6ba6e872a7fb19a5aa26a2a652
                     }
                     else if(unitName == "archer"){
                         party.getParty(2).snipe(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
