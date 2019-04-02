@@ -37,10 +37,13 @@ public class enemySpitter extends Alien{
 				}
 			}
 			//Move to the front since tank
-			if (y!=1){
+			if (y!=1 || y!=2){
 				System.out.println("moving");
 				Square[] list1=highlightMoveOptions(board.getSquare(x,y), board);
+				System.out.println(list1);
+				System.out.println(list1.length);
 				for (int z=0;z<list1.length;z++){
+					System.out.println(list1[z]);
 					if (list1[z].getCoordinates()[0]==2){
 						this.move(list1[z], board.getSquare(x, y));
 						return;}

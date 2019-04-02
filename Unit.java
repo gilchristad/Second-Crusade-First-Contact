@@ -67,7 +67,7 @@ public abstract class Unit {
 	public boolean testMiss(double enemyAcc, int modifier) {
 		// The bigger the character, the easier to hit
 		double needToBeat = (enemyAcc - modifier) * sizeValue;
-		double prob = Math.random();
+		double prob = Math.random()*.75;
 		//System.out.println(needToBeat);
 		//System.out.println(prob);
 		if (prob > needToBeat) {
@@ -81,7 +81,7 @@ public abstract class Unit {
 		// Take speed and dodge values, multiply them, higher number is more likely to
 		// dodge
 		double needToBeat = speedValue * dodgeValue;
-		double prob = Math.random();
+		double prob = Math.random()*1.5;
 		//System.out.println(needToBeat);
 		//System.out.println(prob);
 		if (prob < needToBeat) {

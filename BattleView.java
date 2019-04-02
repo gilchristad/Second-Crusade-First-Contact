@@ -514,7 +514,7 @@ public class BattleView extends JPanel{
                         	}
                         	else if (i == 3)
                         	{
-                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().getHealth(0));
+                        		stats[i].setText("H LA LR LL RL C");
                         	}
                         	else if (i == 4)
                         	{
@@ -571,7 +571,7 @@ public class BattleView extends JPanel{
                         	}
                         	else if (i == 3)
                         	{
-                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().getHealth(0));
+                        		stats[i].setText("H LA LR LL RL C");
                         	}
                         	else if (i == 4)
                         	{
@@ -629,7 +629,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -687,7 +687,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -746,7 +746,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -806,7 +806,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -867,7 +867,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -927,7 +927,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -990,7 +990,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1053,7 +1053,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1114,7 +1114,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1175,7 +1175,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1236,7 +1236,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1297,7 +1297,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1358,7 +1358,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -1419,7 +1419,7 @@ public class BattleView extends JPanel{
                     	}
                     	else if (i == 3)
                     	{
-                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().getHealth(0));
+                    		stats[i].setText("H LA LR LL RL C");
                     	}
                     	else if (i == 4)
                     	{
@@ -2128,8 +2128,8 @@ public class BattleView extends JPanel{
                     System.out.println(random);
                     System.out.println(random2);
                     instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
-                    System.out.print("7 Attacking with: ");
-                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                    //System.out.print("7 Attacking with: ");
+                    //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     do{
                         random = (int)(Math.random()*((4)));
                         random2 = (int)(Math.random()*((4)));
@@ -2138,8 +2138,8 @@ public class BattleView extends JPanel{
                     System.out.println("Random nums");
                     System.out.println(random);
                     System.out.println(random2);
-                    System.out.print("8 Attacking with: ");
-                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                    //System.out.print("8 Attacking with: ");
+                    //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     }
                     
                 }
