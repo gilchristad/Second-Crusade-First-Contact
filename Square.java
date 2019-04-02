@@ -13,7 +13,7 @@ public class Square {
 			if (!unitOnHere.testDodge()) {
 				unitOnHere.damageTaken(damage, armourValue);
 				if (unitOnHere.getHealth(armourValue) <= 0) {
-					unitOnHere.somethingDied(armourValue);
+					unitOnHere.somethingDied(armourValue, this);
 					if (armourValue==5 || armourValue==-1){
 						removeUnit();
 					}
