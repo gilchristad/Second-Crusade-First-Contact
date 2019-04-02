@@ -61,7 +61,7 @@ public class Crusader extends Unit {
 	public int heal(Square target) {
 		//Get attack value and modify it by -1 since its supposed to heal.  
 		//Not sure if this is how you are supposed to heal crusaders
-		return this.attack((int) (this.getAttackValue()*(-1.0)), target, -1);
+		return this.attack((int) (this.getAttackValue()*(-0.25)), target, (int) (Math.random()*6+1));
 	}
 	public int clericslash(Square target) {
 		//Get attack value and modify it by 0.7 since this attack is suppose to be a healer primarily  
