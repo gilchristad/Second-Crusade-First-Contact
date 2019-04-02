@@ -102,8 +102,10 @@ public abstract class Unit {
 		this.stunned=false;
 	}
 	public abstract int getHealth(int armourValue);
-
+	
 	public abstract void damageTaken(int damage, int armourValue);
 
 	public abstract void somethingDied(int armourValue);
+
+	public abstract void restoreHealth(int i, int j);
 }

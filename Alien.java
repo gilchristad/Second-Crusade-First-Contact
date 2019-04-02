@@ -12,6 +12,12 @@ public abstract class Alien extends Unit {
 	public int getHealth(int armourValue) {
 		return health;
 	}
+	
+	@Override
+	public void restoreHealth(int i, int j)
+	{
+		
+	}
 
 	@Override
 	public void damageTaken(int damage, int armourValue) {

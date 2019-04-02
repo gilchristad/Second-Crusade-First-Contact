@@ -21,11 +21,17 @@ public class RestArea extends JPanel{
     boolean returnb = false;
     int TWO_SECONDS = 2000;
 
-    public void RestAreaFrame(int width, int height) throws IOException {
+    public void RestAreaFrame(int width, int height, Party party) throws IOException {
 
     	ImageIcon background = new ImageIcon("Images/Backgrounds/restarea.jpg");
         background.setImage(getScaledImage(background.getImage(), width, height));
+        
+        ImageIcon rest = new ImageIcon("Images/Backgrounds/restarearest.jpg");
+        rest.setImage(getScaledImage(rest.getImage(), width, height));
 
+        ImageIcon train = new ImageIcon("Images/Backgrounds/restareatrain.jpg");
+        train.setImage(getScaledImage(train.getImage(), width, height));
+        
         JButton restb = new JButton();
         JButton trainb = new JButton();
         JLabel bg = new JLabel();
@@ -62,9 +68,18 @@ public class RestArea extends JPanel{
         restb.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
+            	bg.setIcon(rest);
                 Timer timer = new Timer(TWO_SECONDS, new ActionListener(){
                     public void actionPerformed(ActionEvent evt){
-                        returnb = true;
+                        for (int i = 0; i < 4; i++)
+                        {
+                        	for (int j = 0; j < 6; j++)
+                        	{
+                        		party.getParty(i).restoreHealth(j,5);
+                        	}
+                        }
+                    	bg.setIcon(background);
+                    	returnb = true;
                     }
                 });
                 timer.setRepeats(false);
@@ -74,9 +89,15 @@ public class RestArea extends JPanel{
         trainb.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
+            	bg.setIcon(train);
                 Timer timer = new Timer(TWO_SECONDS, new ActionListener(){
                     public void actionPerformed(ActionEvent evt){
-                        returnb = true;
+                    	for (int i = 0; i < 4; i++)
+                        {
+                        	party.getParty(i).attackValue+=5;
+                        }
+                    	bg.setIcon(background);
+                    	returnb = true;
                     }
                 });
                 timer.setRepeats(false);
