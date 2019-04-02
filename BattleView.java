@@ -1269,14 +1269,21 @@ public class BattleView extends JPanel{
                System.out.println(unitName);
                 if(unitSelected){
                     if(unitName == "cleric"){
+<<<<<<< HEAD
                         //party.getParty(3)//.heal(unitCoordinateX,unitCoordinateY);
                     	System.out.println("fuck");
+=======
+                        party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+>>>>>>> ba117b31358aac6ba6e872a7fb19a5aa26a2a652
                     }
                     else if(unitName == "archer"){
-                        System.out.println("fuck");
+                        party.getParty(2).snipe(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                     }
                     else if(unitName == "swordandshield"){
-                        System.out.println("aaa");
+                        party.getParty(0).sashiltdBash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                    }
+                    else if(unitName == "swordsman"){
+                        party.getParty(3).swordsmanslash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                     }
                 }
            }
@@ -1284,19 +1291,61 @@ public class BattleView extends JPanel{
         ability2.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            System.out.println(unitName);
+            if(unitSelected){
+                if(unitName == "cleric"){
+                    party.getParty(1).clericslash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "archer"){
+                    party.getParty(2).shoot(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordandshield"){
+                    party.getParty(0).slash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordsman"){
+                    party.getParty(3).hiltdBash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+            }
            }
        });
         ability3.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            System.out.println(unitName);
+            if(unitSelected){
+                if(unitName == "cleric"){
+                    party.getParty(1).clericblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "archer"){
+                    party.getParty(2).block(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordandshield"){
+                    party.getParty(0).sasblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordsman"){
+                    party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+            }
            }
        });
         ability4.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-
+            System.out.println(unitName);
+            if(unitSelected){
+                if(unitName == "cleric"){
+                    party.getParty(1).holy_light(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "archer"){
+                    party.getParty(2).rain(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordandshield"){
+                    party.getParty(0).sasslice(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+                else if(unitName == "swordsman"){
+                    party.getParty(3).slice(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                }
+            }
            }
        });
 
