@@ -16,6 +16,7 @@ public class MainMenu extends JPanel {
 
     private static final long serialVersionUID = 1L;
     Clip menuclip;
+    Clip menunav;
     boolean newgame = false;
 
     public void MainMenuFrame(int width, int height) throws IOException{
@@ -142,9 +143,21 @@ public class MainMenu extends JPanel {
                 loadbackb.addMouseListener(new java.awt.event.MouseAdapter(){
                     public void mouseEntered(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(loadgamebackhover);
+                        try {
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                            menunav = AudioSystem.getClip();
+                            menunav.open(audioInputStream);
+                        } catch(Exception ex) {
+                            System.out.println("Error with playing sound.");
+                            ex.printStackTrace();
+                        }   
+                        menunav.start();
+
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(loadgamescreen);
+                        menunav.stop();
+
                     }
                 });
             }
@@ -163,9 +176,21 @@ public class MainMenu extends JPanel {
                 optionsbackb.addMouseListener(new java.awt.event.MouseAdapter(){
                     public void mouseEntered(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(optionsbackhover);
+                        try {
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                            menunav = AudioSystem.getClip();
+                            menunav.open(audioInputStream);
+                        } catch(Exception ex) {
+                            System.out.println("Error with playing sound.");
+                            ex.printStackTrace();
+                        }   
+                        menunav.start();
+
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(optionsscreen);
+                        menunav.stop();
+
                     }
                 });
             }
@@ -191,9 +216,21 @@ public class MainMenu extends JPanel {
                 lgb.addMouseListener(new java.awt.event.MouseAdapter(){
                     public void mouseEntered(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(loadgamehover);
+                        try {
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                            menunav = AudioSystem.getClip();
+                            menunav.open(audioInputStream);
+                        } catch(Exception ex) {
+                            System.out.println("Error with playing sound.");
+                            ex.printStackTrace();
+                        }   
+                        menunav.start();
+
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(image);
+                        menunav.stop();
+
                     }
                 });
                 loadbackb.removeMouseListener(loadbackb.getMouseListeners()[1]);
@@ -213,9 +250,21 @@ public class MainMenu extends JPanel {
                 ob.addMouseListener(new java.awt.event.MouseAdapter(){
                     public void mouseEntered(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(optionshover);
+                        try {
+                            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                            menunav = AudioSystem.getClip();
+                            menunav.open(audioInputStream);
+                        } catch(Exception ex) {
+                            System.out.println("Error with playing sound.");
+                            ex.printStackTrace();
+                        }   
+                        menunav.start();
+
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt){
                         imagelabel.setIcon(image);
+                        menunav.stop();
+
                     }
                 });
                 optionsbackb.removeMouseListener(optionsbackb.getMouseListeners()[1]);
@@ -225,45 +274,104 @@ public class MainMenu extends JPanel {
         ngb.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(newgamehover);
+                try {
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                    menunav = AudioSystem.getClip();
+                    menunav.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }   
+                menunav.start();
+
             }
             public void mouseExited(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(image);
+                menunav.stop();
+
             }
         });
 
         cgb.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(continuegamehover);
+                try {
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                    menunav = AudioSystem.getClip();
+                    menunav.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }   
+                menunav.start();
+
             }
             public void mouseExited(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(image);
+                menunav.stop();
+
             }
         });
         
         lgb.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(loadgamehover);
+                try {
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                    menunav = AudioSystem.getClip();
+                    menunav.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }   
+                menunav.start();
+
             }
             public void mouseExited(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(image);
+                menunav.stop();
+
             }
         });
 
         ob.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(optionshover);
+                try {
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                    menunav = AudioSystem.getClip();
+                    menunav.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }   
+                menunav.start();
+
             }
             public void mouseExited(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(image);
+                menunav.stop();
+
             }
         });
 
         exitb.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(exithover);
+                try {
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/SoundEffects/MENU.wav").getAbsoluteFile());
+                    menunav = AudioSystem.getClip();
+                    menunav.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }   
+                menunav.start();
             }
             public void mouseExited(java.awt.event.MouseEvent evt){
                 imagelabel.setIcon(image);
+                menunav.stop();
+
             }
         });
 
