@@ -1887,23 +1887,33 @@ public class BattleView extends JPanel{
                                 	gametext.setText(gametext.getText() +"<br/>" + "Swordsman missed the attack!</html>");
                                 }
                             }
-                        //random num from 1-16
-                        int random=-1;
-                        int random2=-1;
-                        do{
-                            random = (int)(Math.random()*((4)));
-                            random2 = (int)(Math.random()*((4)));
-                        }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                        instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
-                        //System.out.print("1 Attacking with: ");
-                       // System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
-                        do{
-                            random = (int)(Math.random()*((4)));
-                            random2 = (int)(Math.random()*((4)));
-                        }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                        instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
-                       // System.out.print("2 Attacking with: ");
-                      //  System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                            int random=-1;
+                            int random2=-1;
+                            boolean hasAUnit=false;
+                            for (int r=0;r<4;r++){
+                                for (int t=0;t<4;t++){
+                                    if (instance.alienBoard.getSquare(r, t)!=null){
+                                        hasAUnit=true;
+                                    }
+                                }
+                            }
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                           // System.out.println("Random nums");
+                           // System.out.println(random);
+                           // System.out.println(random2);
+                           if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);}
+                            //System.out.print("7 Attacking with: ");
+                            //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                            if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);} 
                     }
                     else if(ability2Selected){
                         System.out.println(unitName);
@@ -1980,22 +1990,33 @@ public class BattleView extends JPanel{
                                 	gametext.setText(gametext.getText() +"<br/>" + "Swordsman missed the attack!</html>");
                                 }
                             }
-                    int random=-1;
-                    int random2=-1;
-                    do{
-                        random = (int)(Math.random()*((4)));
-                        random2 = (int)(Math.random()*((4)));
-                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
-                   // System.out.print("3 Attacking with: ");
-                   // System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
-                    do{
-                        random = (int)(Math.random()*((4)));
-                        random2 = (int)(Math.random()*((4)));
-                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);   
-                   // System.out.print("4 Attacking with: ");
-                  //  System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name); 
+                            int random=-1;
+                            int random2=-1;
+                            boolean hasAUnit=false;
+                            for (int r=0;r<4;r++){
+                                for (int t=0;t<4;t++){
+                                    if (instance.alienBoard.getSquare(r, t)!=null){
+                                        hasAUnit=true;
+                                    }
+                                }
+                            }
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                           // System.out.println("Random nums");
+                           // System.out.println(random);
+                           // System.out.println(random2);
+                           if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);}
+                            //System.out.print("7 Attacking with: ");
+                            //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                            if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);} 
                     }
                     else if(ability3Selected){                 
                         System.out.println(unitName);
@@ -2027,18 +2048,31 @@ public class BattleView extends JPanel{
                             }
                             int random=-1;
                             int random2=-1;
+                            boolean hasAUnit=false;
+                            for (int r=0;r<4;r++){
+                                for (int t=0;t<4;t++){
+                                    if (instance.alienBoard.getSquare(r, t)!=null){
+                                        hasAUnit=true;
+                                    }
+                                }
+                            }
                             do{
                                 random = (int)(Math.random()*((4)));
                                 random2 = (int)(Math.random()*((4)));
-                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
-                           // System.out.print("5 Attacking with: ");
-                           //  System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                           // System.out.println("Random nums");
+                           // System.out.println(random);
+                           // System.out.println(random2);
+                           if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);}
+                            //System.out.print("7 Attacking with: ");
+                            //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                             do{
                                 random = (int)(Math.random()*((4)));
                                 random2 = (int)(Math.random()*((4)));
-                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);  
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                            if(hasAUnit){
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);} 
                             //System.out.print("6 Attacking with: ");
                         //    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);  
                     }
@@ -2120,21 +2154,31 @@ public class BattleView extends JPanel{
                         }
                     int random=-1;
                     int random2=-1;
+                    boolean hasAUnit=false;
+                    for (int r=0;r<4;r++){
+                        for (int t=0;t<4;t++){
+                            if (instance.alienBoard.getSquare(r, t)!=null){
+                                hasAUnit=true;
+                            }
+                        }
+                    }
                     do{
                         random = (int)(Math.random()*((4)));
                         random2 = (int)(Math.random()*((4)));
-                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
                    // System.out.println("Random nums");
                    // System.out.println(random);
-                  //  System.out.println(random2);
-                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                   // System.out.println(random2);
+                   if(hasAUnit){
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);}
                     //System.out.print("7 Attacking with: ");
                     //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     do{
                         random = (int)(Math.random()*((4)));
                         random2 = (int)(Math.random()*((4)));
-                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
-                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);    
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null&&hasAUnit);
+                    if(hasAUnit){
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);} 
                     //System.out.println("Random nums");
                     //System.out.println(random);
                     //System.out.println(random2);
