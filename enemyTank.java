@@ -81,6 +81,7 @@ public class enemyTank extends Alien{
 				targets[1]=board2.getSquare(x, list2[target].getCoordinates()[1]-1);
 			}
 			System.out.println("kncoking");
+			System.out.println(targets);
 			this.knockback(targets);
 
 		}

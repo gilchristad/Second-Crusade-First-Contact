@@ -1322,7 +1322,23 @@ public class BattleView extends JPanel{
 
                                 party.getParty(3).swordsmanslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
-                        
+                        //random num from 1-16
+                        int random=-1;
+                        int random2=-1;
+                        do{
+                            random = (int)(Math.random()*((4)));
+                            random2 = (int)(Math.random()*((4)));
+                        }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                        instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                        System.out.print("1 Attacking with: ");
+                        System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                        do{
+                            random = (int)(Math.random()*((4)));
+                            random2 = (int)(Math.random()*((4)));
+                        }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                        instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                        System.out.print("2 Attacking with: ");
+                        System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     }
                     else if(ability2Selected){
                         System.out.println(unitName);
@@ -1351,7 +1367,22 @@ public class BattleView extends JPanel{
 
                                 party.getParty(3).hiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
-                        
+                    int random=-1;
+                    int random2=-1;
+                    do{
+                        random = (int)(Math.random()*((4)));
+                        random2 = (int)(Math.random()*((4)));
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                    System.out.print("3 Attacking with: ");
+                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                    do{
+                        random = (int)(Math.random()*((4)));
+                        random2 = (int)(Math.random()*((4)));
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);   
+                    System.out.print("4 Attacking with: ");
+                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name); 
                     }
                     else if(ability3Selected){                 
                         System.out.println(unitName);
@@ -1381,7 +1412,22 @@ public class BattleView extends JPanel{
 
                                 party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
-                        
+                            int random=-1;
+                            int random2=-1;
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                            System.out.print("5 Attacking with: ");
+                             System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                            do{
+                                random = (int)(Math.random()*((4)));
+                                random2 = (int)(Math.random()*((4)));
+                            }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                            instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);  
+                            System.out.print("6 Attacking with: ");
+                            System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);  
                     }
                     else if(ability4Selected){
                         System.out.println(unitName);
@@ -1411,7 +1457,24 @@ public class BattleView extends JPanel{
 
                             party.getParty(3).slice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                         }
+                    int random=-1;
+                    int random2=-1;
+                    do{
+                        random = (int)(Math.random()*((4)));
+                        random2 = (int)(Math.random()*((4)));
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);
+                    System.out.print("7 Attacking with: ");
+                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
+                    do{
+                        random = (int)(Math.random()*((4)));
+                        random2 = (int)(Math.random()*((4)));
+                    }while (instance.alienBoard.getSquare(random, random2).selectSquare()==null);
+                    instance.alienBoard.getSquare(random, random2).selectSquare().takeTurn(instance.alienBoard,instance.cruBoard);    
+                    System.out.print("8 Attacking with: ");
+                    System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     }
+                    
                 }
                 for(int i = 0; i < 4; i++){
                     for(int j = 0; j < 4; j++){
