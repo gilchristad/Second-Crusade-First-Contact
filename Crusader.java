@@ -20,6 +20,11 @@ public class Crusader extends Unit {
 	public int getHealth(int armourValue) {
 		return armourValues[armourValue];
 	}
+	
+	public void restoreHealth(int armourValue, int heal)
+	{
+		armourValues[armourValue]+=(10-armourValues[armourValue]);
+	}
 
 	@Override
 	public void damageTaken(int damage, int armourValue) {
