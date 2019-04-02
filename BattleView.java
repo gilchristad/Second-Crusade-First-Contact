@@ -2138,8 +2138,6 @@ public class BattleView extends JPanel{
                     System.out.println("Random nums");
                     System.out.println(random);
                     System.out.println(random2);
-                    //System.out.print("8 Attacking with: ");
-                    //System.out.println(instance.alienBoard.getSquare(random, random2).selectSquare().name);
                     }
                     
                 }

@@ -43,10 +43,11 @@ public class enemyBoss extends Alien{
 				System.out.println("moving");
 				Square[] list1=highlightMoveOptions(board.getSquare(x,y), board);
 				for (int z=0;z<list1.length;z++){
+					if (list1[z]!=null){
 					if (list1[z].getCoordinates()[0]==0){
 						this.move(list1[z], board.getSquare(x, y));
 						return;}
-						
+					}
 				}
 				
 			}
