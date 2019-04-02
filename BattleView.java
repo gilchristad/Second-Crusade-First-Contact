@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -19,7 +20,11 @@ import java.util.Random;
 public class BattleView extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int width2 = (int)screenSize.getWidth();
+    int height2 =  (int)screenSize.getHeight();
     int c_counter = 0;
+    int a_counter = 0;
     boolean unitSelected = false;
     boolean unitTargeted = false;
     int unitCoordinateX;
@@ -29,9 +34,22 @@ public class BattleView extends JPanel{
     boolean ability2Selected = false;
     boolean ability3Selected = false;
     boolean ability4Selected = false;
+    JLabel ability1icon = new JLabel();
+    JLabel ability2icon = new JLabel();
+    JLabel ability3icon = new JLabel();
+    JLabel ability4icon = new JLabel();
     ImageIcon selectsquare = new ImageIcon("Images/Icons/selectedsquare.jpg");
+    ImageIcon healicon = new ImageIcon("Images/Icons/heal.png");
+    ImageIcon blockicon = new ImageIcon("Images/Icons/block.png");
+    ImageIcon holyicon = new ImageIcon("Images/Icons/holylight.png");
+    ImageIcon rainicon = new ImageIcon("Images/Icons/rain.png");
+    ImageIcon shooticon = new ImageIcon("Images/Icons/shoot.png");
+    ImageIcon slashicon = new ImageIcon("Images/Icons/slash.png");
+    ImageIcon sliceicon = new ImageIcon("Images/Icons/slice.png");
+    ImageIcon snipeicon = new ImageIcon("Images/Icons/snipe.png");
+    ImageIcon hilticon = new ImageIcon("Images/Icons/hiltbash.png");
     String unitName;
-
+    battle instance;
     Clip battleclip;
     Clip bossclip;
     boolean returnb = false;
@@ -139,6 +157,8 @@ public class BattleView extends JPanel{
         JButton confirm = new JButton();
         JButton cancel = new JButton();
 
+
+
         setLayout(null);
 
         cs00.setBounds((int)(0.051*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
@@ -181,6 +201,12 @@ public class BattleView extends JPanel{
         coward.setBounds((int)(0.208*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
         confirm.setBounds((int)(0.421*width),(int)(0.851*height),(int)(0.156*width),(int)(0.0648*height));
         cancel.setBounds((int)(0.421*width),(int)(0.930*height),(int)(0.156*width),(int)(0.060*height));
+
+        ability1icon.setBounds((int)(0.025*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));        
+        ability2icon.setBounds((int)(0.12*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+        ability3icon.setBounds((int)(0.22*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+        ability4icon.setBounds((int)(0.3*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
+
         gametext.setBounds((int)(0.403*width),(int)(0.055*height),(int)(0.192*width),(int)(0.779*height));
         gametext.setOpaque(false);
         gametext.setVisible(true);
@@ -306,7 +332,6 @@ public class BattleView extends JPanel{
         cancel.setBorderPainted(false);
 
         imagelabel.setBounds(0,0,width,height);
-        battle instance;
         
         if (type == 1)
         {
@@ -347,8 +372,7 @@ public class BattleView extends JPanel{
 
         crusaders = new JLabel[16];
         aliens = new JLabel[16];
-        int c_counter = 0;
-        int a_counter = 0;
+
         for (int i = 0; i < 4; i++)
         {
         	for (int j = 0; j < 4; j++)
@@ -388,6 +412,10 @@ public class BattleView extends JPanel{
             }
         }
         add(gametext);
+        add(ability1icon);
+        add(ability2icon);
+        add(ability3icon);
+        add(ability4icon);
         add(imagelabel);
         add(cs00);
         add(cs01);
@@ -444,6 +472,7 @@ public class BattleView extends JPanel{
                     if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
                         unitSelected = true;
                         unitName = instance.cruBoard.getSquare(0,0).selectSquare().name;
+                        changeAbilityIcons(unitName);
                     }
                     else{
                     }
@@ -473,6 +502,7 @@ public class BattleView extends JPanel{
                     if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
                         unitSelected = true;
                         unitName = instance.cruBoard.getSquare(0,1).selectSquare().name;
+                        changeAbilityIcons(unitName);
                     }
                     else{
                     }
@@ -503,6 +533,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(0,2).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -532,6 +564,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(0,3).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -562,6 +596,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,0).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -593,6 +629,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,1).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -625,6 +663,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,2).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -656,6 +696,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
                     unitSelected = true;                    
                     unitName = instance.cruBoard.getSquare(1,3).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
 
                 }
                 else{
@@ -690,6 +732,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,0).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                     
@@ -724,6 +768,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,1).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -756,6 +802,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,2).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -788,6 +836,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,3).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -820,6 +870,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,0).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -852,6 +904,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,1).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -884,6 +938,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,2).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -916,6 +972,8 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,3).selectSquare().name;
+                    changeAbilityIcons(unitName);
+
                 }
                 else{
                 }
@@ -1431,7 +1489,6 @@ public class BattleView extends JPanel{
                 ability2Selected = false;
                 ability3Selected = false;
                 ability4Selected = false;
-            
                     
             }
         });
@@ -1466,6 +1523,73 @@ public class BattleView extends JPanel{
 
     public void setReturn(){
         returnb = false;
+    }
+
+    public void changeAbilityIcons(String unitName){
+        if(unitName == "cleric"){
+            ability1icon.setIcon(healicon);
+            ability2icon.setIcon(slashicon);
+            ability3icon.setIcon(blockicon);
+            ability4icon.setIcon(holyicon);
+        }
+        else if(unitName == "swordandshield"){
+            ability1icon.setIcon(hilticon);
+            ability2icon.setIcon(slashicon);
+            ability3icon.setIcon(blockicon);
+            ability4icon.setIcon(sliceicon);
+        }
+        else if(unitName == "swordsman"){
+            ability1icon.setIcon(slashicon);
+            ability2icon.setIcon(hilticon);
+            ability3icon.setIcon(blockicon);
+            ability4icon.setIcon(sliceicon);
+        }
+        else if(unitName == "archer"){
+            ability1icon.setIcon(snipeicon);
+            ability2icon.setIcon(shooticon);
+            ability3icon.setIcon(blockicon);
+            ability4icon.setIcon(rainicon);
+        }
+    }
+
+    public void refreshBoard(){
+        for (int i = 0; i < 4; i++)
+        {
+        	for (int j = 0; j < 4; j++)
+            {
+            	if (instance.cruBoard.getSquare(i, j).selectSquare() != null)
+            	{
+            		crusaders[c_counter] = new JLabel();
+            		crusaders[c_counter].setIcon(instance.cruBoard.getSquare(i, j).selectSquare().image);
+            		crusaders[c_counter].setVisible(true);
+            		crusaders[c_counter].setBounds((int)(0.0535 * width2) + (int)(j * (float)(width2/1440)) + (int)(j * (0.073 * width2)), 
+            				(int)(0.075 * height2)+ (int)(i * (0.13 * height2)), 
+            				instance.cruBoard.getSquare(i, j).selectSquare().image.getIconWidth(),
+            				instance.cruBoard.getSquare(i, j).selectSquare().image.getIconHeight());
+                            repaint();            		
+                            c_counter++;
+            	}
+            }
+        }
+        // 188 x 212
+        for (int i = 0; i < 4; i++)
+        {
+        	for (int j = 0; j < 4; j++)
+            {
+            	if (instance.alienBoard.getSquare(i, j).selectSquare() != null)
+            	{
+            		aliens[a_counter] = new JLabel();
+            		aliens[a_counter].setIcon(instance.alienBoard.getSquare(i, j).selectSquare().image);
+            		aliens[a_counter].setVisible(true);
+            		aliens[a_counter].setBounds((int)(width2*(0.675))+ (int)(j * (float)(width2/1440)) + (int)(j * (0.07 * width2)), 
+            				(int)(0.075 * height2)+ (int)(i * (0.13 * height2)), 
+            				instance.alienBoard.getSquare(i, j).selectSquare().image.getIconWidth(),
+            				instance.alienBoard.getSquare(i, j).selectSquare().image.getIconHeight());
+                            repaint();
+                    		a_counter++;
+            	}
+            }
+        }
     }
 
     private Image getScaledImage(Image srcImg, int w, int h){
