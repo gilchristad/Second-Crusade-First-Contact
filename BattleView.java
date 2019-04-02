@@ -115,6 +115,8 @@ public class BattleView extends JPanel{
         alienSquareLabels[3][2].setBounds((int)(0.810*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
         alienSquareLabels[3][3].setBounds((int)(0.882*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
         
+        JLabel[] stats = new JLabel[6];
+        
         JLabel gametext = new JLabel("<html>Text color: <font color='red'>red</font></html>",JLabel.CENTER);
         gametext.setForeground(Color.RED);
         gametext.setFont(new Font("Georgia", Font.PLAIN, 14));
@@ -373,7 +375,7 @@ public class BattleView extends JPanel{
             }   
         }
         imagelabel.setIcon(background);
-
+        
         crusaders = new JLabel[16];
         aliens = new JLabel[16];
 
@@ -414,6 +416,26 @@ public class BattleView extends JPanel{
             		a_counter++;
             	}
             }
+        }
+        for (int i = 0; i < 3; i++)
+        {
+        	stats[i] = new JLabel();
+        	stats[i].setBounds(3*(width/4) - (int)(0.035 * width), 3*(height/4) - (int)(0.044 * height) + (i * (int)(0.072*height)), (int)(0.0694 * width), (int)(0.0444 * height));
+        	stats[i].setOpaque(false);
+        	stats[i].setVisible(true);
+        	stats[i].setForeground(Color.WHITE);
+        	stats[i].setFont(new Font("Georgia", Font.PLAIN, 20));
+        	add(stats[i]);
+        }
+        for (int i = 3; i < 6; i ++)
+        {
+        	stats[i] = new JLabel();
+        	stats[i].setBounds(3*(width/4) + (int)(0.174 * width), 3*(height/4) - (int)(0.044 * height) + ((i-3) * (int)(0.072*height)), (int)(0.0694 * width), (int)(0.0444 * height));
+        	stats[i].setOpaque(false);
+        	stats[i].setVisible(true);
+        	stats[i].setForeground(Color.WHITE);
+        	stats[i].setFont(new Font("Georgia", Font.PLAIN, 20));
+        	add(stats[i]);
         }
         add(gametext);
         add(ability1icon);
@@ -476,6 +498,33 @@ public class BattleView extends JPanel{
                     if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
                         unitSelected = true;
                         unitName = instance.cruBoard.getSquare(0,0).selectSquare().name;
+                        for (int i = 0; i < 6; i++)
+                        {
+                        	if (i == 0)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().attackValue);
+                        	}
+                        	else if (i == 1)
+                        	{
+                        		stats[i].setText("" + 0);
+                        	}
+                        	else if (i == 2)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().speedValue);
+                        	}
+                        	else if (i == 3)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().getHealth(0));
+                        	}
+                        	else if (i == 4)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().getHealth(1));
+                        	}
+                        	else
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,0).selectSquare().dodgeValue);
+                        	}
+                        }
                         changeAbilityIcons(unitName);
                     }
                     else{
@@ -506,6 +555,33 @@ public class BattleView extends JPanel{
                     if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
                         unitSelected = true;
                         unitName = instance.cruBoard.getSquare(0,1).selectSquare().name;
+                        for (int i = 0; i < 6; i++)
+                        {
+                        	if (i == 0)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().attackValue);
+                        	}
+                        	else if (i == 1)
+                        	{
+                        		stats[i].setText("" + 0);
+                        	}
+                        	else if (i == 2)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().speedValue);
+                        	}
+                        	else if (i == 3)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().getHealth(0));
+                        	}
+                        	else if (i == 4)
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().getHealth(1));
+                        	}
+                        	else
+                        	{
+                        		stats[i].setText("" + instance.cruBoard.getSquare(0,1).selectSquare().dodgeValue);
+                        	}
+                        }
                         changeAbilityIcons(unitName);
                     }
                     else{
@@ -537,6 +613,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(0,2).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,2).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -568,6 +671,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(0,3).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(0,3).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -600,6 +730,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,0).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,0).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -633,6 +790,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,1).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,1).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -667,6 +851,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(1,2).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,2).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -700,6 +911,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
                     unitSelected = true;                    
                     unitName = instance.cruBoard.getSquare(1,3).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(1,3).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
 
@@ -736,6 +974,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,0).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,0).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -772,6 +1037,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,1).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,1).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -806,6 +1098,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,2).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,2).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -840,6 +1159,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(2,3).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(2,3).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -874,6 +1220,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,0).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,0).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -908,6 +1281,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,1).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,1).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -942,6 +1342,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,2).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,2).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }
@@ -976,6 +1403,33 @@ public class BattleView extends JPanel{
                 if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
                     unitSelected = true;
                     unitName = instance.cruBoard.getSquare(3,3).selectSquare().name;
+                    for (int i = 0; i < 6; i++)
+                    {
+                    	if (i == 0)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().attackValue);
+                    	}
+                    	else if (i == 1)
+                    	{
+                    		stats[i].setText("" + 0);
+                    	}
+                    	else if (i == 2)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().speedValue);
+                    	}
+                    	else if (i == 3)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().getHealth(0));
+                    	}
+                    	else if (i == 4)
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().getHealth(1));
+                    	}
+                    	else
+                    	{
+                    		stats[i].setText("" + instance.cruBoard.getSquare(3,3).selectSquare().dodgeValue);
+                    	}
+                    }
                     changeAbilityIcons(unitName);
 
                 }

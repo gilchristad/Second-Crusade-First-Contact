@@ -34,7 +34,7 @@ public class Application {
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        //mainmenu.menuclip.start();
+        mainmenu.menuclip.start();
         int days = 1;
         boolean game = true;
         while(game){
@@ -47,7 +47,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 mainmenu.setNewGame();
-                //mainmenu.menuclip.stop();
+                mainmenu.menuclip.stop();
 
             }
             else if (gameover.getContinue())
@@ -72,7 +72,7 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 instructions.setContinue();
-                //overworld.overworldclip.start();
+                overworld.overworldclip.start();
             }
             else if(overworld.getMainMenu()){
                 frame.getContentPane().removeAll();
@@ -80,8 +80,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setMainMenu();
-                //mainmenu.menuclip.start();
-                //overworld.overworldclip.stop();
+                mainmenu.menuclip.start();
+                overworld.overworldclip.stop();
             }
             else if(overworld.getBoss()){
                 frame.getContentPane().removeAll();
@@ -91,8 +91,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setBoss();
-                //bossbattle.bossclip.start();
-                //overworld.overworldclip.stop();
+                bossbattle.bossclip.start();
+                overworld.overworldclip.stop();
             }
             else if(overworld.getRest()){
                 frame.getContentPane().removeAll();
@@ -100,8 +100,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setRest();
-                //restarea.restclip.start();
-                //overworld.overworldclip.stop();
+                restarea.restclip.start();
+                overworld.overworldclip.stop();
             }
             else if(overworld.getBattle()){
                 frame.getContentPane().removeAll();
@@ -111,8 +111,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 overworld.setBattle();
-                //battleview.battleclip.start();
-                //overworld.overworldclip.stop();
+                battleview.battleclip.start();
+                overworld.overworldclip.stop();
 
             }
             else if(restarea.getReturn()){
@@ -121,8 +121,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 restarea.setReturn();
-                //restarea.restclip.stop();
-                //overworld.overworldclip.start();
+                restarea.restclip.stop();
+                overworld.overworldclip.start();
                 days++;
                 
             }
@@ -132,8 +132,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 battleview.setReturn();
-                //overworld.overworldclip.start();
-                //battleview.battleclip.stop();
+                overworld.overworldclip.start();
+                battleview.battleclip.stop();
                 days++;
             }
             else if(bossbattle.getReturn()){
@@ -142,8 +142,8 @@ public class Application {
                 frame.repaint();
                 frame.revalidate();
                 bossbattle.setReturn();
-                //overworld.overworldclip.start();
-                //bossbattle.bossclip.stop();
+                overworld.overworldclip.start();
+                bossbattle.bossclip.stop();
                 days++;
             }
             else if (battleview.getDefeat()){
