@@ -11,8 +11,6 @@ public class Cleric extends Crusader {
 	}
 	public void heal(Square target) {
 		//Get attack value and modify it by -1 since its supposed to heal.  
-		
-		
 		//Not sure if this is how you are supposed to heal crusaders
 		this.attack((int) (this.getAttackValue()*(-1.0)), target, -1);
 	}
