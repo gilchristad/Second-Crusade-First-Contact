@@ -68,7 +68,7 @@ public class MainMenu extends JPanel {
         loadbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
         optionsbackb.setBounds((int) (0.192*(width)), (int)(0.129 * height),(int)(0.06 * width), (int)(0.032 * height));
         imagelabel.setBounds(0,0,width,height);
-
+        //Super cool
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Music/Themes/TITLE.wav").getAbsoluteFile());
             menuclip = AudioSystem.getClip();
