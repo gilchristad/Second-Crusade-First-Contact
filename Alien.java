@@ -22,11 +22,14 @@ public abstract class Alien extends Unit {
 	@Override
 	public void damageTaken(int damage, int armourValue) {
 		health -= damage;
+		if(health <= 0){
+			somethingDied(-1);
+		}
 	}
 
 	@Override
 	public void somethingDied(int armourValue) {
-		// Delete this thing lol
+		System.out.println("this thing died");
 	}
 	public abstract void takeTurn(Board board, Board board2);	
 		//Pick a move and a target basically

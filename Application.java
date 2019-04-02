@@ -10,10 +10,7 @@ public class Application {
             throws IOException, InterruptedException 
     { 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        
         Party party = new Party(4);
-      
-        
         MainMenu mainmenu = new MainMenu();
         Overworld overworld = new Overworld();
         Instructions instructions = new Instructions();

@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -58,7 +60,6 @@ public class BattleView extends JPanel{
                 add(alienSquareLabels[i][j]);
             }
         }
-
         crusaderSquareLabels[0][0].setBounds((int)(0.051*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
         crusaderSquareLabels[0][1].setBounds((int)(0.123*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
         crusaderSquareLabels[0][2].setBounds((int)(0.194*width),(int)(0.063*height),(int)(0.066*width),(int)(0.117*height));
@@ -91,7 +92,10 @@ public class BattleView extends JPanel{
         alienSquareLabels[3][1].setBounds((int)(0.739*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
         alienSquareLabels[3][2].setBounds((int)(0.810*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
         alienSquareLabels[3][3].setBounds((int)(0.882*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
-
+        
+        JLabel gametext = new JLabel("<html>Text color: <font color='red'>red</font></html>",JLabel.CENTER);
+        gametext.setFont(new Font("Georgia", Font.PLAIN, 14));
+        
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
         JButton cs02 = new JButton();
@@ -130,6 +134,8 @@ public class BattleView extends JPanel{
         JButton ability4 = new JButton();
         JButton move = new JButton();
         JButton coward = new JButton();
+        JButton confirm = new JButton();
+        JButton cancel = new JButton();
 
         setLayout(null);
 
@@ -171,8 +177,11 @@ public class BattleView extends JPanel{
         ability4.setBounds((int)(0.298*width),(int)(0.737*height),(int)(0.064*width),(int)(0.114*height));
         move.setBounds((int)(0.018*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
         coward.setBounds((int)(0.208*width),(int)(0.883*height),(int)(0.154*width),(int)(0.077*height));
-
-
+        confirm.setBounds((int)(0.421*width),(int)(0.851*height),(int)(0.156*width),(int)(0.0648*height));
+        cancel.setBounds((int)(0.421*width),(int)(0.930*height),(int)(0.156*width),(int)(0.060*height));
+        gametext.setBounds((int)(0.403*width),(int)(0.055*height),(int)(0.192*width),(int)(0.779*height));
+        gametext.setOpaque(true);
+        gametext.setVisible(true);
         cs00.setOpaque(false);
         cs00.setContentAreaFilled(false);
         cs00.setBorderPainted(false);
@@ -287,6 +296,12 @@ public class BattleView extends JPanel{
         coward.setOpaque(false);
         coward.setContentAreaFilled(false);
         coward.setBorderPainted(false);
+        confirm.setOpaque(false);
+        confirm.setContentAreaFilled(false);
+        confirm.setBorderPainted(false);
+        cancel.setOpaque(false);
+        cancel.setContentAreaFilled(false);
+        cancel.setBorderPainted(false);
 
         imagelabel.setBounds(0,0,width,height);
         battle instance;
@@ -410,7 +425,10 @@ public class BattleView extends JPanel{
         add(ability4);
         add(move);
         add(coward);
-        
+        add(confirm);
+        add(cancel);
+        add(gametext);
+
         cs00.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
@@ -437,9 +455,6 @@ public class BattleView extends JPanel{
                             unitCoordinateY = 0;
                         }
                     }
-                    // if(moveSelected){
-                    //     //move unit to this square
-                    // }
                 }
             }
         });
@@ -453,17 +468,12 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[0][1].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
                 if(unitSelected == false){
                     if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
                         unitSelected = true;
                         unitName = instance.cruBoard.getSquare(0,1).selectSquare().name;
                     }
                     else{
-                        //?
                     }
                 }
                 else{
@@ -474,9 +484,6 @@ public class BattleView extends JPanel{
                             unitCoordinateY = 1;
                         }
                     }
-                    // if(moveSelected){
-                    //     //move unit to this square
-                    // }
                 }
             
            }
@@ -491,10 +498,6 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[0][2].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
                     unitSelected = true;
@@ -511,9 +514,6 @@ public class BattleView extends JPanel{
                         unitCoordinateY = 2;
                     }
                 }
-                // if(moveSelected){
-                //     //move unit to this square
-                // }
             }
            }
        });
@@ -527,10 +527,6 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[0][3].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
                     unitSelected = true;
@@ -547,9 +543,6 @@ public class BattleView extends JPanel{
                         unitCoordinateY = 3;
                     }
                 }
-                // if(moveSelected){
-                //     //move unit to this square
-                // }
             }
            }
        });
@@ -563,10 +556,7 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][0].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
+
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
                     unitSelected = true;
@@ -583,9 +573,7 @@ public class BattleView extends JPanel{
                         unitCoordinateY = 0;
                     }
                 }
-                // if(moveSelected){
-                //     //move unit to this square
-                // }
+
             }
            }
        });
@@ -599,10 +587,7 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][1].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
+
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
                     unitSelected = true;
@@ -620,7 +605,6 @@ public class BattleView extends JPanel{
                     }
                 }
                 if(moveSelected){
-                    //move unit to this square
                 }
             }
            }
@@ -635,10 +619,7 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][2].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
+
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
                     unitSelected = true;
@@ -656,7 +637,6 @@ public class BattleView extends JPanel{
                     }
                 }
                 if(moveSelected){
-                    //move unit to this square
                 }
             }
            }
@@ -704,10 +684,7 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[2][0].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            //     {
-            //         crusaders[i].setVisible(true);
-            // 	}
+
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
                     unitSelected = true;
@@ -1266,81 +1243,37 @@ public class BattleView extends JPanel{
         ability1.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-               System.out.println(unitName);
-                if(unitSelected){
-                    if(unitName == "cleric"){
-                        party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                    }
-                    else if(unitName == "archer"){
-                        party.getParty(2).snipe(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                    }
-                    else if(unitName == "swordandshield"){
-                        party.getParty(0).sashiltdBash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                    }
-                    else if(unitName == "swordsman"){
-                        party.getParty(3).swordsmanslash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                    }
-                }
+                ability1Selected = true;
+                ability2Selected = false;
+                ability3Selected = false;
+                ability4Selected = false;         
            }
        });
         ability2.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-            System.out.println(unitName);
-            if(unitSelected){
-                if(unitName == "cleric"){
-                    party.getParty(1).clericslash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "archer"){
-                    party.getParty(2).shoot(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordandshield"){
-                    party.getParty(0).slash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordsman"){
-                    party.getParty(3).hiltdBash(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-            }
+            ability1Selected = false;
+            ability2Selected = true;
+            ability3Selected = false;
+            ability4Selected = false;            
            }
        });
         ability3.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-            System.out.println(unitName);
-            if(unitSelected){
-                if(unitName == "cleric"){
-                    party.getParty(1).clericblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "archer"){
-                    party.getParty(2).block(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordandshield"){
-                    party.getParty(0).sasblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordsman"){
-                    party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-            }
+            ability1Selected = false;
+            ability2Selected = false;
+            ability3Selected = true;
+            ability4Selected = false;            
            }
        });
         ability4.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent arg0){
-            System.out.println(unitName);
-            if(unitSelected){
-                if(unitName == "cleric"){
-                    party.getParty(1).holy_light(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "archer"){
-                    party.getParty(2).rain(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordandshield"){
-                    party.getParty(0).sasslice(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-                else if(unitName == "swordsman"){
-                    party.getParty(3).slice(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
-                }
-            }
+            ability1Selected = false;
+            ability2Selected = false;
+            ability3Selected = false;
+            ability4Selected = true;
            }
        });
 
@@ -1356,6 +1289,143 @@ public class BattleView extends JPanel{
                returnb = true;
            }
        });
+        confirm.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                System.out.println("clicked");
+                if(unitSelected && unitTargeted){
+                    System.out.println("selected and targeted");
+                    if(ability1Selected){
+                        System.out.println(unitName);
+                        System.out.println("ability1");
+                            if(unitName == "cleric"){
+                                System.out.println("heal");
+                                party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "archer"){
+                                System.out.println("snipe");
+                                party.getParty(2).snipe(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordandshield"){
+                                System.out.println("sas hilt bash");
+                                party.getParty(0).sashiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordsman"){
+                                System.out.println("sword slash");
+                                party.getParty(3).swordsmanslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                        
+                    }
+                    else if(ability2Selected){
+                        System.out.println(unitName);
+                        System.out.println("ability2");
+                            if(unitName == "cleric"){
+                                System.out.println("cleric slash");
+                                party.getParty(1).clericslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "archer"){
+                                System.out.println("archer shoot");
+                                party.getParty(2).shoot(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordandshield"){
+                                System.out.println("sas slash");
+                                party.getParty(0).slash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordsman"){
+                                System.out.println("sword hilt bash");
+                                party.getParty(3).hiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                        
+                    }
+                    else if(ability3Selected){                 
+                        System.out.println(unitName);
+                        System.out.println("ability3");
+
+                            if(unitName == "cleric"){
+                                System.out.println("cleric block");
+                                party.getParty(1).clericblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "archer"){
+                                System.out.println("archer block");
+                                party.getParty(2).block(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordandshield"){
+                                System.out.println("sas block");
+                                party.getParty(0).sasblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                            else if(unitName == "swordsman"){
+                                System.out.println("sword block");
+                                party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            }
+                        
+                    }
+                    else if(ability4Selected){
+                        System.out.println(unitName);
+                        System.out.println("ability4");
+
+                        if(unitName == "cleric"){
+                            System.out.println("holy light");
+                            party.getParty(1).holy_light(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                        }
+                        else if(unitName == "archer"){
+                            System.out.println("rain");
+                            party.getParty(2).rain(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                        }
+                        else if(unitName == "swordandshield"){
+                            System.out.println("sas slice");
+                            party.getParty(0).sasslice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                        }
+                        else if(unitName == "swordsman"){
+                            System.out.println("sword slice");
+                            party.getParty(3).slice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                        }
+                    }
+                }
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                        alienSquareLabels[i][j].setIcon(selectsquare);
+                        alienSquareLabels[i][j].setVisible(false);
+                    }
+                }
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                        crusaderSquareLabels[i][j].setIcon(selectsquare);
+                        crusaderSquareLabels[i][j].setVisible(false);
+                    }
+                }
+                unitSelected = false;
+                unitTargeted = false;
+                ability1Selected = false;
+                ability2Selected = false;
+                ability3Selected = false;
+                ability4Selected = false;
+            
+                    
+            }
+        });
+        cancel.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                        alienSquareLabels[i][j].setIcon(selectsquare);
+                        alienSquareLabels[i][j].setVisible(false);
+                    }
+                }
+                for(int i = 0; i < 4; i++){
+                    for(int j = 0; j < 4; j++){
+                        crusaderSquareLabels[i][j].setIcon(selectsquare);
+                        crusaderSquareLabels[i][j].setVisible(false);
+                    }
+                }
+                unitSelected = false;
+                unitTargeted = false;
+                ability1Selected = false;
+                ability2Selected = false;
+                ability3Selected = false;
+                ability4Selected = false;
+            }
+        });
 
     }
     public boolean getReturn(){

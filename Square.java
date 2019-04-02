@@ -18,6 +18,7 @@ public class Square {
 				unitOnHere.damageTaken(damage, armourValue);
 				if (unitOnHere.getHealth(armourValue) <= 0) {
 					removeUnit(armourValue);
+					System.out.println("armor hit??");
 				}
 			} else {
 				// move the unit to where it can be moved

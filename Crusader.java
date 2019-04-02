@@ -98,9 +98,7 @@ public class Crusader extends Unit {
 		this.protect(target);
 	}
 	public void sasslice(Square target) {
-		
-			this.attack((int) (this.getAttackValue()*.9), target,-1);
-		
+		this.attack((int) (this.getAttackValue()*.9), target,-1);
 	}
 	//Archer
 	public void snipe(Square target) {
