@@ -15,13 +15,13 @@
         alienBoard= new Board(4,4);
         if (type == 1)
         {
-        	Unit x;
+        	Alien x;
         	for (int i = 0; i < 4; i++)
         	{
         		for (int j = 0; j < 4; j++)
         		{
         			int temp = (int)(Math.random()*4+1);
-        			System.out.println(temp);
+        			//System.out.println(temp);
         			if (temp == 1)
         			{
         				if (j == 0)
@@ -40,8 +40,15 @@
 
         						x = new enemyHealer(5, 0.9, 0.6, 0.8, 0.7, "healer", 5);
 
-        				}
-        				alienBoard.getSquare(i, j).addUnit(x);
+                        }
+                        
+                        alienBoard.getSquare(i, j).addUnit(x);
+                        if(x.name=="tank"){
+                            System.out.println("ATTACKING");
+                            x.takeTurn(alienBoard,cruBoard);
+                            for (int z =0; z<=5;z++){
+                                System.out.println(cruBoard.getSquare(1, 1).selectSquare().getHealth(z));}
+                        }
         			}
         		}
         	}
