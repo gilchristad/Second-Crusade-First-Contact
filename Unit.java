@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 public abstract class Unit {
+	public int result = 0;
 	// Base strength used to calculate damage
 	public int attackValue;
 	// Base accuracy used to calculate misses
@@ -32,10 +33,12 @@ public abstract class Unit {
 		target.move(this,origSquare);
 	}
 
-	public void attack(int damage, Square target, int armourValue) {
+	public int attack(int damage, Square target, int armourValue) {
 		if (target.selectSquare() != null) {
-			target.attacked(damage, armourValue, accuracyValue);
+			result = target.attacked(damage, armourValue, accuracyValue);
+			return result;
 		}
+		return result;
 	}
 
 	public void stun(Square target) {

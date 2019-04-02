@@ -29,6 +29,7 @@ public class BattleView extends JPanel{
     boolean ability2Selected = false;
     boolean ability3Selected = false;
     boolean ability4Selected = false;
+    int result;
     ImageIcon selectsquare = new ImageIcon("Images/Icons/selectedsquare.jpg");
     String unitName;
 
@@ -96,7 +97,7 @@ public class BattleView extends JPanel{
         JLabel gametext = new JLabel("<html>Text color: <font color='red'>red</font></html>",JLabel.CENTER);
         gametext.setForeground(Color.RED);
         gametext.setFont(new Font("Georgia", Font.PLAIN, 14));
-        gametext.setText("HELLO THIS IS A STRING");
+        gametext.setText("");
         
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
@@ -1301,26 +1302,75 @@ public class BattleView extends JPanel{
                         System.out.println("ability1");
                             if(unitName == "cleric"){
                                 System.out.println("heal");
-                                gametext.setText("Cleric used heal!");
-                                party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                gametext.setText("<html>Cleric used heal!");
+                                result = party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() +"<br/>" + "The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"Cleric missed the attack!</html>");
+                                }
                             }
                             else if(unitName == "archer"){
                                 System.out.println("snipe");
-                                gametext.setText("Archer used snipe!");
+                                gametext.setText("<html>Archer used snipe!");
 
-                                party.getParty(2).snipe(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(2).snipe(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"Archer missed the attack!</html>");
+                                }
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas hilt bash");
-                                gametext.setText("Marauder used hilt bash!");
+                                gametext.setText("<html>Marauder used hilt bash!");
 
-                                party.getParty(0).sashiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(0).sashiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                System.out.println("result: " + result);
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" + "The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"Marauder missed the attack!</html>");
+                                }
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword slash");
-                                gametext.setText("Swordsman used slash!");
+                                gametext.setText("<html>Swordsman used slash!");
 
-                                party.getParty(3).swordsmanslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(3).swordsmanslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() +"<br/>" + "Swordsman missed the attack!</html>");
+                                }
                             }
                         
                     }
@@ -1329,27 +1379,75 @@ public class BattleView extends JPanel{
                         System.out.println("ability2");
                             if(unitName == "cleric"){
                                 System.out.println("cleric slash");
-                                gametext.setText("Cleric used slash!");
+                                gametext.setText("<html>Cleric used slash!");
 
-                                party.getParty(1).clericslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(1).clericslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() +"<br/>" + "The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack</html>!");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() +"<br/>" + "Cleric missed the attack</html>!");
+                                }
                             }
                             else if(unitName == "archer"){
                                 System.out.println("archer shoot");
-                                gametext.setText("Archer used shoot!");
+                                gametext.setText("<html>Archer used shoot!");
 
-                                party.getParty(2).shoot(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(2).shoot(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() +  "<br/>" +"Archer missed the attack!</html>");
+                                }
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas slash");
-                                gametext.setText("Marauder used slash!");
+                                gametext.setText("<html>Marauder used slash!");
 
-                                party.getParty(0).slash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(0).slash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" + "The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"Marauder missed the attack!</html>");
+                                }
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword hilt bash");
-                                gametext.setText("Swordsman used hilt bash!");
+                                gametext.setText("<html>Swordsman used hilt bash!");
 
-                                party.getParty(3).hiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                result = party.getParty(3).hiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                                if (result == 0)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                                }
+                                else if (result == 1)
+                                {
+                                	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack!</html>");
+                                }
+                                else
+                                {
+                                	gametext.setText(gametext.getText() +"<br/>" + "Swordsman missed the attack!</html>");
+                                }
                             }
                         
                     }
@@ -1359,25 +1457,25 @@ public class BattleView extends JPanel{
 
                             if(unitName == "cleric"){
                                 System.out.println("cleric block");
-                                gametext.setText("Cleric used block!");
+                                gametext.setText("<html>Cleric used block!</html>");
 
                                 party.getParty(1).clericblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "archer"){
                                 System.out.println("archer block");
-                                gametext.setText("Archer used block!");
+                                gametext.setText("<html>Archer used block!</html>");
 
                                 party.getParty(2).block(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas block");
-                                gametext.setText("Marauder used block!");
+                                gametext.setText("<html>Marauder used block!</html>");
 
                                 party.getParty(0).sasblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword block");
-                                gametext.setText("Swordsman used block!");
+                                gametext.setText("<html>Swordsman used block!</html>");
 
                                 party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
@@ -1389,27 +1487,75 @@ public class BattleView extends JPanel{
 
                         if(unitName == "cleric"){
                             System.out.println("holy light");
-                            gametext.setText("Cleric used Holy Light!");
+                            gametext.setText("<html>Cleric used Holy Light!");
 
-                            party.getParty(1).holy_light(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            result = party.getParty(1).holy_light(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            if (result == 0)
+                            {
+                            	gametext.setText(gametext.getText() +"<br/>" + "The attack hit!</html>");
+                            }
+                            else if (result == 1)
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack</html>!");
+                            }
+                            else
+                            {
+                            	gametext.setText(gametext.getText() +"<br/>" + "Cleric missed the attack</html>!");
+                            }
                         }
                         else if(unitName == "archer"){
                             System.out.println("rain");
-                            gametext.setText("Archer used Arrow Rain!");
+                            gametext.setText("<html>Archer used Arrow Rain!");
 
-                            party.getParty(2).rain(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            result = party.getParty(2).rain(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            if (result == 0)
+                            {
+                            	gametext.setText(gametext.getText() +  "<br/>" +"The attack hit!</html>");
+                            }
+                            else if (result == 1)
+                            {
+                            	gametext.setText(gametext.getText() +  "<br/>" +"The unit dodged the attack!</html>");
+                            }
+                            else
+                            {
+                            	gametext.setText(gametext.getText() +  "<br/>" +"Archer missed the attack!</html>");
+                            }
                         }
                         else if(unitName == "swordandshield"){
                             System.out.println("sas slice");
-                            gametext.setText("Marauder used Decimate!");
+                            gametext.setText("<html>Marauder used Decimate!");
 
-                            party.getParty(0).sasslice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            result = party.getParty(0).sasslice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            if (result == 0)
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                            }
+                            else if (result == 1)
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" + "The unit dodged the attack!</html>");
+                            }
+                            else
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" +"Marauder missed the attack!</html>");
+                            }
                         }
                         else if(unitName == "swordsman"){
                             System.out.println("sword slice");
-                            gametext.setText("Swordsman used Decapitate!");
+                            gametext.setText("<html>Swordsman used Decapitate!");
 
-                            party.getParty(3).slice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            result = party.getParty(3).slice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
+                            if (result == 0)
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" +"The attack hit!</html>");
+                            }
+                            else if (result == 1)
+                            {
+                            	gametext.setText(gametext.getText() + "<br/>" +"The unit dodged the attack!</html>");
+                            }
+                            else
+                            {
+                            	gametext.setText(gametext.getText() +"<br/>" + "Swordsman missed the attack!</html>");
+                            }
                         }
                     }
                 }
