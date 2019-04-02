@@ -94,7 +94,9 @@ public class BattleView extends JPanel{
         alienSquareLabels[3][3].setBounds((int)(0.882*width),(int)(0.446*height),(int)(0.066*width),(int)(0.117*height));
         
         JLabel gametext = new JLabel("<html>Text color: <font color='red'>red</font></html>",JLabel.CENTER);
+        gametext.setForeground(Color.RED);
         gametext.setFont(new Font("Georgia", Font.PLAIN, 14));
+        gametext.setText("HELLO THIS IS A STRING");
         
         JButton cs00 = new JButton();
         JButton cs01 = new JButton();
@@ -180,7 +182,7 @@ public class BattleView extends JPanel{
         confirm.setBounds((int)(0.421*width),(int)(0.851*height),(int)(0.156*width),(int)(0.0648*height));
         cancel.setBounds((int)(0.421*width),(int)(0.930*height),(int)(0.156*width),(int)(0.060*height));
         gametext.setBounds((int)(0.403*width),(int)(0.055*height),(int)(0.192*width),(int)(0.779*height));
-        gametext.setOpaque(true);
+        gametext.setOpaque(false);
         gametext.setVisible(true);
         cs00.setOpaque(false);
         cs00.setContentAreaFilled(false);
@@ -385,7 +387,7 @@ public class BattleView extends JPanel{
             	}
             }
         }
-        
+        add(gametext);
         add(imagelabel);
         add(cs00);
         add(cs01);
@@ -427,7 +429,6 @@ public class BattleView extends JPanel{
         add(coward);
         add(confirm);
         add(cancel);
-        add(gametext);
 
         cs00.addActionListener(new ActionListener(){
             @Override
@@ -1300,18 +1301,25 @@ public class BattleView extends JPanel{
                         System.out.println("ability1");
                             if(unitName == "cleric"){
                                 System.out.println("heal");
+                                gametext.setText("Cleric used heal!");
                                 party.getParty(1).heal(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "archer"){
                                 System.out.println("snipe");
+                                gametext.setText("Archer used snipe!");
+
                                 party.getParty(2).snipe(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas hilt bash");
+                                gametext.setText("Marauder used hilt bash!");
+
                                 party.getParty(0).sashiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword slash");
+                                gametext.setText("Swordsman used slash!");
+
                                 party.getParty(3).swordsmanslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                         
@@ -1321,18 +1329,26 @@ public class BattleView extends JPanel{
                         System.out.println("ability2");
                             if(unitName == "cleric"){
                                 System.out.println("cleric slash");
+                                gametext.setText("Cleric used slash!");
+
                                 party.getParty(1).clericslash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "archer"){
                                 System.out.println("archer shoot");
+                                gametext.setText("Archer used shoot!");
+
                                 party.getParty(2).shoot(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas slash");
+                                gametext.setText("Marauder used slash!");
+
                                 party.getParty(0).slash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword hilt bash");
+                                gametext.setText("Swordsman used hilt bash!");
+
                                 party.getParty(3).hiltdBash(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                         
@@ -1343,18 +1359,26 @@ public class BattleView extends JPanel{
 
                             if(unitName == "cleric"){
                                 System.out.println("cleric block");
+                                gametext.setText("Cleric used block!");
+
                                 party.getParty(1).clericblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "archer"){
                                 System.out.println("archer block");
+                                gametext.setText("Archer used block!");
+
                                 party.getParty(2).block(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordandshield"){
                                 System.out.println("sas block");
+                                gametext.setText("Marauder used block!");
+
                                 party.getParty(0).sasblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                             else if(unitName == "swordsman"){
                                 System.out.println("sword block");
+                                gametext.setText("Swordsman used block!");
+
                                 party.getParty(3).swordsmanblock(instance.cruBoard.getSquare(unitCoordinateX,unitCoordinateY));
                             }
                         
@@ -1365,18 +1389,26 @@ public class BattleView extends JPanel{
 
                         if(unitName == "cleric"){
                             System.out.println("holy light");
+                            gametext.setText("Cleric used Holy Light!");
+
                             party.getParty(1).holy_light(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                         }
                         else if(unitName == "archer"){
                             System.out.println("rain");
+                            gametext.setText("Archer used Arrow Rain!");
+
                             party.getParty(2).rain(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                         }
                         else if(unitName == "swordandshield"){
                             System.out.println("sas slice");
+                            gametext.setText("Marauder used Decimate!");
+
                             party.getParty(0).sasslice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                         }
                         else if(unitName == "swordsman"){
                             System.out.println("sword slice");
+                            gametext.setText("Swordsman used Decapitate!");
+
                             party.getParty(3).slice(instance.alienBoard.getSquare(unitCoordinateX,unitCoordinateY));
                         }
                     }
