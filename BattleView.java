@@ -20,6 +20,8 @@ public class BattleView extends JPanel{
     int c_counter = 0;
     boolean unitSelected = false;
     boolean unitTargeted = false;
+    int unitCoordinateX;
+    int unitCoordinateY;
     boolean moveSelected = false;
     boolean ability1Selected = false;
     boolean ability2Selected = false;
@@ -419,11 +421,6 @@ public class BattleView extends JPanel{
                     }
                 }
                 crusaderSquareLabels[0][0].setVisible(true);
-                // for (int i = 0; i < c_counter; i++)
-                // {
-                //     crusaders[i].setVisible(true);
-            	// }
-            
                 if(unitSelected == false){
                     if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
                         unitSelected = true;
@@ -433,9 +430,16 @@ public class BattleView extends JPanel{
                     }
                 }
                 else{
-                    if(moveSelected){
-                        //move unit to this square
+                    if(unitTargeted == false){
+                        if(instance.cruBoard.getSquare(0,0).selectSquare() != null){
+                            unitTargeted = true;
+                            unitCoordinateX = 0;
+                            unitCoordinateY = 0;
+                        }
                     }
+                    // if(moveSelected){
+                    //     //move unit to this square
+                    // }
                 }
             }
         });
@@ -463,9 +467,16 @@ public class BattleView extends JPanel{
                     }
                 }
                 else{
-                    if(moveSelected){
-                        //move unit to this square
+                    if(unitTargeted == false){
+                        if(instance.cruBoard.getSquare(0,1).selectSquare() != null){
+                            unitTargeted = true;
+                            unitCoordinateX = 0;
+                            unitCoordinateY = 1;
+                        }
                     }
+                    // if(moveSelected){
+                    //     //move unit to this square
+                    // }
                 }
             
            }
@@ -493,9 +504,16 @@ public class BattleView extends JPanel{
                 }
             }
             else{
-                if(moveSelected){
-                    //move unit to this square
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(0,2).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 0;
+                        unitCoordinateY = 2;
+                    }
                 }
+                // if(moveSelected){
+                //     //move unit to this square
+                // }
             }
            }
        });
@@ -522,9 +540,16 @@ public class BattleView extends JPanel{
                 }
             }
             else{
-                if(moveSelected){
-                    //move unit to this square
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(0,3).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 0;
+                        unitCoordinateY = 3;
+                    }
                 }
+                // if(moveSelected){
+                //     //move unit to this square
+                // }
             }
            }
        });
@@ -551,9 +576,16 @@ public class BattleView extends JPanel{
                 }
             }
             else{
-                if(moveSelected){
-                    //move unit to this square
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(1,0).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 1;
+                        unitCoordinateY = 0;
+                    }
                 }
+                // if(moveSelected){
+                //     //move unit to this square
+                // }
             }
            }
        });
@@ -580,6 +612,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(1,1).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 1;
+                        unitCoordinateY = 1;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -609,6 +648,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(1,2).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 1;
+                        unitCoordinateY = 2;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -625,10 +671,6 @@ public class BattleView extends JPanel{
                 }
             }
             crusaderSquareLabels[1][3].setVisible(true);
-            // for (int i = 0; i < c_counter; i++)
-            // {
-            //     crusaders[i].setVisible(true);
-            // }
             if(unitSelected == false){
                 if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
                     unitSelected = true;                    
@@ -639,6 +681,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(1,3).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 1;
+                        unitCoordinateY = 3;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -669,6 +718,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(2,0).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 2;
+                        unitCoordinateY = 0;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -695,6 +751,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(2,1).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 2;
+                        unitCoordinateY = 1;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -720,6 +783,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(2,2).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 2;
+                        unitCoordinateY = 2;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -745,6 +815,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(2,3).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 2;
+                        unitCoordinateY = 3;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -770,6 +847,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(3,0).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 3;
+                        unitCoordinateY = 0;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -795,6 +879,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(3,1).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 3;
+                        unitCoordinateY = 1;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -820,6 +911,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(3,2).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 3;
+                        unitCoordinateY = 2;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -845,6 +943,13 @@ public class BattleView extends JPanel{
                 }
             }
             else{
+                if(unitTargeted == false){
+                    if(instance.cruBoard.getSquare(3,3).selectSquare() != null){
+                        unitTargeted = true;
+                        unitCoordinateX = 3;
+                        unitCoordinateY = 3;
+                    }
+                }
                 if(moveSelected){
                     //move unit to this square
                 }
@@ -865,6 +970,8 @@ public class BattleView extends JPanel{
             if(unitTargeted == false){
                 if(instance.alienBoard.getSquare(0,0).selectSquare() != null){
                     unitTargeted = true;
+                    unitCoordinateX = 0;
+                    unitCoordinateY = 0;
                 }
             }
            }
@@ -880,7 +987,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[0][1].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(0,1).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 0;
+                    unitCoordinateY = 1;
+                }
+            }
            }
        });
         as02.addActionListener(new ActionListener(){
@@ -893,7 +1006,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[0][2].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(0,2).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 0;
+                    unitCoordinateY = 0;
+                }
+            }
            }
        });
         as03.addActionListener(new ActionListener(){
@@ -906,7 +1025,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[0][3].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(0,3).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 0;
+                    unitCoordinateY = 3;
+                }
+            }
            }
        });
         as10.addActionListener(new ActionListener(){
@@ -919,6 +1044,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[1][0].setVisible(true);
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(1,0).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 1;
+                    unitCoordinateY = 0;
+                }
+            }
            }
        });
         as11.addActionListener(new ActionListener(){
@@ -931,7 +1063,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[1][1].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(1,1).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 1;
+                    unitCoordinateY = 1;
+                }
+            }
            }
        });
         as12.addActionListener(new ActionListener(){
@@ -944,7 +1082,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[1][2].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(1,2).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 1;
+                    unitCoordinateY = 2;
+                }
+            }
            }
        });
         as13.addActionListener(new ActionListener(){
@@ -957,7 +1101,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[1][3].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(1,3).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 1;
+                    unitCoordinateY = 3;
+                }
+            }
            }
        });
         as20.addActionListener(new ActionListener(){
@@ -970,7 +1120,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[2][0].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(2,0).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 2;
+                    unitCoordinateY = 0;
+                }
+            }
            }
        });
         as21.addActionListener(new ActionListener(){
@@ -983,7 +1139,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[2][1].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(2,1).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 2;
+                    unitCoordinateY = 1;
+                }
+            }
            }
        });
         as22.addActionListener(new ActionListener(){
@@ -996,7 +1158,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[2][2].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(2,2).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 2;
+                    unitCoordinateY = 2;
+                }
+            }
            }
        });
         as23.addActionListener(new ActionListener(){
@@ -1009,7 +1177,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[2][3].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(2,3).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 2;
+                    unitCoordinateY = 3;
+                }
+            }
            }
        });
         as30.addActionListener(new ActionListener(){
@@ -1022,7 +1196,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[3][0].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(3,0).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 3;
+                    unitCoordinateY = 0;
+                }
+            }
            }
        });
         as31.addActionListener(new ActionListener(){
@@ -1035,7 +1215,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[3][1].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(3,1).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 3;
+                    unitCoordinateY = 1;
+                }
+            }
            }
        });
         as32.addActionListener(new ActionListener(){
@@ -1048,7 +1234,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[3][2].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(3,2).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 3;
+                    unitCoordinateY = 2;
+                }
+            }
            }
        });
         as33.addActionListener(new ActionListener(){
@@ -1061,7 +1253,13 @@ public class BattleView extends JPanel{
                 }
             }
             alienSquareLabels[3][3].setVisible(true);
-
+            if(unitTargeted == false){
+                if(instance.alienBoard.getSquare(3,3).selectSquare() != null){
+                    unitTargeted = true;
+                    unitCoordinateX = 3;
+                    unitCoordinateY = 3;
+                }
+            }
            }
        });
        
@@ -1071,7 +1269,7 @@ public class BattleView extends JPanel{
                System.out.println(unitName);
                 if(unitSelected){
                     if(unitName == "cleric"){
-                        System.out.println("Heal");
+                        //party.getParty(3).heal(unitCoordinateX,unitCoordinateY);
                     }
                     else if(unitName == "archer"){
                         System.out.println("fuck");
